@@ -1,0 +1,41 @@
+<h2>Nowe Lotnisko</h2>
+<%= form_with model: @airport do |form| %>
+  <p>
+    <%= form.label :city %><br>
+    <%= form.text_field :city %>
+  </p>
+
+  <p>
+    <%= form.label :country %><br>
+    <%= form.text_field :country %>
+  </p>  
+
+  <p>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+  </p>  
+ 
+  <p>
+    <%= form.label :iata %><br>
+    <%= form.text_field :iata %>
+  </p>
+
+  <p>
+    <%= form.label :latitude %><br>
+    <%= form.text_field :latitude %>
+  </p>
+
+  <p>
+    <%= form.label :longitude %><br>
+    <%= form.text_field :longitude %>
+  </p>
+
+  <p>
+    <%= form.label :timezone %><br>
+    <%= form.text_field :timezone %>
+  </p>
+ 
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
