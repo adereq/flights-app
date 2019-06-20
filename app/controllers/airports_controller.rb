@@ -17,7 +17,7 @@ class AirportsController < ApplicationController
 
     respond_to do |format|
       if @airport.save
-        format.html { redirect_to @airport, notice: 'Blog was successfully created.' }
+        format.html { redirect_to @airport, notice: 'Airport was successfully created.' }
         format.json { render :show, status: :ok, location: @airport }        
       else
         format.html { render :new }
@@ -32,7 +32,7 @@ class AirportsController < ApplicationController
   def update
     respond_to do |format|
       if @airport.update(airport_params)
-        format.html { redirect_to @airport, notice: 'Blog was successfully updated.' }
+        format.html { redirect_to @airport, notice: 'Airport was successfully updated.' }
         format.json { render :show, status: :ok, location: @airport }
       else
         format.html { render :edit }
