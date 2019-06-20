@@ -1,0 +1,13 @@
+<div class="col-12">
+  <h2><%= @flight.flight_number %></h2>
+</div>
+<div class="col-6">
+  <p>Wylot: <%= @flight.departure_airport_id %></p>
+  <p>Przylot: <%= @flight.arrival_airport_id %></p>
+  <p>Data: <%= @flight.departure_date %></p>
+  <p>Godz.wylotu: <%= @flight.departure_time %></p>
+  <p>Godz.przylotu: <%= @flight.arrival_time %></p>
+  <p>Numer lotu: <%= @flight.flight_number %></p>
+  <p>Liczba miejsc: <%= @flight.seats %></p>
+  <p>Cena: <%= @flight.price %></p>
+</div>

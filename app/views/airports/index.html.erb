@@ -1,4 +1,28 @@
 <h2>Airports</h2>
-<% @airports.each do |airport| %>
-  <%= airport.inspect %>
-  <% end %>
+
+<%= link_to 'Dodaj lotnisko', new_airport_path, class: 'btn btn-light' %>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Miasto</th>
+        <th scope="col">Kraj</th>
+        <th scope="col">Nazwa</th>
+        <th scope="col">Kod IATA</th>
+        <th scope="col">Akcje</th>
+      </tr>
+    </thead>
+  <% @airports.each do |airport| %>
+    <tbody>
+      <tr>
+        <th scope="row"><%= airport.id %></th>
+        <td><%= airport.city %></td>
+        <td><%= airport.country %></td>
+        <td><%= airport.name %></td>
+        <td><%= airport.iata %></td>
+        <td><%= link_to 'Usuń', airport_path(airport.id), method: :delete, data: { confirm: 'Are you sure?' } %> </td>
+      </tr>
+    </tbody>
+    <% end %>
+  </table>

@@ -1,41 +1,50 @@
+<div class="col-12">
 <h2>Nowe Lotnisko</h2>
+</div>
+<div class="col-3">
+  </div>
+<div class="col-3">
 <%= form_with model: @airport do |form| %>
-  <p>
+  <div class="form-group">
     <%= form.label :city %><br>
-    <%= form.text_field :city %>
-  </p>
+    <%= form.text_field :city, class: 'form-control' %>
+  </div>
 
-  <p>
+  <div class="form-group">
     <%= form.label :country %><br>
-    <%= form.text_field :country %>
-  </p>  
+    <%= form.text_field :country, class: 'form-control' %>
+  </div>
 
-  <p>
+  <div class="form-group">
     <%= form.label :name %><br>
-    <%= form.text_field :name %>
-  </p>  
+    <%= form.text_field :name, class: 'form-control' %>
+  </div> 
  
-  <p>
+  <div class="form-group">
     <%= form.label :iata %><br>
-    <%= form.text_field :iata %>
-  </p>
-
+    <%= form.text_field :iata, class: 'form-control' %>
+  </div>
+</div>
+<div class="col-3">
   <p>
     <%= form.label :latitude %><br>
-    <%= form.text_field :latitude %>
+    <%= form.text_field :latitude, class: 'form-control' %>
   </p>
 
   <p>
     <%= form.label :longitude %><br>
-    <%= form.text_field :longitude %>
+    <%= form.text_field :longitude, class: 'form-control' %>
   </p>
 
   <p>
     <%= form.label :timezone %><br>
-    <%= form.text_field :timezone %>
+    <%= form.text_field :timezone, class: 'form-control' %>
   </p>
  
-  <p>
-    <%= form.submit %>
-  </p>
+
+</div>
+<div class="col-3">
+  </div>
+  <div class="col-12">
+    <%= form.submit "Submit", class: 'btn btn-primary' %>
 <% end %>

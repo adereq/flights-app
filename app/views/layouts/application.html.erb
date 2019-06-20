@@ -10,29 +10,30 @@
     <%= stylesheet_link_tag    'airports', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
+
   <body>
-
     <div class="site-wrapper">
-
       <div class="site-wrapper-inner">
-
-        <div class="container">
-
-          <div class="masthead clearfix">
-            <div class="container inner">
-              <h3 class="masthead-brand">FligtsApp</h3>
-              <nav>
-                <ul class="nav masthead-nav">
-                  <li class="active"><a href="#">Home</a></li>
-                  <li><a href="#">Features</a></li>
-                  <li><a href="#">Contact</a></li>
-                </ul>
-              </nav>
+        <div class="cover-container">
+          <header><div class="masthead clearfix">
+            <div class="inner">
+              <h3 class="masthead-brand">FlightsApp</h3>
+              <%= render 'shared/admin_nav' %>
             </div>
           </div>
+        </header>
+        <main>
+          <div class="row centros">
           <%= yield %>
         </div>
+      </main>
+        <footer>
+                    <%= render 'shared/application_footer' %>
+                    </footer>
+
+
+        </div>
       </div>
-    </div>
+  </div>
   </body>
   </html>

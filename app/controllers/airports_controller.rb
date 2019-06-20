@@ -44,7 +44,7 @@ class AirportsController < ApplicationController
   def destroy
     @airport.destroy
     respond_to do |format|
-      format.html { redirect_to blogs_url, notice: 'Airpot was successfully destroyed.' }
+      format.html { redirect_to airports_path, notice: 'Airpot was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

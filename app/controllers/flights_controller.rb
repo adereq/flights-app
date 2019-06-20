@@ -18,8 +18,8 @@ class FlightsController < ApplicationController
 
   	respond_to do |format|
   	  if @flight.save
-  	  	format.html {redirect_to @airport, notice: 'Airport was succesfully created'}
-  	    format.html {redirect_to @airport, notice: 'Airport was succesfully created'}
+  	  	format.html {redirect_to @airport, notice: 'Flight was succesfully created'}
+  	    format.html {redirect_to @airport, notice: 'Flight was succesfully created'}
   	  else
   	  	format.html {render :new}
   	  	format.json {render json: @airport.errors, status: :unprocessable_entity }
@@ -33,8 +33,8 @@ class FlightsController < ApplicationController
   def update
   	respond_to do |format|
   	  if @flight.save
-  	  	format.html {redirect_to @airport, notice: 'Airport was succesfully created'}
-  	    format.html {redirect_to @airport, notice: 'Airport was succesfully created'}
+  	  	format.html {redirect_to @airport, notice: 'Flight was succesfully created'}
+  	    format.html {redirect_to @airport, notice: 'Flight was succesfully created'}
   	  else
   	  	format.html {render :new}
   	  	format.json {render json: @airport.errors, status: :unprocessable_entity }
@@ -43,9 +43,9 @@ class FlightsController < ApplicationController
   end
 
   	def destroy
-  	  @airport.destroy
+  	  @flight.destroy
   	  respond_to do |format|
-      format.html { redirect_to blogs_url, notice: 'Airpot was successfully destroyed.' }
+      format.html { redirect_to flights_path, notice: 'Flight was successfully destroyed.' }
       format.json {head :no_content}
   	  end
   	end
@@ -56,6 +56,6 @@ private
   	end
 
   	def flight_params
-  	  params.require(:flight).permit(:departure_airport_id, :arrival_aiport_id, :departure_date, :departure_time,:arrival_time, :flight_number, :seats, :price)
+  	  params.require(:flight).permit(:departure_airport_id, :arrival_airport_id, :departure_date, :departure_time,:arrival_time, :flight_number, :seats, :price)
   	end
 end
