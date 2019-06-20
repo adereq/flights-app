@@ -1,11 +1,16 @@
 class AirportsController < ApplicationController
-  before_action :set_airport, only: [:show, :edit, :update, :destroy]
+  before_action :set_airport, only: [:show, :edit, :update, :destroy, :get_airport]
 
   def index
   	@airports = Airport.all
   end
 
   def show
+  end
+
+  def get_airport
+    msg = {:name => @airport.name,:country => @airport.country} 
+    render :json => msg
   end
 
   def new

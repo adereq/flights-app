@@ -15,14 +15,14 @@ class FlightsController < ApplicationController
 
   def create 
   	@flight = Flight.new(flight_params)
-
+  	airport_validator
   	respond_to do |format|
   	  if @flight.save
-  	  	format.html {redirect_to @airport, notice: 'Flight was succesfully created'}
-  	    format.html {redirect_to @airport, notice: 'Flight was succesfully created'}
+  	  	format.html {redirect_to @flight, notice: 'Flight was succesfully created'}
+  	    format.html {redirect_to @flight, notice: 'Flight was succesfully created'}
   	  else
   	  	format.html {render :new}
-  	  	format.json {render json: @airport.errors, status: :unprocessable_entity }
+  	  	format.json {render json: @flight.errors, status: :unprocessable_entity }
   	  end
   	end
   end
@@ -33,8 +33,8 @@ class FlightsController < ApplicationController
   def update
   	respond_to do |format|
   	  if @flight.save
-  	  	format.html {redirect_to @airport, notice: 'Flight was succesfully created'}
-  	    format.html {redirect_to @airport, notice: 'Flight was succesfully created'}
+  	  	format.html {redirect_to @flight, notice: 'Flight was succesfully created'}
+  	    format.html {redirect_to @flight, notice: 'Flight was succesfully created'}
   	  else
   	  	format.html {render :new}
   	  	format.json {render json: @airport.errors, status: :unprocessable_entity }
@@ -58,4 +58,11 @@ private
   	def flight_params
   	  params.require(:flight).permit(:departure_airport_id, :arrival_airport_id, :departure_date, :departure_time,:arrival_time, :flight_number, :seats, :price)
   	end
+
+  	def airport_validator
+  	  if params[:departure_airport_id] == params[:arrival_airport_id]
+        puts "DUPA"
+      end
+  	end
+
 end

@@ -16,12 +16,14 @@
   <% @airports.each do |airport| %>
     <tbody>
       <tr>
+        <a href="/airports/<%= airport.id %>">
         <th scope="row"><%= airport.id %></th>
         <td><%= airport.city %></td>
         <td><%= airport.country %></td>
         <td><%= airport.name %></td>
         <td><%= airport.iata %></td>
         <td><%= link_to 'Usuń', airport_path(airport.id), method: :delete, data: { confirm: 'Are you sure?' } %> </td>
+      </a>
       </tr>
     </tbody>
     <% end %>

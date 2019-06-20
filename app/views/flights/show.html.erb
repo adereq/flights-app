@@ -2,8 +2,8 @@
   <h2><%= @flight.flight_number %></h2>
 </div>
 <div class="col-6">
-  <p>Wylot: <%= @flight.departure_airport_id %></p>
-  <p>Przylot: <%= @flight.arrival_airport_id %></p>
+  <p>Wylot: <%= @flight.departure_airport.name %></p>
+  <p>Przylot: <%= @flight.arrival_airport.name %></p>
   <p>Data: <%= @flight.departure_date %></p>
   <p>Godz.wylotu: <%= @flight.departure_time %></p>
   <p>Godz.przylotu: <%= @flight.arrival_time %></p>
