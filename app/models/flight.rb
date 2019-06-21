@@ -4,8 +4,8 @@ class Flight < ApplicationRecord
 
   validates :departure_airport_id, :arrival_airport_id, presence: true 
 
-  def self.search_flights(departure_airport_id, arrival_airport_id)
-    Flight.where(departure_airport_id: departure_airport_id,
-                 arrival_airport_id: arrival_airport_id)
+  def self.search_flights(params)
+    Flight.where(departure_airport_id: params[:departure_airport_id],
+                 arrival_airport_id: params[:arrival_airport_id])
   end
 end

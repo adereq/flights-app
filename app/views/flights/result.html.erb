@@ -1,6 +1,4 @@
-<h2>Loty</h2>
-
-<%= link_to 'Dodaj lot', new_flight_path, class: 'btn btn-light button-place' %>
+<h2>Wyniki</h2>
 
   <table class="table">
     <thead>
@@ -13,21 +11,19 @@
         <th scope="col">Godz.przylotu</th>
         <th scope="col">Miejsca</th>
         <th scope="col">Cena</th>
-        <th scope="col">Akcje</th>
       </tr>
     </thead>
-  <% @flights.each do |flight| %>
+  <% @results.each do |flight| %>
     <tbody>
       <tr>
         <th scope="row"><%= flight.flight_number %></th>
         <td><%= flight.departure_airport.name %></td>
-        <td><%= flight.arrival_airport.name %></td>
+        <td><%= flight.arrival_airport.name%></td>
         <td><%= flight.departure_date %></td>
         <td><%= flight.departure_time %></td>
         <td><%= flight.arrival_time %></td>
         <td><%= flight.seats %></td>
         <td><%= flight.price %></td>
-        <td><%= link_to 'Usuń', flight_path(flight.id), method: :delete, data: { confirm: 'Are you sure?' } %> </td>
       </tr>
     </tbody>
     <% end %>
