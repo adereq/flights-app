@@ -1,6 +1,7 @@
 class FlightsController < ApplicationController
   before_action :set_flight, only: [:show, :edit, :update, :destroy]
 
+
   def result
     @results = Flight.search_flights(params)
   end
