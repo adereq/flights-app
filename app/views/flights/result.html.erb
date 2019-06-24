@@ -1,4 +1,4 @@
-<h2>Wyniki</h2>
+<h2>Oferty</h2>
 
   <table class="table">
     <thead>
@@ -9,7 +9,6 @@
         <th scope="col">Data</th>
         <th scope="col">Godz.wylotu</th>
         <th scope="col">Godz.przylotu</th>
-        <th scope="col">Miejsca</th>
         <th scope="col">Cena</th>
       </tr>
     </thead>
@@ -22,60 +21,10 @@
         <td><%= flight.departure_date %></td>
         <td><%= flight.departure_time.strftime("%H:%M") %></td>
         <td><%= flight.arrival_time.strftime("%H:%M") %></td>
-        <td><%= flight.seats %></td>
         <td><div class="btn btn-danger"><%= flight.price %></div></td>
       </tr>
     </tbody>
+      <% end %>
   </table>
 
-      <div class="container">
-      <div class="card-deck mb-3 text-center">
-        <div class="card mb-4 box-shadow">
-          <div class="card-header">
-            <h4 class="my-0 font-weight-normal text-muted"><%= flight.flight_number %></h4>
-          </div>
-          <div class="card-body">
-            <h1 class="card-title pricing-card-title text-muted"><%= flight.price %> <small class="text-muted"> zł</small></h1>
-            <ul class="list-unstyled mt-3 mb-4 text-muted">
-              <li><%= flight.departure_airport.name %>/li>
-              <li><%= flight.arrival_airport.name%></li>
-              <li><%= flight.departure_date %></li>
-              <li><%= flight.departure_time.strftime("%H:%M") %></li>
-              <li><%= flight.arrival_time.strftime("%H:%M") %></li>
-            </ul>
-            <button type="button" class="btn btn-lg btn-block btn-outline-primary">Rezerwuj</button>
-          </div>
-        </div>
-        <div class="card mb-4 box-shadow">
-          <div class="card-header">
-            <h4 class="my-0 font-weight-normal">Pro</h4>
-          </div>
-          <div class="card-body">
-            <h1 class="card-title pricing-card-title">$15 <small class="text-muted">/ mo</small></h1>
-            <ul class="list-unstyled mt-3 mb-4">
-              <li>20 users included</li>
-              <li>10 GB of storage</li>
-              <li>Priority email support</li>
-              <li>Help center access</li>
-            </ul>
-            <button type="button" class="btn btn-lg btn-block btn-primary">Get started</button>
-          </div>
-        </div>
-        <div class="card mb-4 box-shadow">
-          <div class="card-header">
-            <h4 class="my-0 font-weight-normal">Enterprise</h4>
-          </div>
-          <div class="card-body">
-            <h1 class="card-title pricing-card-title">$29 <small class="text-muted">/ mo</small></h1>
-            <ul class="list-unstyled mt-3 mb-4">
-              <li>30 users included</li>
-              <li>15 GB of storage</li>
-              <li>Phone and email support</li>
-              <li>Help center access</li>
-            </ul>
-            <button type="button" class="btn btn-lg btn-block btn-primary">Contact us</button>
-          </div>
-        </div>
-      </div>
-
-    <% end %>
+  

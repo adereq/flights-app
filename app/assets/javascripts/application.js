@@ -18,6 +18,7 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+//= require gritter
 
 // Regular map
         function regular_map() {

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_18_200811) do
+ActiveRecord::Schema.define(version: 2019_06_22_121501) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,8 +20,6 @@ ActiveRecord::Schema.define(version: 2019_06_18_200811) do
     t.string "country"
     t.string "name"
     t.string "iata"
-    t.string "latitude"
-    t.string "longitude"
     t.string "timezone"
     t.text "image"
     t.datetime "created_at", null: false
@@ -36,7 +34,7 @@ ActiveRecord::Schema.define(version: 2019_06_18_200811) do
     t.time "arrival_time"
     t.string "flight_number"
     t.integer "seats"
-    t.float "price"
+    t.decimal "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

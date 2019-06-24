@@ -1,6 +1,6 @@
 <%= form_with model: @airport do |form| %>
   <div class="form-group">
-    <%= form.label :city %><br>
+    <%= form.label :miasto %><br>
     <%= form.text_field :city, class: 'form-control' %>
   </div>
 
@@ -13,34 +13,15 @@
     <%= form.label :nazwa %><br>
     <%= form.text_field :name, class: 'form-control' %>
   </div> 
- 
   <div class="form-group">
     <%= form.label :iata %><br>
     <%= form.text_field :iata, class: 'form-control' %>
   </div>
-</div>
-<div class="col-3">
-  <p>
-    <%= form.label :szerkokość_geograficzna %><br>
-    <%= form.text_field :latitude, class: 'form-control' %>
-  </p>
-
-  <p>
-    <%= form.label :długość_geograficzna %><br>
-    <%= form.text_field :longitude, class: 'form-control' %>
-  </p>
-
-  <p>
+  <div class="form-group">
     <%= form.label :strefa_czasowa %><br>
     <%= form.text_field :timezone, class: 'form-control' %>
-  </p>
- 
+  </div>
 
-</div>
-<div class="col-3">
-</div>
-  <div class="col-12">
-    <%= form.submit "Submit", class: 'btn btn-light' %>
-    <%= link_to 'Back', airports_path, class: 'btn btn-secondary' %>
+  <%= form.submit "Submit", class: 'btn btn-light' %>
+  <%= link_to 'Back', airports_path, class: 'btn btn-secondary' %>
 <% end %>
-</div>
