@@ -5,8 +5,8 @@
   <p>Wylot: <%= @flight.departure_airport.name %></p>
   <p>Przylot: <%= @flight.arrival_airport.name %></p>
   <p>Data: <%= @flight.departure_date %></p>
-  <p>Godz.wylotu: <%= @flight.departure_time %></p>
-  <p>Godz.przylotu: <%= @flight.arrival_time %></p>
+  <p>Godz.wylotu: <%= time_formatter(@flight.departure_time) %></p>
+  <p>Godz.przylotu: <%= time_formatter(@flight.arrival_time) %></p>
   <p>Numer lotu: <%= @flight.flight_number %></p>
   <p>Liczba miejsc: <%= @flight.seats %></p>
   <p>Cena: <%= @flight.price %></p>

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   root to: 'user_pages#index'
   get 'flights/search', to: 'flights#search'
   get 'flights/result', to: 'flights#result'
