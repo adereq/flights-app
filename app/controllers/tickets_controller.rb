@@ -11,7 +11,7 @@ class TicketsController < ApplicationController
   	  if @ticket.save
   	  	format.html {redirect_to @ticket, notice: 'Flight was succesfully created'}
   	  else
-  	  	format.html {render :new}
+  	  	format.html {redirect_to :root}
   	  end
   	end
   end
@@ -26,7 +26,9 @@ class TicketsController < ApplicationController
   end
 
   def ticket_params
-  	params.require(:ticket).permit(:first_name, :last_name, :document_id, :country)
+  	params.require(:ticket).permit(:pnr, :flight_id, :user_id,
+      :first_name, :last_name, :document_id, :country, :departure_airport_name, :arrival_airport_name, 
+      :departure_date, :departure_time, :arrival_time, :flight_number, :seat, :price)
   end
 
 end

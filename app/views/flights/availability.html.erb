@@ -23,7 +23,7 @@
         <td><%= flight.departure_time.strftime("%H:%M") %></td>
         <td><%= flight.arrival_time.strftime("%H:%M") %></td>
         <td><%= flight.id %></td>
-        <td><%= link_to "#{flight.price}", flights_passenger_path, class: 'btn btn-secondary' %></div></td>
+        <td><%= link_to "#{flight.price}", selected_flight_path(flight.id), class: 'btn btn-secondary' %></div></td>
       </tr>
     </tbody>
       <% end %>

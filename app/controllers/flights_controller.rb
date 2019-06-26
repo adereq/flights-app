@@ -1,9 +1,10 @@
 class FlightsController < ApplicationController
-  before_action :set_flight, only: [:show, :edit, :update, :destroy]
+  before_action :set_flight, only: [:show, :edit, :update, :destroy, :selected_flight]
  # layout "booking", only: [:search, :result]
 
-  def result
+  def availability
     @results = Flight.search_flights(params)
+
   end
 
   def search
@@ -15,6 +16,9 @@ class FlightsController < ApplicationController
   end
 
   def show
+  end
+
+  def selected_flight
   end
 
   def new
