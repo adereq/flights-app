@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  root to: 'user_pages#index'
+  root to: 'flights#search'
   get 'search', to: 'flights#search'
   get 'availability', to: 'flights#availability'  
   get 'selected_flight/:id', to: 'flights#selected_flight', as: 'selected_flight'

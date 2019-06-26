@@ -1,49 +1,38 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="../../../../favicon.ico">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+  <title>FlightApp</title>
+
+  <!-- Google font -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+    <title>FlightsApp</title>
     <%= csrf_meta_tag %>
-    <title>FlightApp</title>
-
-    <%= stylesheet_link_tag    'airports', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'test_website', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-   </head>
 
-  <body>
 
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-      <a class="navbar-brand" href="#">FlightApp Admin</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-ic  on"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarCollapse">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <%= link_to 'Strona główna', admin_home_path, class: 'nav-link' %>
-          </li>
-          <li class="nav-item">
-            <%= link_to 'Lotniska', airports_path, class: 'nav-link' %>
-          </li>
-          <li class="nav-item">
-            <%= link_to 'Loty', flights_path, class: 'nav-link' %>
-          </li>
-          <%= login_helper %>
-        </ul>
+</head>
+
+<body>
+<%= render 'shared/booking_nav' %>
+ <main role="main">
+  <div id="booking" class="section">
+    <div class="section-center">
+      <div class="container">
+        <div class="row margin-top">
+
+          <%= yield %>
+        </div>
       </div>
-      <div class="right nav-item navbar-nav mr-auto collapse navbar-collapse">
-       
-    </nav>
+    </div>
+  </div>
+</main>
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
 
-    <main role="main" class="container">
-      <%= render 'shared/alerts' %>
-      <div class="jumbotron">
-        <p class="lead"><%= yield %></p>
-      </div>
-    </main>
-    <%= render 'shared/application_footer' %>
-  </body>
 </html>

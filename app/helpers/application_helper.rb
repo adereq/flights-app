@@ -5,7 +5,7 @@ module ApplicationHelper
       (link_to "Login", new_user_session_path, class: 'nav-item nav-link')
     else
       (link_to "Moje Bilety", tickets_path, class: 'nav-item nav-link') +
-      (link_to "Wyloguj się", destroy_user_session_path, class: 'nav-item nav-link', method: :delete)
+      (link_to "Wyloguj się (#{current_user.email})", destroy_user_session_path, class: 'nav-item nav-link', method: :delete)
     end
   end
 end

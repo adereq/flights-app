@@ -1,17 +1,18 @@
 <div class="container">
   <div class="row">
     <div class="col-sm">
+      <h3>Podsumowanie lotu</h3>
       <p>Wylot: <%= @flight.departure_airport.name %></p>
   	  <p>Przylot: <%= @flight.arrival_airport.name %></p>
       <p>Data: <%= @flight.departure_date %></p>
       <p>Godz.wylotu: <%= time_formatter(@flight.departure_time) %></p>
       <p>Godz.przylotu: <%= time_formatter(@flight.arrival_time) %></p>
       <p>Numer lotu: <%= @flight.flight_number %></p>
-      <p>Liczba miejsc: <%= @flight.seats %></p>
       <p>Cena: <%= @flight.price %></p>
     </div>
 
  <div class="col-sm">
+ 	<h3>Dane Pasażera</h3>
       <%= form_with url: '/tickets', scope: 'ticket' do |form| %>
   <div class="form-group">
     <%= form.label :imie %><br>
@@ -49,8 +50,6 @@
 <% end %>
 
     </div>
-    <div class="col-sm">
-      One of three columns
-    </div>
+
   </div>
 </div>
