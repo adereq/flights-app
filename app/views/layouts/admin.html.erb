@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../../../favicon.ico">
+
+    <title>FlightApp</title>
+
+    <%= stylesheet_link_tag    'airports', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <a class="navbar-brand" href="#">FlightApp Admin</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-ic  on"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Strona Główna<span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Lotniska</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Lodty</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <main role="main" class="container">
+      <%= render 'shared/alerts' %>
+      <div class="jumbotron">
+        <p class="lead"><%= yield %></p>
+      </div>
+    </main>
+    <%= render 'shared/application_footer' %>
+  </body>
+</html>

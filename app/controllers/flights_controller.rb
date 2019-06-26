@@ -1,6 +1,6 @@
 class FlightsController < ApplicationController
   before_action :set_flight, only: [:show, :edit, :update, :destroy]
-
+ # layout "booking", only: [:search, :result]
 
   def result
     @results = Flight.search_flights(params)
@@ -27,10 +27,8 @@ class FlightsController < ApplicationController
   	respond_to do |format|
   	  if @flight.save
   	  	format.html {redirect_to @flight, notice: 'Flight was succesfully created'}
-  	    format.html {redirect_to @flight, notice: 'Flight was succesfully created'}
   	  else
   	  	format.html {render :new}
-  	  	format.json {render json: @flight.errors, status: :unprocessable_entity }
   	  end
   	end
   end
@@ -42,10 +40,8 @@ class FlightsController < ApplicationController
   	respond_to do |format|
   	  if @flight.save
   	  	format.html {redirect_to @flight, notice: 'Flight was succesfully created'}
-  	    format.html {redirect_to @flight, notice: 'Flight was succesfully created'}
   	  else
   	  	format.html {render :new}
-  	  	format.json {render json: @airport.errors, status: :unprocessable_entity }
   	  end
   	end
   end

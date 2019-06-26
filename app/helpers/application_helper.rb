@@ -1,33 +1,11 @@
 module ApplicationHelper
-    def nav_items
-    [ {
-      url: "#", 
-      title: 'Home'
-    },
-    {
-      url: "#", 
-      title: 'About'
-    },
-    {
-      url: "#", 
-      title: 'Contact'
-    },
-    {
-      url: "#", 
-      title: 'Blog'
-    },
-    {
-      url: "#", 
-      title: 'Portfolio'
-    }
-  ]
-  end
-  
-  def nav_helper style, tag_type
-    nav_links = ''
-    nav_items.each do |item|
-      nav_links << "<#{tag_type}><a href='#{item[:url]}' class='#{style}'>#{item[:title]}</a></#{tag_type}>"
+  def login_helper(style='')
+    if current_user.is_a?(GuestUser)
+      (link_to "Register", new_user_registration_path, class: style) +
+      (link_to "Login", new_user_session_path, class: style)
+    else
+      link_to "Logout", destroy_user_session_path, class: style, method: :delete
+        
     end
-    nav_links.html_safe
   end
 end

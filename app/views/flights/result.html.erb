@@ -9,6 +9,7 @@
         <th scope="col">Data</th>
         <th scope="col">Godz.wylotu</th>
         <th scope="col">Godz.przylotu</th>
+        <th scope="col">Id</th>
         <th scope="col">Cena</th>
       </tr>
     </thead>
@@ -21,7 +22,8 @@
         <td><%= flight.departure_date %></td>
         <td><%= flight.departure_time.strftime("%H:%M") %></td>
         <td><%= flight.arrival_time.strftime("%H:%M") %></td>
-        <td><div class="btn btn-danger"><%= flight.price %></div></td>
+        <td><%= flight.id %></td>
+        <td><%= link_to "#{flight.price}", flights_passenger_path, class: 'btn btn-secondary' %></div></td>
       </tr>
     </tbody>
       <% end %>

@@ -60,7 +60,8 @@ class AirportsController < ApplicationController
   	end
 
   	def airport_params
-      params.require(:airport).permit(:city, :country, :name, :iata, :latitude, :longitude, :timezone, :image)
+      params.require(:airport).permit(:city, :country, :name, :iata, :timezone, :image)
+
     end  	
 
 end
