@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="../../../../favicon.ico">
-
+    <%= csrf_meta_tag %>
     <title>FlightApp</title>
 
     <%= stylesheet_link_tag    'airports', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -31,6 +31,7 @@
           <li class="nav-item">
             <%= link_to 'Loty', flights_path, class: 'nav-link' %>
           </li>
+          <%= login_helper %>
         </ul>
       </div>
       <div class="right nav-item navbar-nav mr-auto collapse navbar-collapse">

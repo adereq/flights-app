@@ -1,11 +1,13 @@
 class AirportsController < ApplicationController
   before_action :set_airport, only: [:show, :edit, :update, :destroy, :get_airport]
-
+  layout 'admin'
+  
   def index
   	@airports = Airport.all
   end
 
   def show
+
   end
 
   def get_airport
