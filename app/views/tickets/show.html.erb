@@ -8,7 +8,7 @@
       <p>Godz.wylotu: <%= time_formatter(@ticket.departure_time) %></p>
       <p>Godz.przylotu: <%= time_formatter(@ticket.arrival_time) %></p>
       <p>Numer lotu: <%= @ticket.flight_number %></p>
-      <p>Liczba miejsc: <%= @ticket.seat %></p>
+      <p>Miejsce: <%= @ticket.seat %></p>
       <p>Cena: <%= @ticket.price %></p>
       <p><%= current_user.email %></p>
     </div>

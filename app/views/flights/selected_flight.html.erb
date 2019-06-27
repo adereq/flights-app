@@ -45,6 +45,7 @@
   <%= form.hidden_field :arrival_time, value: @flight.arrival_time %>
   <%= form.hidden_field :flight_number, value: @flight.flight_number %>
   <%= form.hidden_field :price, value: @flight.price %>
+  <%= form.hidden_field :mail, value: current_user.email %>
 
   <%= form.submit "Zarezerwuj", class: 'btn btn-light' %>
 <% end %>

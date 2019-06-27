@@ -8,5 +8,9 @@ module ApplicationHelper
       (link_to "Wyloguj się (#{current_user.email})", destroy_user_session_path, class: 'nav-item nav-link', method: :delete)
     end
   end
+
+  def time_formatter(time)
+  	time.strftime("%H:%M")
+  end
 end
 

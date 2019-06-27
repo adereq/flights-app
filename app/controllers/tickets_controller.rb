@@ -32,7 +32,7 @@ class TicketsController < ApplicationController
   def ticket_params
   	params.require(:ticket).permit(:pnr, :flight_id, :user_id,
       :first_name, :last_name, :document_id, :country, :departure_airport_name, :arrival_airport_name, 
-      :departure_date, :departure_time, :arrival_time, :flight_number, :seat, :price)
+      :departure_date, :departure_time, :arrival_time, :flight_number, :seat, :price, :mail)
   end
 
 end
