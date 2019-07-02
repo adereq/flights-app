@@ -4,7 +4,9 @@ class FlightsController < ApplicationController
 
   def availability
     @results = Flight.search_flights(params)
-
+    if @results == []
+      render :noflights
+    end
   end
 
   def search

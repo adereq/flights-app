@@ -1,5 +1,6 @@
 class PagesController < ApplicationController
+layout "admin"
+
   def home
-  	@bueno = "Pies"
   end
 end
