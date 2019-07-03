@@ -24,7 +24,9 @@
         <td><%= time_formatter(flight.arrival_time) %></td>
         <td><%= flight.seats %></td>
         <td><%= flight.price %></td>
-        <td><%= link_to 'Usuń', flight_path(flight.id), method: :delete, data: { confirm: 'Are you sure?' } %> </td>
+        <td><%= link_to 'Pokaż bilety', tickets_list_path(flight.id), class: 'btn btn-primary' %> 
+            <%= link_to 'Edytuj', edit_flight_path(flight.id) %> 
+            <%= link_to 'Usuń', flight_path(flight.id), method: :delete, data: { confirm: 'Are you sure?' } %> </td>
       </tr>
     </tbody>
     <% end %>

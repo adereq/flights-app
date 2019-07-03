@@ -5,6 +5,13 @@ class TicketsController < ApplicationController
     @tickets = Ticket.where(user_id: current_user.id)
   end
 
+  def tickets_list
+    @results = Ticket.search_tickets(params)
+    if @results == []
+      render :notickets
+    end
+  end
+
   def new
   	@ticket = Ticket.new
   end

@@ -8,4 +8,8 @@ class Ticket < ApplicationRecord
   	BookingMailer.booking_notification(self).deliver
   end
 
+  def self.search_tickets(params)
+    Ticket.where(flight_id: params[:flight_id])
+  end
+
 end
