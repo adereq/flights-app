@@ -1,0 +1,30 @@
+<h2>Oferty</h2>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Nr Lotu</th>
+        <th scope="col">Wylot</th>
+        <th scope="col">Przylot</th>
+        <th scope="col">Data</th>
+        <th scope="col">Godz.wylotu</th>
+        <th scope="col">Godz.przylotu</th>
+        <th scope="col">Cena</th>
+      </tr>
+    </thead>
+  <% @results.each do |flight| %>
+    <tbody>
+      <tr>
+        <th scope="row"><%= flight.flight_number %></th>
+        <td><%= flight.departure_airport.name %></td>
+        <td><%= flight.arrival_airport.name%></td>
+        <td><%= flight.departure_date %></td>
+        <td><%= flight.departure_time.strftime("%H:%M") %></td>
+        <td><%= flight.arrival_time.strftime("%H:%M") %></td>
+        <td><%= link_to "#{flight.price}", selected_flight_path(flight.id), class: 'btn btn-secondary' %></div></td>
+      </tr>
+    </tbody>
+      <% end %>
+  </table>
+
+  

@@ -1,0 +1,33 @@
+<h2>Moje bilety</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Nr Lotu</th>
+        <th scope="col">Wylot</th>
+        <th scope="col">Przylot</th>
+        <th scope="col">Data</th>
+        <th scope="col">Godz.wylotu</th>
+        <th scope="col">Godz.przylotu</th>
+        <th scope="col">Miejsce</th>
+        <th scope="col">Cena</th>
+        <th scope="col">Imię</th>
+        <th scope="col">Nazwisko</th>
+      </tr>
+    </thead>
+  <% @tickets.each do |ticket| %>
+    <tbody>
+      <tr>
+        <th scope="row"><%= ticket.flight_number %></th>
+        <td><%= ticket.departure_airport_name %></td>
+        <td><%= ticket.arrival_airport_name %></td>
+        <td><%= ticket.departure_date %></td>
+        <td><%= time_formatter(ticket.departure_time) %></td>
+        <td><%= time_formatter(ticket.arrival_time) %></td>
+        <td><%= ticket.seat %></td>
+        <td><%= ticket.price %></td>
+        <td><%= ticket.first_name %></td>
+        <td><%= ticket.last_name %></td>
+      </tr>
+    </tbody>
+    <% end %>
+  </table>

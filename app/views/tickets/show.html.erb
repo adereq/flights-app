@@ -1,0 +1,16 @@
+<h1>Rezerwacja zakończona sukcesem</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+      <p>Wylot: <%= @ticket.departure_airport_name %></p>
+  	  <p>Przylot: <%= @ticket.arrival_airport_name %></p>
+      <p>Data: <%= @ticket.departure_date %></p>
+      <p>Godz.wylotu: <%= time_formatter(@ticket.departure_time) %></p>
+      <p>Godz.przylotu: <%= time_formatter(@ticket.arrival_time) %></p>
+      <p>Numer lotu: <%= @ticket.flight_number %></p>
+      <p>Miejsce: <%= @ticket.seat %></p>
+      <p>Cena: <%= @ticket.price %></p>
+      <p><%= current_user.email %></p>
+    </div>
+  </div>
+</div>

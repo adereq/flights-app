@@ -1,33 +1,16 @@
 module ApplicationHelper
-    def nav_items
-    [ {
-      url: "#", 
-      title: 'Home'
-    },
-    {
-      url: "#", 
-      title: 'About'
-    },
-    {
-      url: "#", 
-      title: 'Contact'
-    },
-    {
-      url: "#", 
-      title: 'Blog'
-    },
-    {
-      url: "#", 
-      title: 'Portfolio'
-    }
-  ]
-  end
-  
-  def nav_helper style, tag_type
-    nav_links = ''
-    nav_items.each do |item|
-      nav_links << "<#{tag_type}><a href='#{item[:url]}' class='#{style}'>#{item[:title]}</a></#{tag_type}>"
+  def login_helper
+    if !current_user.present?
+      (link_to "Register", new_user_registration_path, class: 'nav-item nav-link') +
+      (link_to "Login", new_user_session_path, class: 'nav-item nav-link')
+    else
+      (link_to "Moje Bilety", tickets_path, class: 'nav-item nav-link') +
+      (link_to "Wyloguj się (#{current_user.email})", destroy_user_session_path, class: 'nav-item nav-link', method: :delete)
     end
-    nav_links.html_safe
+  end
+
+  def time_formatter(time)
+  	time.strftime("%H:%M")
   end
 end
+
