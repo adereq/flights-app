@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  model: MyString
+  economic_seats: 1
+  business_seats: 1
+
+two:
+  model: MyString
+  economic_seats: 1
+  business_seats: 1

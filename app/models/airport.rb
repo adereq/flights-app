@@ -4,4 +4,10 @@ class Airport < ApplicationRecord
 
   validates :city, :country, :name, presence: true
   validates :iata, length: {is: 3}, presence: true
+
+  scope :poland, -> {where(country: "Polska")}
+  
+  #def self.airport_poland
+  #	Airport.where(:country => 'Polska')
+  #end
 end

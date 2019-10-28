@@ -72,4 +72,7 @@ Rails.application.configure do
 
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
   
+  
+#Rails.logger = Logger.new(STDOUT)
+#onfig.logger = ActiveSupport::Logger.new("log/#{Rails.env}.log")
 end

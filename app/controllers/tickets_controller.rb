@@ -1,5 +1,5 @@
 class TicketsController < ApplicationController
-  before_action :set_ticket, only: [:show]
+  before_action :set_ticket, only: [:show, :tickets_list]
   
   def index
     @tickets = Ticket.where(user_id: current_user.id)
