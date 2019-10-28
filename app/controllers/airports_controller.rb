@@ -4,10 +4,10 @@ class AirportsController < ApplicationController
   
   def index
   	@airports = Airport.all
+    #render json: JSON.pretty_generate(@airports.to_json)
   end
 
   def show
-
   end
 
   def get_airport
@@ -59,7 +59,8 @@ class AirportsController < ApplicationController
   private
   	def set_airport
   	  @airport = Airport.find(params[:id])
-  	end
+      rescue ActiveRecord::RecordNotFound => e
+    end
 
   	def airport_params
       params.require(:airport).permit(:city, :country, :name, :iata, :timezone, :image)
