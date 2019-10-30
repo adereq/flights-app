@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get 'selected_flight/:id', to: 'flights#selected_flight', as: 'selected_flight'
   get 'flights/passenger', to: 'flights#passenger'
  
-  resources :airports, :flights, :tickets
+  resources :airports, :flights, :tickets, :airplanes
   get 'admin/home', to: 'pages#home', as: 'admin_home'
   get 'airports/get_airport/:id', to: 'airports#get_airport'
 
