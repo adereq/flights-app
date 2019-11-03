@@ -9,7 +9,7 @@ class Flight < ApplicationRecord
   def self.search_flights(params)
     Flight.where(departure_airport_id: params[:departure_airport_id],
                  arrival_airport_id: params[:arrival_airport_id],
-                 departure_date: params[:departure_date])
+                 departure_date: params[:departure_date]).where("free_seats >= ?", params[:free_seats])
   end
 
   def time_formatter(time)
