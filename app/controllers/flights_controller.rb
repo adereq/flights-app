@@ -1,6 +1,8 @@
 class FlightsController < ApplicationController
+  before_action :authenticate_user!, only: [:selected_flight]
   before_action :set_flight, only: [:show, :edit, :update, :destroy, :selected_flight]
   layout "admin", only: [:index, :show, :new, :create, :edit, :update, :destroy]
+  
 
   def availability
     @results = Flight.search_flights(params)
