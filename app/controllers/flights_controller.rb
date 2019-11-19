@@ -29,7 +29,11 @@ class FlightsController < ApplicationController
 
   def create 
   	@flight = Flight.new(flight_params)
-  	airport_validator
+    @seats = Airplane.find(@flight.airplane_id).economy_seats
+    @flight.seats = @seats
+    @flight.free_seats = @seats
+
+  	#airport_validator
   	respond_to do |format|
   	  if @flight.save
   	  	format.html {redirect_to @flight, notice: 'Flight was succesfully created'}
@@ -66,7 +70,7 @@ private
   	end
 
   	def flight_params
-  	  params.require(:flight).permit(:departure_airport_id, :arrival_airport_id, :departure_date, :departure_time,:arrival_time, :flight_number, :seats, :price)
+  	  params.require(:flight).permit(:departure_airport_id, :arrival_airport_id, :departure_date, :departure_time,:arrival_time, :flight_number, :seats, :price, :airplane_id)
   	end
 
   	def airport_validator
