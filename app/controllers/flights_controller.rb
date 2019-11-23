@@ -11,7 +11,7 @@ class FlightsController < ApplicationController
     end
   end
 
-  def searchub
+  def search
     @airports_list = Airport.all.map{ |u| [u.name, u.id] }
   end
 
