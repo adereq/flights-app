@@ -16,4 +16,10 @@ class Flight < ApplicationRecord
   	time.strftime("%H:%M")
   end
 
+  def self.seat_decrease(flight_id)
+    flight = Flight.find(flight_id)
+    decresed_free_seats = flight.free_seats - 1
+    flight.update(free_seats: decresed_free_seats)
+  end
+
 end
