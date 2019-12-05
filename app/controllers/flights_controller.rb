@@ -16,7 +16,8 @@ class FlightsController < ApplicationController
   end
 
   def index
-    @flights = Flight.all
+    @q = Flight.ransack(params[:q])
+    @flights = @q.result.page(params[:page]).per(10)
   end
 
   def show

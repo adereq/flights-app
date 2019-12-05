@@ -1,4 +1,8 @@
-<h2>Loty</h2>
+<h2>Loty     <%= link_to 'Dodaj lot', new_flight_path, class: 'btn btn-light button-place right' %></h2>
+  <div class="row">
+
+  </div>
+  <%= render 'filter_flights_form', flight: @flight %>
   <table class="table">
     <thead>
       <tr>
@@ -9,6 +13,7 @@
         <th scope="col">Godz.wylotu</th>
         <th scope="col">Godz.przylotu</th>
         <th scope="col">Miejsca</th>
+        <th scope="col">Wolne Miejsca</th>
         <th scope="col">Cena</th>
         <th scope="col">Akcje</th>
       </tr>
@@ -23,6 +28,7 @@
         <td><%= time_formatter(flight.departure_time) %></td>
         <td><%= time_formatter(flight.arrival_time) %></td>
         <td><%= flight.seats %></td>
+        <td><%= flight.free_seats %></td>
         <td><%= flight.price %></td>
         <td><%= link_to 'Pokaż bilety', tickets_list_path(flight.id), class: 'btn btn-primary' %> 
             <%= link_to 'Edytuj', edit_flight_path(flight.id) %> 
@@ -31,6 +37,4 @@
     </tbody>
     <% end %>
   </table>
-<div class="row">
-  <%= link_to 'Dodaj lot', new_flight_path, class: 'btn btn-light button-place' %>
-</div>
+  <%= paginate @flights %>

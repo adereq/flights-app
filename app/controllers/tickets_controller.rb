@@ -1,13 +1,13 @@
 class TicketsController < ApplicationController
-  before_action :set_ticket, only: [:show, :tickets_list]
+  before_action :set_ticket, only: [:show]
   
   def index
     @tickets = Ticket.where(user_id: current_user.id)
   end
 
   def tickets_list
-    @results = Ticket.search_tickets(params)
-    if @results == []
+    @ticket = Ticket.search_tickets(params[:id])
+    if @ticket == []
       render :notickets
     end
   end
