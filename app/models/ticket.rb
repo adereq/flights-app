@@ -5,6 +5,7 @@ class Ticket < ApplicationRecord
   after_create :notify_client
 
   def notify_client
+  	puts "START NOTIFY"
   	BookingMailer.booking_notification(self).deliver
   end
 

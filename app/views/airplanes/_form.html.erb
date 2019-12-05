@@ -1,0 +1,17 @@
+<%= form_with model: @airplane, local: true do |form| %>
+  <div class="form-group">
+    <%= form.label :model %><br>
+    <%= form.text_field :model, class: 'form-control', required: true %>
+  </div>
+  <div class="form-group">
+    <%= form.label :miejsca_ekonmiczne %><br>
+    <%= form.text_field :economy_seats, class: 'form-control', required: true %>
+  </div>
+  <div class="form-group">
+    <%= form.label :miejsca_biznesowe %><br>
+    <%= form.text_field :business_seats, class: 'form-control', required: true %>
+  </div> 
+
+  <%= form.submit "Zapisz", class: 'btn btn-light' %>
+  <%= link_to 'Powrót', airplanes_path, class: 'btn btn-secondary' %>
+<% end %>

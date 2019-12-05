@@ -1,5 +1,5 @@
 class FlightsController < ApplicationController
-  before_action :authenticate_user!, only: [:selected_flight]
+  before_action :authenticate_user!, only: [:selected_flight,:index, :show, :new, :create, :edit, :update, :destroy]
   before_action :set_flight, only: [:show, :edit, :update, :destroy, :selected_flight]
   layout "admin", only: [:index, :show, :new, :create, :edit, :update, :destroy]
   

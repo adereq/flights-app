@@ -1,12 +1,17 @@
 class TicketsController < ApplicationController
   before_action :set_ticket, only: [:show]
-  
+  layout "admin", only: [:tickets_list]
+
   def index
     @tickets = Ticket.where(user_id: current_user.id)
   end
 
   def tickets_list
     @ticket = Ticket.search_tickets(params[:id])
+    @total_income = 0
+    @ticket.each do |ticket|
+      @total_income+= ticket.price
+    end
     if @ticket == []
       render :notickets
     end

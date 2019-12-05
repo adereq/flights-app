@@ -1,9 +1,11 @@
 class AirportsController < ApplicationController
-  before_action :set_airport, only: [:show, :edit, :update, :destroy, :get_airport]
+  before_action :authenticate_user!, only: [:index, :show, :new, :create, :edit, :update, :destroy]
+    before_action :set_airport, only: [:show, :edit, :update, :destroy, :get_airport]
   layout 'admin'
   
   def index
-  	@airports = Airport.all
+    @q = Airport.ransack(params[:q])
+    @airports = @q.result.page(params[:page]).per(10)
     #render json: JSON.pretty_generate(@airports.to_json)
   end
 

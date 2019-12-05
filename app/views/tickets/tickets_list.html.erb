@@ -1,10 +1,13 @@
 <h2>Bilety</h2>
+<p>Sprzedane bilety: <%= @ticket.count %></p>
+<p>Przychód z biletów: <%= @total_income %></p>
   <table class="table">
     <thead>
       <tr>
         <th scope="col">Imię</th>
         <th scope="col">Nazwisko</th>
         <th scope="col">Miejsce</th>
+        <th scope="col">Cena</th>
       </tr>
     </thead>
   <% @ticket.each do |ticket| %>
@@ -13,6 +16,7 @@
         <td><%= ticket.first_name %></td>
         <td><%= ticket.last_name %></td>
         <td><%= ticket.seat %></td>
+        <td><%= ticket.price %></td>
       </tr>
     </tbody>
     <% end %>
