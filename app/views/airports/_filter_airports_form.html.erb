@@ -1,0 +1,7 @@
+<%= search_form_for @q do |f| %>
+    <%= f.label :miasto %>
+    <%= f.search_field :city_cont %> 
+    <%= f.label :kraj %>
+    <%= f.search_field :country_cont %> 
+    <%= f.submit 'Szukaj' %>
+<% end %>

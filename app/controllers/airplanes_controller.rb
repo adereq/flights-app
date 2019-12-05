@@ -1,4 +1,5 @@
 class AirplanesController < ApplicationController
+  before_action :authenticate_user!, only: [:index, :show, :new, :create, :edit, :update, :destroy]
   before_action :set_airplane, only: [:show, :edit, :update, :destroy]
   layout 'admin'
  
@@ -56,7 +57,7 @@ class AirplanesController < ApplicationController
     end
 
   	def airplane_params
-      params.require(:airplane).permit(:city, :country, :name, :iata, :timezone, :image)
+      params.require(:airplane).permit(:model, :economy_seats, :business_seats)
 
     end  	
 
