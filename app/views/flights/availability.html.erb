@@ -8,7 +8,8 @@
         <th scope="col">Data</th>
         <th scope="col">Godz.wylotu</th>
         <th scope="col">Godz.przylotu</th>
-        <th scope="col">Cena</th>
+        <th scope="col">Klasa ekonomiczna</th>
+        <th scope="col">Klasa biznesowa</th>
       </tr>
     </thead>
   <% @results.each do |flight| %>
@@ -20,10 +21,17 @@
         <td><%= flight.departure_date %></td>
         <td><%= flight.departure_time.strftime("%H:%M") %></td>
         <td><%= flight.arrival_time.strftime("%H:%M") %></td>
-        <td><%= link_to "#{flight.price}", selected_flight_path(flight.id), class: 'btn btn-secondary' %></div></td>
+        <% if params[:free_seats].to_i <= flight.economy_free_seats %>
+          <td><%= link_to "#{flight.economy_price}", selected_flight_path(flight.id), class: 'btn btn-info' %><</td>
+        <% else %>
+          <td>Brak</td>
+        <% end %>
+        <% if params[:free_seats].to_i <= flight.business_free_seats %>
+        <td><%= link_to "#{flight.business_price}", selected_flight_path(flight.id), class: 'btn btn-warning' %></td>
+        <% else %>
+          <td>Brak</td>
+        <% end %>
       </tr>
     </tbody>
       <% end %>
   </table>
-
-  

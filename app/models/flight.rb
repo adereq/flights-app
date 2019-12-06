@@ -9,7 +9,7 @@ class Flight < ApplicationRecord
   def self.search_flights(params)
     Flight.where(departure_airport_id: params[:departure_airport_id],
                  arrival_airport_id: params[:arrival_airport_id],
-                 departure_date: params[:departure_date]).where("free_seats >= ?", params[:free_seats])
+                 departure_date: params[:departure_date]).where('economy_free_seats >=? OR business_free_seats >=?', params[:free_seats], params[:free_seats])
   end
 
   def time_formatter(time)
@@ -21,5 +21,12 @@ class Flight < ApplicationRecord
     decresed_free_seats = flight.free_seats - 1
     flight.update(free_seats: decresed_free_seats)
   end
+
+  def self.seat_increase(flight_id)
+    flight = Flight.find(flight_id)
+    decresed_free_seats = flight.free_seats + 1
+    flight.update(free_seats: decresed_free_seats)
+  end
+
 
 end
