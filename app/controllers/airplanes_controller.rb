@@ -40,7 +40,7 @@ class AirplanesController < ApplicationController
         format.json { render json: @airplane.errors, status: :unprocessable_entity }
       end
     end
-  end
+  end 
 
   def destroy
     @airplane.destroy

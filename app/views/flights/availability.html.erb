@@ -21,12 +21,12 @@
         <td><%= flight.departure_date %></td>
         <td><%= flight.departure_time.strftime("%H:%M") %></td>
         <td><%= flight.arrival_time.strftime("%H:%M") %></td>
-        <% if params[:free_seats].to_i <= flight.economy_free_seats %>
+        <% if params[:passengers].to_i <= flight.economy_free_seats %>
           <td><%= link_to "#{flight.economy_price}", selected_flight_path(flight.id), class: 'btn btn-info' %><</td>
         <% else %>
           <td>Brak</td>
         <% end %>
-        <% if params[:free_seats].to_i <= flight.business_free_seats %>
+        <% if params[:passengers].to_i <= flight.business_free_seats %>
         <td><%= link_to "#{flight.business_price}", selected_flight_path(flight.id), class: 'btn btn-warning' %></td>
         <% else %>
           <td>Brak</td>
