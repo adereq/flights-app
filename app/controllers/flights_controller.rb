@@ -32,9 +32,12 @@ class FlightsController < ApplicationController
 
   def create 
   	@flight = Flight.new(flight_params)
-    @seats = Airplane.find(@flight.airplane_id).economy_seats
-    @flight.seats = @seats
-    @flight.free_seats = @seats
+    @economy_seats = Airplane.find(@flight.airplane_id).economy_seats
+    @flight.economy_seats = @economy_seats
+    @flight.economy_free_seats = @economy_seats
+    @business_seats = Airplane.find(@flight.airplane_id).business_seats
+    @flight.business_seats = @business_seats
+    @flight.business_free_seats = @business_seats
 
   	#airport_validator
   	respond_to do |format|
@@ -73,12 +76,11 @@ private
   	end
 
   	def flight_params
-  	  params.require(:flight).permit(:departure_airport_id, :arrival_airport_id, :departure_date, :departure_time,:arrival_time, :flight_number, :seats, :price, :airplane_id)
+  	  params.require(:flight).permit(:departure_airport_id, :arrival_airport_id, :departure_date, :departure_time,:arrival_time, :flight_number, :economy_seats, :business_seats, :economy_free_seats, :business_free_seats, :economy_price, :business_price, :price, :airplane_id)
   	end
 
   	def airport_validator
   	  if params[:departure_airport_id] == params[:arrival_airport_id]
-        puts "DUPA"
       end
   	end
 
