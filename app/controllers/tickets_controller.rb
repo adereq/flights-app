@@ -23,10 +23,18 @@ class TicketsController < ApplicationController
 
   def create
   	@ticket = Ticket.new(ticket_params)
-  	respond_to do |format|
+    @ticket.pnr = Ticket.pnr_generator
+  	respond_to do |format| 
   	  if @ticket.save
-        Flight.seat_decrease(@ticket.flight_id)
-  	  	format.html {redirect_to @ticket, notice: 'Flight was succesfully created'}
+        if @ticket.seat_class == "economy"
+          Flight.seat_economy_decrease(@ticket.flight_id)          
+  	  	  format.html {redirect_to @ticket, notice: 'Flight was succesfully created'}
+        elsif @ticket.seat_class == "business"
+          Flight.seat_business_decrease(@ticket.flight_id)
+          format.html {redirect_to @ticket, notice: 'Flight was succesfully created'}
+        else
+          format.html {redirect_to :root}
+        end
   	  else
   	  	format.html {redirect_to :root}
   	  end
@@ -45,7 +53,7 @@ class TicketsController < ApplicationController
   def ticket_params
   	params.require(:ticket).permit(:pnr, :flight_id, :user_id,
       :first_name, :last_name, :document_id, :country, :departure_airport_name, :arrival_airport_name, 
-      :departure_date, :departure_time, :arrival_time, :flight_number, :seat, :price, :mail)
+      :departure_date, :departure_time, :arrival_time, :flight_number, :seat, :price, :mail, :seat_class)
   end
 
 end

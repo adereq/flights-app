@@ -7,7 +7,9 @@
         <th scope="col">Imię</th>
         <th scope="col">Nazwisko</th>
         <th scope="col">Miejsce</th>
+        <th scope="col">Klasa</th>
         <th scope="col">Cena</th>
+        <th scope="col">Rezerwacja</th>
       </tr>
     </thead>
   <% @ticket.each do |ticket| %>
@@ -16,7 +18,9 @@
         <td><%= ticket.first_name %></td>
         <td><%= ticket.last_name %></td>
         <td><%= ticket.seat %></td>
+        <td><%= ticket.seat_class %></td>    
         <td><%= ticket.price %></td>
+        <td><%= ticket.pnr %></td>
       </tr>
     </tbody>
     <% end %>
