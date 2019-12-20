@@ -1,11 +1,10 @@
-<h1>Potwierdzenie rezerwacji <%= @ticket.pnr %></h1>
+<h1>Potwierdzenie rezerwacji <%= @booking.pnr %></h1>
 
 <h3>Szczegóły Twojego lotu</h3>
-<p><strong>Numer lotu </strong><%= @ticket.flight_number %></p>
-<p><strong>Wylot </strong><%= @ticket.departure_airport_name %></p>
-<p><strong>Przylot </strong><%= @ticket.arrival_airport_name %></p>
-<p><strong>Data wylotu </strong><%= @ticket.departure_date %></p>
-<p><strong>Godzina wylotu </strong><%= @ticket.departure_time %></p>
-<p><strong>Godzina przylotu </strong><%= @ticket.arrival_time %></p>
-<p><strong>Cena </strong><%= @ticket.price %></p>
-<p><strong>Miejsce </strong><%= @ticket.seat %></p>
+<p><strong>Numer lotu </strong><%= @booking.flight_number %></p>
+<p><strong>Wylot </strong><%= @booking.departure_airport %></p>
+<p><strong>Przylot </strong><%= @booking.arrival_airport %></p>
+<p><strong>Data wylotu </strong><%= @booking.departure_date %></p>
+<p><strong>Godzina wylotu </strong><%= @booking.departure_time %></p>
+<p><strong>Godzina przylotu </strong><%= @booking.arrival_time %></p>
+<p><strong>Cena </strong><%= @booking.total_price %></p>

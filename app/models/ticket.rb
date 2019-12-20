@@ -1,6 +1,7 @@
 class Ticket < ApplicationRecord
   belongs_to :user
   belongs_to :flight
+  belongs_to :booking
 
   after_create :notify_client
 
@@ -12,7 +13,4 @@ class Ticket < ApplicationRecord
     Ticket.where(flight_id: flight_id)
   end
 
-  def self.pnr_generator
-    (Time.now.to_f*1000).to_i.to_s(36).upcase
-  end
 end

@@ -19,6 +19,8 @@
 //= require turbolinks
 //= require_tree .
 //= require gritter
+//= require font_awesome5
+
 
 // Regular map
         function regular_map() {

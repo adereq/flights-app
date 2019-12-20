@@ -21,22 +21,43 @@
         <td><%= flight.departure_date %></td>
         <td><%= flight.departure_time.strftime("%H:%M") %></td>
         <td><%= flight.arrival_time.strftime("%H:%M") %></td>
-        <% if params[:passengers].to_i <= flight.economy_free_seats %>
-          <td><%= link_to "#{flight.economy_price}", selected_economy_flight_path(flight.id), class: 'btn btn-info' %>
-           <% if flight.economy_free_seats <= 4 %>
-             <p class='text-danger'><b>Tylko <%= flight.economy_free_seats %> miejsca</b></p></td>
-           <% end %>
-        <% else %>
-          <td>Brak</td>
-        <% end %>
-        <% if params[:passengers].to_i <= flight.business_free_seats %>
-        <td><%= link_to "#{flight.business_price}", selected_business_flight_path(flight.id), class: 'btn btn-warning' %>
-           <% if flight.business_free_seats <= 4 %>
-             <p class='text-danger'><b>Tylko <%= flight.business_free_seats %> miejsca</b></p></td>
-           <% end %>
-        <% else %>
-          <td>Brak</td>
-        <% end %>
+
+        <td>
+          <% if params[:passengers].to_i <= flight.economy_free_seats %>
+            <%= form_tag("/selected_economy_flight", method: :get) do %>
+              <form>
+                <%= hidden_field_tag :passengers, params[:passengers] %>
+                <%= hidden_field_tag :flight_id, flight.id %>
+                <div class="form-btn">
+                  <button class="btn btn-info"><%= flight.economy_price%> zł</button>
+                </div>
+              </form>
+            <% end %>
+            <% if flight.economy_free_seats <= 4 %>
+              <p class='text-danger'><b>Tylko <%= flight.economy_free_seats %> miejsca</b></p>
+            <% end %>
+          <% else %>
+            Brak
+          <% end %>
+        </td>
+        <td>
+          <% if params[:passengers].to_i <= flight.business_free_seats %>
+            <%= form_tag("/selected_business_flight", method: :get) do %>
+              <form>
+                <%= hidden_field_tag :passengers, params[:passengers] %>
+                <%= hidden_field_tag :flight_id, flight.id %>
+                <div class="form-btn">
+                  <button class="btn btn-warning"><%= flight.business_price%> zł</button>
+                </div>
+              </form>
+            <% end %>
+            <% if flight.business_free_seats <= 4 %>
+              <p class='text-danger'><b>Tylko <%= flight.business_free_seats %> miejsca</b></p>
+            <% end %>
+          <% else %>
+            Brak
+          <% end %>
+        </td>
       </tr>
     </tbody>
       <% end %>

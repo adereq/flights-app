@@ -22,6 +22,7 @@ class TicketsController < ApplicationController
   end
 
   def create
+    puts "KREAJA"
   	@ticket = Ticket.new(ticket_params)
     @ticket.pnr = Ticket.pnr_generator
   	respond_to do |format| 
@@ -55,5 +56,4 @@ class TicketsController < ApplicationController
       :first_name, :last_name, :document_id, :country, :departure_airport_name, :arrival_airport_name, 
       :departure_date, :departure_time, :arrival_time, :flight_number, :seat, :price, :mail, :seat_class)
   end
-
 end

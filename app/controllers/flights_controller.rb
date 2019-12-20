@@ -1,6 +1,6 @@
 class FlightsController < ApplicationController
   before_action :authenticate_user!, only: [:selected_flight, :selected_economy_flight, :selected_business_flight, :index, :show, :new, :create, :edit, :update, :destroy]
-  before_action :set_flight, only: [:show, :edit, :update, :destroy, :selected_flight,:selected_economy_flight, :selected_business_flight]
+  before_action :set_flight, only: [:show, :edit, :update, :destroy, :selected_flight]
   layout "admin", only: [:index, :show, :new, :create, :edit, :update, :destroy]
   
 
@@ -23,13 +23,12 @@ class FlightsController < ApplicationController
   def show
   end
 
-  def selected_flight
-  end
-
   def selected_economy_flight
+    @selected_flight = Flight.select_flight(params)
   end
 
   def selected_business_flight
+    @selected_flight = Flight.select_flight(params)
   end
 
   def new

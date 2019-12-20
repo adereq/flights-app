@@ -88,6 +88,19 @@ Rails.application.configure do
     logger.formatter = config.log_formatter
     config.logger    = ActiveSupport::TaggedLogging.new(logger)
   end
+    # mailer configuration
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :address              => "smtp.gmail.com",
+    :port                 => 587,
+    :user_name            => 'office.flightsapp@gmail.com',
+    :password             => 'flightsapp123',
+    :authentication       => 'plain',
+    :enable_starttls_auto => true
+  }
+
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
