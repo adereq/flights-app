@@ -14,6 +14,7 @@
           <%= form.label :nazwisko %><br>
           <%= form.text_field "last_name_#{i}".to_sym, class: 'form-control' %>
         </div>
+        <%= form.hidden_field "price_#{i}".to_sym, value: @selected_flight.economy_price %>
       </div>
     <% end %>
      <%= form.hidden_field :departure_airport, value: @selected_flight.departure_airport.name %>
