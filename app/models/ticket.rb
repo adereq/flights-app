@@ -3,11 +3,11 @@ class Ticket < ApplicationRecord
   belongs_to :flight
   belongs_to :booking
 
-  after_create :notify_client
+  #after_create :notify_client
 
-  def notify_client
-  	BookingMailer.booking_notification(self).deliver
-  end
+  #def notify_client
+  #	BookingMailer.booking_notification(self).deliver
+  #end
 
   def self.search_tickets(flight_id)
     Ticket.where(flight_id: flight_id)

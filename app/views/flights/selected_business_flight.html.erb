@@ -1,8 +1,9 @@
 <div class="container">
   <div class="row">
     <div class="col">
-     <h3 class="form-label">Pasażerowie</h3>
-  <%= form_with url: '/bookings', scope: 'booking' do |form| %>
+     <h3>Pasażerowie</h3>
+    <%= form_with url: '/bookings', scope: 'booking' do |form| %>
+    
     <% for i in 1..params[:passengers].to_i %>
       <div class="form-row">
         <div class="form-group col-md6">

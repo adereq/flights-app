@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_20_163739) do
+ActiveRecord::Schema.define(version: 2019_12_20_224840) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,12 +45,30 @@ ActiveRecord::Schema.define(version: 2019_12_20_163739) do
     t.time "departure_time"
     t.time "arrival_time"
     t.string "flight_number"
-    t.string "lead_guest_first_name"
-    t.string "lead_guest_last_name"
     t.string "booking_class"
     t.integer "passengers"
     t.string "mail"
     t.integer "user_id"
+    t.string "first_name_1"
+    t.string "last_name_1"
+    t.string "document_1"
+    t.integer "seat_1"
+    t.decimal "price_1"
+    t.string "first_name_2"
+    t.string "last_name_2"
+    t.string "document_2"
+    t.integer "seat_2"
+    t.decimal "price_2"
+    t.string "first_name_3"
+    t.string "last_name_3"
+    t.string "document_3"
+    t.integer "seat_3"
+    t.decimal "price_3"
+    t.string "first_name_4"
+    t.string "last_name_4"
+    t.string "document_4"
+    t.integer "seat_4"
+    t.decimal "price_4"
   end
 
   create_table "flights", force: :cascade do |t|
@@ -94,6 +112,7 @@ ActiveRecord::Schema.define(version: 2019_12_20_163739) do
     t.decimal "price"
     t.string "mail"
     t.string "seat_class"
+    t.integer "booking_id"
   end
 
   create_table "users", force: :cascade do |t|

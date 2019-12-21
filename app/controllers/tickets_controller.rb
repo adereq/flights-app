@@ -22,20 +22,10 @@ class TicketsController < ApplicationController
   end
 
   def create
-    puts "KREAJA"
   	@ticket = Ticket.new(ticket_params)
-    @ticket.pnr = Ticket.pnr_generator
   	respond_to do |format| 
   	  if @ticket.save
-        if @ticket.seat_class == "economy"
-          Flight.seat_economy_decrease(@ticket.flight_id)          
-  	  	  format.html {redirect_to @ticket, notice: 'Flight was succesfully created'}
-        elsif @ticket.seat_class == "business"
-          Flight.seat_business_decrease(@ticket.flight_id)
-          format.html {redirect_to @ticket, notice: 'Flight was succesfully created'}
-        else
-          format.html {redirect_to :root}
-        end
+        format.html {redirect_to @ticket, notice: 'Flight was succesfully created'}
   	  else
   	  	format.html {redirect_to :root}
   	  end
