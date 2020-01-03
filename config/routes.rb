@@ -9,7 +9,8 @@ Rails.application.routes.draw do
   get 'selected_business_flight', to: 'flights#selected_business_flight', as: 'selected_business_flight'
   get 'flights/passenger', to: 'flights#passenger'
  
-  resources :tickets, :bookings
+  resources :tickets, :bookings, :transfers
+  resources :payment_provider_operations, defaults: { format: 'json' }
   get 'admin/home', to: 'pages#home', as: 'admin_home'
   get 'airports/get_airport/:id', to: 'airports#get_airport'
 

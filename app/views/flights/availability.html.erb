@@ -29,7 +29,7 @@
                 <%= hidden_field_tag :passengers, params[:passengers] %>
                 <%= hidden_field_tag :flight_id, flight.id %>
                 <div class="form-btn">
-                  <button class="btn btn-info"><%= flight.economy_price%> zł</button>
+                  <button class="btn btn-info"><%= currency_formatter(flight.economy_price) %></button>
                 </div>
               </form>
             <% end %>
@@ -47,7 +47,7 @@
                 <%= hidden_field_tag :passengers, params[:passengers] %>
                 <%= hidden_field_tag :flight_id, flight.id %>
                 <div class="form-btn">
-                  <button class="btn btn-warning"><%= flight.business_price%> zł</button>
+                  <button class="btn btn-warning"><%= currency_formatter(flight.business_price) %></button>
                 </div>
               </form>
             <% end %>

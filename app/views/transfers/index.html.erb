@@ -1,0 +1,28 @@
+<div>
+  <%= link_to 'Doładuj konto', new_transfer_path, class: 'btn btn-secondary' %>
+</div>
+<div class="container">
+<h2>Moje transakcje</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Data</th>
+        <th scope="col">Id</th>
+        <th scope="col">Kwota</th>
+        <th scope="col">Typ</th>
+        <th scope="col">Tytuł</th>
+      </tr>
+    </thead>
+  <% @transfers.each do |transfer| %>
+    <tbody>
+      <tr>
+        <td><%= transfer.created_at %></td>
+        <td><%= transfer.id %></td>
+        <td><%= transfer.amount %></td>
+        <td><%= transfer.kind %></td>
+        <td><%= transfer.title %></td>
+      </tr>
+    </tbody>
+    <% end %>
+  </table>
+</div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_20_224840) do
+ActiveRecord::Schema.define(version: 2020_01_03_231125) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -92,6 +92,16 @@ ActiveRecord::Schema.define(version: 2019_12_20_224840) do
     t.decimal "business_price"
   end
 
+  create_table "payment_provider_operations", force: :cascade do |t|
+    t.string "operation_number"
+    t.string "opeartions_status"
+    t.string "operation_amount"
+    t.string "email"
+    t.string "signature"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "tickets", force: :cascade do |t|
     t.string "pnr"
     t.datetime "created_at", null: false
@@ -115,6 +125,15 @@ ActiveRecord::Schema.define(version: 2019_12_20_224840) do
     t.integer "booking_id"
   end
 
+  create_table "transfers", force: :cascade do |t|
+    t.integer "user_id"
+    t.decimal "amount"
+    t.string "kind"
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -127,6 +146,7 @@ ActiveRecord::Schema.define(version: 2019_12_20_224840) do
     t.string "last_name"
     t.string "document_id"
     t.string "country"
+    t.decimal "balance", default: "0.0"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

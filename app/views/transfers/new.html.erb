@@ -1,0 +1,14 @@
+<div class="container col-3">
+	<h5>Doładowanie konta</h5>
+<%= form_with model: @transfer, local: true do |form| %>
+  <div class="form-group">
+    <%= form.label :kwota %><br>
+    <%= form.text_field :amount, class: 'form-control', required: true %>
+    <%= form.hidden_field :user_id, value: current_user.id %>
+    <%= form.hidden_field :kind, value: "Doładowanie" %>
+
+  </div> 
+  <%= form.submit "Doładuj", class: 'btn btn-light' %>
+  <%= link_to 'Powrót', transfers_path, class: 'btn btn-secondary' %>
+<% end %>
+</div>
