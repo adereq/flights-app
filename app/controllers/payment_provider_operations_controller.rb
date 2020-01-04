@@ -13,7 +13,7 @@ class PaymentProviderOperationsController < ApplicationController
   	@payment_provider_operation = PaymentProviderOperation.new(payment_provider_operation_params)
   	respond_to do |format| 
   	  if @payment_provider_operation.save
-        Transfer.where(description: 'Lifo').take.update(confirmed: true)
+        Transfer.where(title: @payment_provider_operation.description).take.update(confirmed: true)
         @transfer.update(confirmed: true)
         format.json { render json: {message: "payment_received"}, status: :ok } 
   	  else
@@ -25,6 +25,6 @@ class PaymentProviderOperationsController < ApplicationController
   private
 
   def payment_provider_operation_params
-  	params.permit(:operation_number, :operation_amount)
+  	params.permit(:operation_number, :operation_amount, :description)
   end
 end
