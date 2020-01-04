@@ -14,7 +14,6 @@ class PaymentProviderOperationsController < ApplicationController
   	respond_to do |format| 
   	  if @payment_provider_operation.save
         Transfer.where(title: @payment_provider_operation.description).take.update(confirmed: true)
-        @transfer.update(confirmed: true)
         format.json { render json: {message: "payment_received"}, status: :ok } 
   	  else
   	  	format.json { render json: {message: "payment_not_received"}, status: :ok } 
