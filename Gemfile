@@ -77,6 +77,5 @@ gem 'gritter', git: 'https://github.com/jordanhudgens/gritter'
 gem 'cocoon', '~> 1.2', '>= 1.2.11'
 gem 'bundler', '~> 2.0.1'
 gem 'newrelic_rpm'
-gem 'font-awesome-sass', '~> 5.12.0'
 gem 'font_awesome5_rails'
 
