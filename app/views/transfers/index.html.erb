@@ -11,6 +11,7 @@
         <th scope="col">Kwota</th>
         <th scope="col">Typ</th>
         <th scope="col">Tytuł</th>
+        <th scope="col">Status</th>
       </tr>
     </thead>
   <% @transfers.each do |transfer| %>
@@ -21,6 +22,7 @@
         <td><%= transfer.amount %></td>
         <td><%= transfer.kind %></td>
         <td><%= transfer.title %></td>
+        <td><%= transfer.confirmed %></td>
       </tr>
     </tbody>
     <% end %>

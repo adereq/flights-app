@@ -1,4 +1,5 @@
 class TransfersController < ApplicationController
+  before_action :authenticate_user!
   def new
   	@transfer = Transfer.new
   end
@@ -12,18 +13,20 @@ class TransfersController < ApplicationController
 
   def create
     @transfer = Transfer.new(transfer_params)
+    @transfer.title = "Doladowanie_#{current_user.email}_#{Time.now.strftime("%Y%m%d%H%M%S")}"
+    puts @transfer.title
     respond_to do |format|
       if @transfer.save
-        current_balance = User.find(@transfer.user_id).balance
-        puts current_balance
-        new_balance = current_balance + @transfer.amount
-        puts new_balance
-        User.find(@transfer.user_id).update(balance: new_balance)
-        format.html { redirect_to @transfer, notice: 'Transfer was successfully created.' }
-        format.json { render :show, status: :ok, location: @transfer }        
+        puts @request
+        @request = Transfer.build_request_to_payment_provider(current_user.email, @transfer.amount, @transfer.title)
+        #current_balance = User.find(@transfer.user_id).balance
+        #puts current_balance
+        #new_balance = current_balance + @transfer.amount
+        #puts new_balance
+        #User.find(@transfer.user_id).update(balance: new_balance)
+        format.html { redirect_to @request, notice: 'Transfer was successfully created.', target: :_blank }
       else
-        format.html { render :new }
-        format.json { render json: @transfer.errors, status: :unprocessable_entity }        
+        format.html { render :new }      
       end
     end
   end
@@ -35,7 +38,7 @@ class TransfersController < ApplicationController
     end
 
   	def transfer_params
-      params.require(:transfer).permit(:amount, :user_id, :kind, :title)
+      params.require(:transfer).permit(:amount, :user_id, :kind, :title, :confirmed)
 
     end  	
 
