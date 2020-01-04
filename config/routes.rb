@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get 'flights/passenger', to: 'flights#passenger'
  
   resources :tickets, :bookings, :transfers
-  resources :payment_provider_operations, defaults: { format: 'json' }
+  resources :payment_provider_operations, defaults: { format: 'plain' }
   get 'admin/home', to: 'pages#home', as: 'admin_home'
   get 'airports/get_airport/:id', to: 'airports#get_airport'
 

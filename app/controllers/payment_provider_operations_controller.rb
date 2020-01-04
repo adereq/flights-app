@@ -11,14 +11,12 @@ class PaymentProviderOperationsController < ApplicationController
 
   def create
   	@payment_provider_operation = PaymentProviderOperation.new(payment_provider_operation_params)
-  	respond_to do |format| 
   	  if @payment_provider_operation.save
         Transfer.where(title: @payment_provider_operation.description).take.update(confirmed: true)
-        format.json { render json: {message: "payment_received"}, status: :ok } 
+        render plain: "OK"
   	  else
-  	  	format.json { render json: {message: "payment_not_received"}, status: :ok } 
+  	  	render plain: "BAD" 
   	  end
-  	end
   end
 
   private
