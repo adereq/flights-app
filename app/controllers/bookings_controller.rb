@@ -24,15 +24,15 @@ class BookingsController < ApplicationController
               @ticket.save
               elsif i == 2
               @ticket = Ticket.new(booking_id: @booking.id, flight_id: @booking.flight_id, user_id: @booking.user_id, first_name: @booking.first_name_2,
-                last_name: @booking.last_name_2, pnr: @booking.pnr, price: @booking.price_2, seat_class: "economy"))
+                last_name: @booking.last_name_2, pnr: @booking.pnr, price: @booking.price_2, seat_class: "economy")
               @ticket.save
               elsif i == 3
               @ticket = Ticket.new(booking_id: @booking.id, flight_id: @booking.flight_id, user_id: @booking.user_id, first_name: @booking.first_name_3,
-                last_name: @booking.last_name_3, pnr: @booking.pnr, price: @booking.price_3, seat_class: "economy"))
+                last_name: @booking.last_name_3, pnr: @booking.pnr, price: @booking.price_3, seat_class: "economy")
               @ticket.save    
               elsif i == 4
               @ticket = Ticket.new(booking_id: @booking.id, flight_id: @booking.flight_id, user_id: @booking.user_id, first_name: @booking.first_name_4,
-                last_name: @booking.last_name_4, pnr: @booking.pnr, price: @booking.price_4, seat_class: "economy"))
+                last_name: @booking.last_name_4, pnr: @booking.pnr, price: @booking.price_4, seat_class: "economy")
               @ticket.save  
             end           
           end
@@ -46,15 +46,15 @@ class BookingsController < ApplicationController
               @ticket.save
               elsif i == 2
               @ticket = Ticket.new(booking_id: @booking.id, flight_id: @booking.flight_id, user_id: @booking.user_id, first_name: @booking.first_name_2,
-                last_name: @booking.last_name_2, pnr: @booking.pnr, price: @booking.price_2, seat_class: "business"))
+                last_name: @booking.last_name_2, pnr: @booking.pnr, price: @booking.price_2, seat_class: "business")
               @ticket.save
               elsif i == 3
               @ticket = Ticket.new(booking_id: @booking.id, flight_id: @booking.flight_id, user_id: @booking.user_id, first_name: @booking.first_name_3,
-                last_name: @booking.last_name_3, pnr: @booking.pnr, price: @booking.price_3, seat_class: "business"))
+                last_name: @booking.last_name_3, pnr: @booking.pnr, price: @booking.price_3, seat_class: "business")
               @ticket.save    
               elsif i == 4
               @ticket = Ticket.new(booking_id: @booking.id, flight_id: @booking.flight_id, user_id: @booking.user_id, first_name: @booking.first_name_4,
-                last_name: @booking.last_name_4, pnr: @booking.pnr, price: @booking.price_4, seat_class: "economy"))
+                last_name: @booking.last_name_4, pnr: @booking.pnr, price: @booking.price_4, seat_class: "economy")
               @ticket.save  
             end           
           end
