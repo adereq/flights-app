@@ -1,5 +1,4 @@
 class Transfer < ApplicationRecord
-
   belongs_to :user
 
   def self.add_balance(amount)
