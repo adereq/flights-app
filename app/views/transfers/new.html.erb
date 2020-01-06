@@ -1,0 +1,19 @@
+<div class="container col-3">
+	<h5>Doładowanie konta</h5>
+	<h7>Zostaniesz przekierowany do zewnętrznego serwisu. Po potwierdzeniu płatności środki pojawią się na Twoim koncie
+	</h2>
+<%= form_with model: @transfer, target: :_blank, local: true do |form| %>
+  <div class="form-group">
+    <%= form.label :kwota %><br>
+    <%= form.text_field :amount, class: 'form-control', required: true %>
+    <%= form.hidden_field :user_id, value: current_user.id %>
+    <%= form.hidden_field :confirmed, value: false %>
+    <%= form.hidden_field :kind, value: "Doładowanie" %>
+  </div> 
+  <%= form.submit "Doładuj", class: 'btn btn-light', formtarget: :_blank %>
+
+  <%= link_to 'Lista transakcji', transfers_path, class: 'btn btn-secondary' %>
+<% end %>
+</div>
+
+

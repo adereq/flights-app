@@ -7,8 +7,4 @@ class Airport < ApplicationRecord
 
   scope :poland, -> {where(country: "Polska")}
 
-  
-  #def self.airport_poland
-  #	Airport.where(:country => 'Polska')
-  #end
 end
