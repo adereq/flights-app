@@ -1,0 +1,32 @@
+<h2>Użytkownicy <%= link_to 'Dodaj użytkownika', new_user_path, class: 'btn btn-light' %></h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Mail</th>
+        <th scope="col">Imię</th>
+        <th scope="col">Nazwisko</th>
+        <th scope="col">Superadmin</th>
+        <th scope="col">Pracownik linii</th>
+        <th scope="col">Pracownik lotniska</th>
+        <th scope="col">Klient</th>
+      </tr>
+    </thead>
+  <% @users.each do |user| %>
+    <tbody>
+      <tr>
+        <a href="/users/<%= user.id %>">
+        <th scope="row"><%= user.id %></th>
+        <td><%= user.email %></td>
+        <td><%= user.first_name %></td>
+        <td><%= user.last_name %></td>
+        <td><%= user.superadmin_role %></td>
+        <td><%= user.airline_manager_role %></td>
+        <td><%= user.airport_manager_role %></td>
+        <td><%= user.client_role %></td>
+        <td><%= link_to 'Edytuj', edit_user_path(user.id) %>  <%= link_to 'Usuń', user_path(user.id), method: :delete, data: { confirm: 'Czy jesteś pewien?' } %> </td>
+      </a>
+      </tr>
+    </tbody>
+    <% end %>
+  </table>
