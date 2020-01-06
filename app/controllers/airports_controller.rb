@@ -1,8 +1,16 @@
 class AirportsController < ApplicationController
   before_action :authenticate_user!, only: [:index, :show, :new, :create, :edit, :update, :destroy]
-    before_action :set_airport, only: [:show, :edit, :update, :destroy, :get_airport]
+  before_action :set_airport, only: [:show, :edit, :update, :destroy, :get_airport]
+  before_action :airport_authorization
   layout 'admin'
   
+  def airport_authorization
+    if current_user.superadmin_role || current_user.airline_manager_role
+    else
+      authorization_error
+    end
+  end
+
   def index
     @q = Airport.ransack(params[:q])
     @airports = @q.result.page(params[:page]).per(10)

@@ -1,6 +1,6 @@
 <header>
   <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-    <a class="navbar-brand" id="navbar" href="/admin/home">FlightApp</a>
+    <a class="navbar-brand" id="navbar" href="/admin/home">FlightApp Admin</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -10,15 +10,26 @@
         <li>
           <a class="nav-item nav-link <%= "active" if current_page?(admin_home_path) %>" href="/admin/home">Strona główna</a>
         </li>
-        <li>
-          <a class="nav-item nav-link <%= "active" if current_page?(airports_path) %>" href="/admin/airports">Lotniska</a>
-        </li>
-        <li>
-          <a class="nav-item nav-link <%= "active" if current_page?(flights_path) %>" href="/admin/flights">Loty</a>
-        </li>
-        <li>
-          <a class="nav-item nav-link <%= "active" if current_page?(airplanes_path) %>" href="/admin/airplanes">Samoloty</a>
-        </li>
+        <% if current_user.airline_manager_role || current_user.superadmin_role %>
+          <li>
+            <a class="nav-item nav-link <%= "active" if current_page?(airports_path) %>" href="/admin/airports">Lotniska</a>
+          </li>
+        <% end %>
+        <% if current_user.airline_manager_role || current_user.superadmin_role %>
+          <li>
+            <a class="nav-item nav-link <%= "active" if current_page?(flights_path) %>" href="/admin/flights">Loty</a>
+          </li>
+        <% end %>
+        <% if current_user.airline_manager_role || current_user.superadmin_role %>
+          <li>
+            <a class="nav-item nav-link <%= "active" if current_page?(airplanes_path) %>" href="/admin/airplanes">Samoloty</a>
+          </li>
+        <% end %>
+        <% if current_user.superadmin_role %>
+          <li>
+            <a class="nav-item nav-link <%= "active" if current_page?(users_path) %>" href="/admin/users">Użytkownicy</a>
+          </li>
+        <% end %>
         <%= admin_login_helper %>
       </ul>
   </div>
