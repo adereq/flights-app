@@ -9,12 +9,19 @@ class BookingsController < ApplicationController
   	@booking = Booking.new
   end
 
+  def booking_failed
+  end
+
   def create
   	@booking = Booking.new(booking_params)
     @booking.pnr = Booking.pnr_generator
-
   	respond_to do |format| 
-  	  if @booking.save
+      if @booking.total_price <= current_user.balance
+  	    if @booking.save
+          @new_balance = current_user.balance - @booking.total_price
+          User.find(current_user.id).update(balance: @new_balance)
+          puts @booking.pnr
+          Transfer.create(user_id: current_user.id, amount: @booking.total_price, kind: "Zakup biletu", title: "Bilet_#{@booking.pnr}", confirmed: true)
         if @booking.booking_class == "economy"
           Flight.seat_economy_decrease(@booking.flight_id, @booking.passengers)
           for i in 1..@booking.passengers 
@@ -62,9 +69,12 @@ class BookingsController < ApplicationController
         else
           format.html {redirect_to :root}
         end
-  	  else
+  	    else
   	  	format.html {redirect_to :root}
-  	  end
+  	    end
+      else
+        format.html {redirect_to :booking_failed, notice: 'Za mało środków na koncie.'}
+      end
   	end
   end
 

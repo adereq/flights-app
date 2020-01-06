@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get 'selected_economy_flight', to: 'flights#selected_economy_flight', as: 'selected_economy_flight'
   get 'selected_business_flight', to: 'flights#selected_business_flight', as: 'selected_business_flight'
   get 'flights/passenger', to: 'flights#passenger'
+  get 'bookings/booking_failed', to: "bookings#booking_failed", as: 'booking_failed'
  
   resources :tickets, :bookings, :transfers
   resources :payment_provider_operations, defaults: { format: 'plain' }
