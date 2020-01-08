@@ -1,0 +1,21 @@
+@import "bootstrap";
+@import "gritter";
+
+body {
+	font-family: 'Montserrat', sans-serif;
+	background-image: url(background.jpg);
+	background-size: cover;
+	background-position: center;
+  	background-attachment: fixed;
+
+}
+
+footer {
+  color: white;
+  text-align: center;
+}
+
+.navbar-admin
+{
+	z-index: 999;
+}
