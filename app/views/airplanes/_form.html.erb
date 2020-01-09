@@ -4,7 +4,7 @@
     <%= form.text_field :model, class: 'form-control', required: true %>
   </div>
   <div class="form-group">
-    <%= form.label :miejsca_ekonmiczne %><br>
+    <%= form.label :miejsca_ekonomiczne %><br>
     <%= form.text_field :economy_seats, class: 'form-control', required: true %>
   </div>
   <div class="form-group">
@@ -12,6 +12,6 @@
     <%= form.text_field :business_seats, class: 'form-control', required: true %>
   </div> 
 
-  <%= form.submit "Zapisz", class: 'btn btn-light' %>
-  <%= link_to 'Powrót', airplanes_path, class: 'btn btn-secondary' %>
+  <%= form.submit "Zapisz", class: 'btn btn-dark' %>
+  <%= link_to 'Powrót', airplanes_path, class: 'btn btn-info' %>
 <% end %>

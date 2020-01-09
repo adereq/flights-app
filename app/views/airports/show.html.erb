@@ -1,15 +1,17 @@
-<div class="col-12">
-  <h2><%= @airport.name %></h2>
-</div>
-<div class="row">
-<div class="col">
-  <p>Miasto: <%= @airport.city %></p>
-  <p>Kraj: <%= @airport.country %></p>
-  <p>Nazwa: <%= @airport.name %></p>
-  <p>Iata: <%= @airport.iata %></p>
-  <p>Strefa czasowa: <%= @airport.timezone %></p>
-</div>
-<div class="col">
-  <iframe src="<%= maps_generator %> width="400" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
-</div>
+<div class="col-md-3 col-md-offset-4"></div>
+  <div class="text-center border bg-light border-light p-5">
+    <p class="h3 mb-4"><%= @airport.name %></p>
+    <div class="form-row mb-4">
+        <div class="col text-left">
+   			<p>Miasto: <%= @airport.city %></p>
+  			<p>Kraj: <%= @airport.country %></p>
+  			<p>Nazwa: <%= @airport.name %></p>
+  			<p>Iata: <%= @airport.iata %></p>
+  			<p>Strefa czasowa: <%= @airport.timezone %></p>
+        </div>
+        <div class="col">
+   			<iframe src="<%= maps_generator %> width="400" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
+        </div>
+    </div>
+    <%= link_to 'Powrót do listy', airports_path, class: 'btn btn-info' %>
 </div>

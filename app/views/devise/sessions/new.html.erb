@@ -3,8 +3,8 @@
     <p class="h3 mb-4">Logowanie</p>
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control mb-4", placeholder:"E-mail" %>
-    <%= f.password_field :password, autocomplete: "current-password", class:"form-control", placeholder:"Hasło" %>
+    <%= f.email_field :email, autofocus: true, required: true, autocomplete: "email", class:"form-control mb-4", placeholder:"E-mail" %>
+    <%= f.password_field :password, required: true, autocomplete: "current-password", class:"form-control", placeholder:"Hasło" %>
  
   <% if devise_mapping.rememberable? %>
     <div class="field">

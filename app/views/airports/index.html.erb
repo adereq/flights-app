@@ -1,29 +1,44 @@
-<h2>Lotniska <%= link_to 'Dodaj lotnisko', new_airport_path, class: 'btn btn-light' %></h2>
-<%= render 'filter_airports_form', flight: @flight %>
-  <table class="table">
-    <thead>
+<div class="col-md-2 col-md-offset-4"></div>
+  <div class="text-center border bg-light border-light p-5 margin-top margin-bottom">
+    <div class="form-row mb-2">
+        <div class="col-2 h3">
+          Lotniska
+        </div>
+        <div class="col-10 text-right">
+          <%= link_to 'Dodaj lotnisko', new_airport_path, class: 'btn btn-dark' %>
+        </div>
+    </div>
+  <%= render 'filter_airports_form', flight: @flight %>
+  <table class="table table-hover ">
+    <thead class="thead-dark">
       <tr>
         <th scope="col">Id</th>
         <th scope="col">Miasto</th>
         <th scope="col">Kraj</th>
         <th scope="col">Nazwa</th>
         <th scope="col">Kod IATA</th>
-        <th scope="col">Akcje</th>
+        <th scope="col"></th>
       </tr>
     </thead>
   <% @airports.each do |airport| %>
     <tbody>
       <tr>
-        <a href="/airports/<%= airport.id %>">
         <th scope="row"><%= airport.id %></th>
         <td><%= airport.city %></td>
         <td><%= airport.country %></td>
         <td><%= airport.name %></td>
         <td><%= airport.iata %></td>
-        <td><%= link_to 'Edytuj', edit_airport_path(airport.id) %>  <%= link_to 'Usuń', airport_path(airport.id), method: :delete, data: { confirm: 'Are you sure?' } %> </td>
-      </a>
+        <td>
+          <%= link_to edit_airport_path(airport.id), class:"text-dark" do %>  
+            <%= fa_icon "edit" %>
+          <% end %>
+          <%= link_to airport_path(airport.id), method: :delete, data: { confirm: 'Czy jesteś pewien?' }, class:"text-danger" do %> 
+            <%= fa_icon "trash" %>
+          <% end %>
+        </td>
       </tr>
     </tbody>
     <% end %>
   </table>
-<%= paginate @airports %>
+  <%= paginate @airports %>
+</div>

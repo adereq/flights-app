@@ -2,34 +2,41 @@
 @import "font_awesome5_webfont";
 .section {
 	position: relative;
-	height: 100vh;
+
 }
 
 .margin-top {
-	margin-top: 100px;
+	margin-top: 50px;
 }
-.section .section-center {
+
+.margin-bottom {
+	margin-bottom: 50px;
+}
+
+.section-center {
 	position: absolute;
 	top: 50%;
 	left: 0;
 	right: 0;
 	-webkit-transform: translateY(-50%);
 	transform: translateY(-50%);
+	margin-top: 50px;
 }
 
 #navbar {
 	font-family: 'Montserrat', sans-serif;
 }
 
+
 .bg-dark {
 	background-color: #6c757d;
 }
-#booking {
+.booking {
 	font-family: 'Montserrat', sans-serif;
 	background-image: url(background.jpg);
 	background-size: cover;
 	background-position: center;
-  background-attachment: fixed;
+    background-attachment: fixed;
 }
 
 

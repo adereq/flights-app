@@ -50,3 +50,6 @@ $('.carousel').carousel({
             interval: 3000,
         })
 
+$("tr[data-link]").click(function() {
+  window.location = $(this).data("link")
+})

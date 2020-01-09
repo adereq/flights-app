@@ -5,22 +5,22 @@
       <%= render "devise/shared/error_messages", resource: resource %>
     <div class="form-row mb-4">
         <div class="col">
-          <%= f.text_field :first_name, autofocus: true, class: "form-control", placeholder: "Imię" %>
+          <%= f.text_field :first_name, autofocus: true, required: true, class: "form-control", placeholder: "Imię" %>
         </div>
         <div class="col">
-          <%= f.text_field :last_name, autofocus: true, class: "form-control", placeholder: "Nazwisko" %>
+          <%= f.text_field :last_name, autofocus: true, required: true, class: "form-control", placeholder: "Nazwisko" %>
         </div>
     </div>
 
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control mb-4", placeholder: "E-mail" %>
-    <%= f.password_field :password, autocomplete: "new-password", class: "form-control", placeholder: "Hasło" %>
+    <%= f.email_field :email, autofocus: true, required: true, autocomplete: "email", class: "form-control mb-4", placeholder: "E-mail" %>
+    <%= f.password_field :password, required: true, autocomplete: "new-password", class: "form-control", placeholder: "Hasło" %>
     <% if @minimum_password_length %>
         <small id="passwordLength" class="form-text text-muted mb-4">
         Hasło musi zawierać <%= @minimum_password_length %> liter lub więcej
     </small>
     <% end %>
 
-    <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control", placeholder: "Potwierdź hasło" %>
+    <%= f.password_field :password_confirmation, required: true, autocomplete: "new-password", class: "form-control", placeholder: "Potwierdź hasło" %>
  
     <%= f.hidden_field :client_role, value: true %>
   

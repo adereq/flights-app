@@ -1,8 +1,10 @@
-<div class="col-12">
-  <h2><%= @airplane.model %></h2>
-</div>
-<div class="row">
-<div class="col">
+<div class="col-md-4 col-md-offset-4"></div>
+  <div class="text-center border bg-light border-light p-5">
+    <p class="h3 mb-4"><%= @airplane.model %></p>
+    <div class="col">
   <p>Miejsca w klasie ekonomicznej: <%= @airplane.economy_seats %></p>
   <p>Miejsca w klasie biznesowej: <%= @airplane.business_seats %></p>
+</div>
+
+  <%= link_to 'Powrót do listy', airplanes_path, class: 'btn btn-info' %>
 </div>

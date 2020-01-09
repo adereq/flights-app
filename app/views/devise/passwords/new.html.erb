@@ -1,15 +1,12 @@
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+<div class="col-md-4 col-md-offset-4"></div>
+  <div class="text-center border bg-light border-light p-5">
+    <p class="h3 mb-4">Zresetuj hasło</p>
+    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
-  <div class="top">
-    <h2>Zresetuj hasło</h2>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-  <br></br>
+
+    <%= f.email_field :email, autofocus: true, required: true, autocomplete: "email", class:"form-control", placeholder:"E-mail" %>
   <div class="actions">
-    <%= f.submit "Zresetuj hasło", class: 'btn btn-light' %>
+    <%= f.submit "Zresetuj hasło", class: 'btn btn-dark my-4 btn-block' %>
   </div>
 <% end %>
-
+</div>

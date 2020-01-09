@@ -9,18 +9,19 @@
     <%= csrf_meta_tag %>
     <title>FlightApp</title>
 
-    <%= stylesheet_link_tag    'admin', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'test_website', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
    </head>
 
-  <body>
-    <%= render 'shared/admin_nav' %>
-    <main role="main" class="container">
-      <%= render 'shared/alerts' %>
-      <div class="jumbotron">
-        <p class="lead"><%= yield %></p>
-      </div>
-    </main>
-    <%= render 'shared/application_footer' %>
-  </body>
+<body>
+<%= render 'shared/admin_nav' %>
+<div class="booking">
+   <div class="row margin-top">
+          <%= yield %>
+    </div>
+</div>
+<%= render 'shared/footer' %>
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+
 </html>
+
