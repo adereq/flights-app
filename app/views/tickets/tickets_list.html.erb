@@ -1,15 +1,21 @@
-<h2>Bilety</h2>
-<p>Sprzedane bilety: <%= @ticket.count %></p>
-<p>Przychód z biletów: <%= @total_income %></p>
-  <table class="table">
-    <thead>
+  <div class="col-md-3 col-md-offset-4"></div>
+  <div class="text-center border bg-light border-light p-5 col-6">
+        <p class="h3 mb-4 col-2">Bilety</p>
+    <div class="form-row">
+        <p>Sprzedane bilety: <%= @ticket.count %></p>
+      </div>
+    <div class="form-row">
+        <p>Przychód z biletów: <%= @total_income %></p>
+      </div>
+<table class="table table-hover ">
+    <thead class="thead-dark">
       <tr>
-        <th scope="col">Imię</th>
-        <th scope="col">Nazwisko</th>
-        <th scope="col">Miejsce</th>
-        <th scope="col">Klasa</th>
-        <th scope="col">Cena</th>
-        <th scope="col">Rezerwacja</th>
+                <th>Imię</th>
+        <th>Nazwisko</th>
+        <th>Miejsce</th>
+        <th>Klasa</th>
+        <th>Cena</th>
+        <th>Rezerwacja</th>
       </tr>
     </thead>
   <% @ticket.each do |ticket| %>
@@ -25,3 +31,5 @@
     </tbody>
     <% end %>
   </table>
+  <%= paginate @ticket %>
+</div>

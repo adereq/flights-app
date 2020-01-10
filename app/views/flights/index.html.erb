@@ -1,19 +1,29 @@
-<h2>Loty     <%= link_to 'Dodaj lot', new_flight_path, class: 'btn btn-light button-place right' %></h2>
-  <div class="row">
-  </div>
+<div class="col-md-1 col-md-offset-4"></div>
+  <div class="text-center border bg-light border-light p-5 col-10">
+    <div class="form-row mb-2">
+        <div class="col-1 h3">
+          Loty
+        </div>
+        <div class="col-11 text-right">
+          <%= link_to 'Dodaj lot', new_flight_path, class: 'btn btn-dark' %>
+        </div>
+    </div>
+
   <%= render 'filter_flights_form', flight: @flight %>
-  <table class="table">
-    <thead>
+
+  <table class="table table-hover ">
+    <thead class="thead-dark">
       <tr>
-        <th scope="col">Nr Lotu</th>
-        <th scope="col">Wylot</th>
-        <th scope="col">Przylot</th>
-        <th scope="col">Data</th>
-        <th scope="col">Godz.wylotu</th>
-        <th scope="col">Godz.przylotu</th>
-        <th scope="col">Cena kl.ekonomiczna</th>
-        <th scope="col">Cena kl.biznes</th>
-        <th scope="col"></th>
+        <th>Nr Lotu</th>
+        <th>Wylot</th>
+        <th>Przylot</th>
+        <th>Data wylotu</th>
+        <th>Godz.wylotu</th>
+        <th>Godz.przylotu</th>
+        <th>Cena ekonomiczna</th>
+        <th>Cena biznes</th>
+        <th></th>
+        <th></th>
       </tr>
     </thead>
   <% @flights.each do |flight| %>
@@ -27,12 +37,20 @@
         <td><%= time_formatter(flight.arrival_time) %></td>
         <td><%= flight.economy_price %></td>
         <td><%= flight.business_price %></td>
-        <td><%= link_to 'Pokaż bilety', tickets_list_path(flight.id), class: 'btn btn-primary' %> 
-            <%= link_to 'Edytuj', edit_flight_path(flight.id) %> 
-            <%= link_to 'Pokaż', flight_path(flight.id) %> 
-            <%= link_to 'Usuń', flight_path(flight.id), method: :delete, data: { confirm: 'Are you sure?' } %> </td>
+        <td><%= link_to 'Bilety', tickets_list_path(flight.id), class: 'btn btn-dark' %></td>
+        <td><%= link_to edit_flight_path(flight.id), class:"text-dark" do %>  
+              <%= fa_icon "edit" %>
+            <% end %>
+            <%= link_to flight_path(flight.id), class:"text-dark" do %>  
+              <%= fa_icon "sticky-note" %>
+            <% end %>
+            <%= link_to flight_path(flight.id), method: :delete, data: { confirm: 'Czy jesteś pewien?' }, class:"text-danger" do %> 
+              <%= fa_icon "trash" %>
+            <% end %>
+        </td>
       </tr>
     </tbody>
     <% end %>
   </table>
   <%= paginate @flights %>
+</div>

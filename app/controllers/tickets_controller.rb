@@ -7,7 +7,7 @@ class TicketsController < ApplicationController
   end
 
   def tickets_list
-    @ticket = Ticket.search_tickets(params[:id])
+    @ticket = Ticket.search_tickets(params[:id]).page(params[:page]).per(10)
     @total_income = 0
     @ticket.each do |ticket|
       @total_income+= ticket.price

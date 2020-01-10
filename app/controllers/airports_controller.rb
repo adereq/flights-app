@@ -14,15 +14,9 @@ class AirportsController < ApplicationController
   def index
     @q = Airport.ransack(params[:q])
     @airports = @q.result.page(params[:page]).per(10)
-    #render json: JSON.pretty_generate(@airports.to_json)
   end
 
   def show
-  end
-
-  def get_airport
-    msg = {:name => @airport.name,:country => @airport.country} 
-    render :json => msg
   end
 
   def new

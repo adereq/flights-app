@@ -1,5 +1,5 @@
 <div class="col-md-2 col-md-offset-4"></div>
-  <div class="text-center border bg-light border-light p-5">
+  <div class="text-center border bg-light border-light p-5 col-8">
     <div class="form-row mb-2">
         <div class="col-2 h3">
           Samoloty
@@ -8,6 +8,8 @@
           <%= link_to 'Dodaj samolot', new_airplane_path, class: 'btn btn-dark' %>
         </div>
     </div>
+  <%= render 'filter_airplanes_form', airplane: @airplane %>
+
   <table class="table table-bordered table-hover ">
     <thead class="thead-dark">
       <tr>
@@ -29,6 +31,9 @@
           <%= link_to edit_airplane_path(airplane.id), class:"text-dark" do %>  
             <%= fa_icon "edit" %>
           <% end %>
+          <%= link_to airplane_path(airplane.id), class:"text-dark" do %>  
+            <%= fa_icon "sticky-note" %>
+          <% end %>
           <%= link_to airplane_path(airplane.id), method: :delete, data: { confirm: 'Are you sure?' }, class:"text-danger" do %> 
             <%= fa_icon "trash" %>
           <% end %>
@@ -37,6 +42,7 @@
     </tbody>
     <% end %>
   </table>
+    <%= paginate @airplanes %>
 </div>
 
 

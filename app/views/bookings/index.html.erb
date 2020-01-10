@@ -1,0 +1,45 @@
+<div class="col-md-2 col-md-offset-4"></div>
+  <div class="text-center border bg-light border-light p-5 col-8">
+    <div class="form-row mb-2">
+        <div class="col-2 h3">
+          Rezerwacje
+        </div>
+    </div>
+
+  <table class="table table-hover ">
+    <thead class="thead-dark">
+      <tr>
+        <th>PNR</th>
+        <th>Pasażerowie</th>
+        <th>Cena</th>
+        <th>Wylot</th>
+        <th>Przylot</th>
+        <th>Data</th>
+        <th>Nr Lotu</th>
+        <th></th>
+      </tr>
+    </thead>
+  <% @bookings.each do |booking| %>
+    <tbody>
+      <tr>
+        <td><%= booking.pnr %></td>
+        <td><%= booking.passengers %></td>
+        <td><%= booking.total_price %></td>
+        <td><%= booking.departure_airport %></td>
+        <td><%= booking.arrival_airport %></td>
+        <td><%= booking.departure_date %></td>
+        <td><%= booking.flight_number %></td>
+        <td>
+          <%= link_to booking_path(booking.id), class:"text-dark" do %>  
+              <%= fa_icon "sticky-note" %>
+          <% end %>
+          <%= link_to booking_path(booking.id), method: :delete, data: { confirm: 'Czy jesteś pewien?' }, class:"text-danger" do %> 
+            <%= fa_icon "trash" %>
+          <% end %>
+        </td>
+      </tr>
+    </tbody>
+    <% end %>
+  </table>
+  <%= paginate @bookings %>
+</div>

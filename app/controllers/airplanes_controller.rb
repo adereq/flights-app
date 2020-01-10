@@ -10,9 +10,10 @@ class AirplanesController < ApplicationController
       authorization_error
     end
   end
- 
+
   def index
-  	@airplanes = Airplane.all
+    @q = Airplane.ransack(params[:q])
+    @airplanes = @q.result.page(params[:page]).per(10)
   end
 
   def show
@@ -53,7 +54,7 @@ class AirplanesController < ApplicationController
   def destroy
     @airplane.destroy
     respond_to do |format|
-      format.html { redirect_to airplane_path, notice: 'Airplane was successfully destroyed.' }
+      format.html { redirect_to airplanes_path, notice: 'Airplane was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

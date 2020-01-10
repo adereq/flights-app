@@ -16,6 +16,6 @@ Rails.application.routes.draw do
   get 'airports/get_airport/:id', to: 'airports#get_airport'
 
   scope '/admin' do
-    resources :flights, :airports, :airplanes, :users
+    resources :flights, :airports, :airplanes, :users, :bookings
   end
 end

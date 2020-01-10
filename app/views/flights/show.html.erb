@@ -1,19 +1,24 @@
-<div class="col-12">
-  <h2><%= @flight.flight_number %></h2>
-</div>
-<div class="col-6">
-  <p>Wylot: <%= @flight.departure_airport.name %></p>
-  <p>Przylot: <%= @flight.arrival_airport.name %></p>
-  <p>Data: <%= @flight.departure_date %></p>
-  <p>Godz.wylotu: <%= time_formatter(@flight.departure_time) %></p>
-  <p>Godz.przylotu: <%= time_formatter(@flight.arrival_time) %></p>
-  <p>Numer lotu: <%= @flight.flight_number %></p>
-  <p>Samolot: <%= @flight.airplane.model %></p>
-  <p>Liczba miejsc ekonomicznych: <%= @flight.economy_seats %></p>
-  <p>Liczba miejsc biznesowych: <%= @flight.business_seats %></p>
-  <p>Cena klasa ekonomiczna: <%= @flight.economy_price %></p>
-  <p>Cena klasa biznesowa: <%= @flight.business_price %></p>
-  <p>Wolne miejsca klasa ekonomiczna: <%= @flight.economy_free_seats %></p>
-  <p>Wolne miejsca klasa biznesowa: <%= @flight.business_free_seats %></p>
-  <%= link_to 'Powrót', flights_path, class: 'btn btn-secondary' %>
-</div>
+<div class="col-md-5 col-md-offset-4"></div>
+  <div class="text-center border bg-light border-light p-5">
+    <p class="h3 font-weight-bold"><%= @flight.departure_airport.iata %> - <%= @flight.arrival_airport.iata %></p>
+    <p class="h4 mb-4 font-weight-bold"><%= @flight.departure_date %></p>
+
+    <div class="form-row mb-4">
+        <div class="col text-left">
+            <p>Wylot: <%= @flight.departure_airport.name %></p>
+            <p>Przylot: <%= @flight.arrival_airport.name %></p>
+            <p>Nr Lotu: <%= @flight.flight_number %>
+            <p>Godz.wylotu: <%= time_formatter(@flight.departure_time) %></p>
+            <p>Godz.przylotu: <%= time_formatter(@flight.arrival_time) %></p>
+            <p>Numer lotu: <%= @flight.flight_number %></p>
+            <p>Samolot: <%= @flight.airplane.model %></p>
+            <p>Liczba miejsc ekonomicznych: <%= @flight.economy_seats %></p>
+            <p>Liczba miejsc biznesowych: <%= @flight.business_seats %></p>
+            <p>Cena klasa ekonomiczna: <%= @flight.economy_price %></p>
+            <p>Cena klasa biznesowa: <%= @flight.business_price %></p>
+            <p>Wolne miejsca klasa ekonomiczna: <%= @flight.economy_free_seats %></p>
+            <p>Wolne miejsca klasa biznesowa: <%= @flight.business_free_seats %></p>
+            <%= link_to 'Powrót', flights_path, class: 'btn btn-info' %>
+        </div>
+      </div>
+    </div>

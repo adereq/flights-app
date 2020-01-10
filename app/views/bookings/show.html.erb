@@ -1,1 +1,15 @@
-<h1>BRAWO! UDAŁO SIĘ! </h1>
+<div class="col-md-4 col-md-offset-4"></div>
+  <div class="text-center border bg-light border-light p-5 col-4">
+    <p class="h3 mb-4 font-weight-bold"><%= @booking.pnr %></p>
+    <div class="form-row mb-4">
+        <div class="col text-left">
+   			<p>Wylot: <%= @booking.departure_airport %></p>
+  			<p>Przylot: <%= @booking.arrival_airport %></p>
+  			<p>Cena: <%= @booking.total_price %></p>
+  			<p>Data: <%= @booking.departure_date %></p>
+        </div>
+        <div class="col text-left">
+      	</div>
+    </div>
+    <%= link_to 'Powrót do listy', bookings_path, class: 'btn btn-info' %>
+  </div>

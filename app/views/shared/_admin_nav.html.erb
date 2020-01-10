@@ -24,6 +24,11 @@
             <a class="nav-item nav-link <%= "active" if current_page?(airplanes_path) %>" href="/admin/airplanes">Samoloty</a>
           </li>
         <% end %>
+        <% if current_user.airline_manager_role || current_user.superadmin_role %>
+          <li>
+            <a class="nav-item nav-link <%= "active" if current_page?(bookings_path) %>" href="/admin/bookings">Rezerwacje</a>
+          </li>
+        <% end %>
         <% if current_user.superadmin_role %>
           <li>
             <a class="nav-item nav-link <%= "active" if current_page?(users_path) %>" href="/admin/users">Użytkownicy</a>
@@ -34,18 +39,17 @@
 
      </div>
      <% if (current_user.present?) %>
-     <ul class="navbar-nav ml-auto">
+     <ul class="navbar-nav ml-auto text-right">
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false">
           <i class="fas fa-user"></i>
         </a>
         <div class="dropdown-menu dropdown-menu-right dropdown-default">
-          <a class="dropdown-item" href="#">Dane użytkownika</a>
           <a class="dropdown-item" href="#"><%= admin_login_helper %></a>
         </div>
       </li>
-    </ul>
+     </ul>
     <% end %>
 
   <div class="right nav-item navbar-nav mr-auto collapse navbar-collapse">

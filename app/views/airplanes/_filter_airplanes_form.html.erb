@@ -1,0 +1,19 @@
+<%= search_form_for @q do |f| %>
+  <div class="form-row mb-4">
+    <div class="col">
+      <%= f.search_field :economy_seats_gteq, class:"form-control", placeholder:"Klasa ekonomiczna od" %>
+    </div>
+    <div class="col">
+      <%= f.search_field :economy_seats_lteq, class:"form-control", placeholder:"Klasa ekonomiczna do" %> 
+    </div>
+    <div class="col">
+      <%= f.search_field :business_seats_gteq, class:"form-control", placeholder:"Klasa biznesowa od" %>
+    </div>
+    <div class="col">
+      <%= f.search_field :business_seats_lteq, class:"form-control", placeholder:"Klasa biznesowa do" %> 
+    </div>
+    <div class="col text-right">
+      <%= f.submit 'Filtruj', class:"btn btn-dark" %>
+    </div>
+  </div>
+<% end %>

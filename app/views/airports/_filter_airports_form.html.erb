@@ -1,7 +1,13 @@
 <%= search_form_for @q do |f| %>
-    <%= f.label :miasto %>
-    <%= f.search_field :city_cont %> 
-    <%= f.label :kraj %>
-    <%= f.search_field :country_cont %> 
-    <%= f.submit 'Szukaj', class:"btn btn-dark" %>
+  <div class="form-row mb-4">
+    <div class="col">
+      <%= f.search_field :city_cont, class:"form-control", placeholder:"Miasto" %>
+    </div>
+    <div class="col">
+      <%= f.search_field :country_cont, class:"form-control", placeholder:"Kraj" %> 
+    </div>
+    <div class="col text-right">
+      <%= f.submit 'Filtruj', class:"btn btn-dark" %>
+    </div>
+  </div>
 <% end %>

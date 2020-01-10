@@ -1,9 +1,26 @@
 class BookingsController < ApplicationController
-  before_action :set_booking, only: [:show]
+  layout 'admin'
+  before_action :set_booking, only: [:show, :destroy]
+
+  before_action :authenticate_user!, only: [:index, :show, :edit, :destroy]
+  before_action :bookings_authorization, only: [:index, :destroy]
+
+  def bookings_authorization
+    if current_user.superadmin_role || current_user.airline_manager_role
+    else
+      authorization_error
+    end
+  end
   
   def index
+    @q = Booking.ransack(params[:q])
+    @bookings = @q.result.page(params[:page]).per(10)
+  end
+
+  def user_bookings
     @bookings = Booking.where(user_id: current_user.id)
   end
+
 
   def new
   	@booking = Booking.new
