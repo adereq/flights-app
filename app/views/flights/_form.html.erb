@@ -3,11 +3,11 @@
     <div class="form-row mb-4">
         <div class="col form-group select">
           <%= form.label :departure_airport_id, "Miejsce wylotu" %><br />
-          <%= form.collection_select :departure_airport_id, Airport.order(:name),:id, :name, {include_blank: "Wybierz lotnisko"}, {class: 'btn btn-dark dropdown-toggle form-control'} %>
+          <%= form.collection_select :departure_airport_id, Airport.order(:name),:id, :name, {include_blank: "Wybierz lotnisko", required: true}, {class: 'btn btn-dark dropdown-toggle form-control'} %>
         </div>
         <div class="col form-group select">
           <%= form.label :arrival_airport_id, "Miejsce przylotu" %><br />
-          <%= form.collection_select :arrival_airport_id, Airport.order(:name),:id, :name, {include_blank: "Wybierz lotnisko"}, {class: 'btn btn-dark dropdown-toggle form-control'} %>
+          <%= form.collection_select :arrival_airport_id, Airport.order(:name),:id, :name, {include_blank: "Wybierz lotnisko", required: true}, {class: 'btn btn-dark dropdown-toggle form-control'} %>
         </div>
     </div>
 
@@ -19,33 +19,33 @@
     <div class="form-row mb-4">
       <div class="col form-group select">
         <%= form.label :departure_time, "Godzina wylotu" %><br>
-        <%= form.time_field :departure_time, class: 'form-control' %>
+        <%= form.time_field :departure_time, required: true, class: 'form-control' %>
       </div>
       <div class="col form-group select">
         <%= form.label :arrival_time, "Godzina przylotu" %><br>
-        <%= form.time_field :arrival_time, class: 'form-control' %>
+        <%= form.time_field :arrival_time, required: true, class: 'form-control' %>
       </div>
     </div>
 
     <div class="form-row mb-4">
       <div class="col form-group select">
         <%= form.label :airplane_id, "Samolot" %><br>
-        <%= form.collection_select :airplane_id, Airplane.order(:model),:id, :model, {include_blank: "Wybierz samolot"}, {class: 'btn btn-dark dropdown-toggle form-control'} %>
+        <%= form.collection_select :airplane_id, Airplane.order(:model),:id, :model, {prompt: "Wybierz samolot", required: true}, {class: 'btn btn-dark dropdown-toggle form-control'} %>
       </div>
       <div class="col form-group select">
         <%= form.label :flight_number, "Numer lotu" %><br>
-        <%= form.text_field :flight_number, class: 'form-control' %>
+        <%= form.text_field :flight_number, required: true, class: 'form-control' %>
       </div>
     </div>
 
     <div class="form-row mb-4">
       <div class="col form-group select">
         <%= form.label :economy_price, "Cena klasa ekonomiczna" %><br>
-        <%= form.text_field :economy_price, class: 'form-control' %>
+        <%= form.text_field :economy_price, required: true, class: 'form-control' %>
       </div>
       <div class="col form-group select">
         <%= form.label :business_price, "Cena klasa biznesowa" %><br>
-        <%= form.text_field :business_price, class: 'form-control' %>
+        <%= form.text_field :business_price, required: true, class: 'form-control' %>
       </div>
     </div>
 

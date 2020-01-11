@@ -1,5 +1,7 @@
 class TransfersController < ApplicationController
   before_action :authenticate_user!
+  layout "booking", only: [:index]
+
   def new
   	@transfer = Transfer.new
   end
@@ -8,7 +10,9 @@ class TransfersController < ApplicationController
   end
 
   def index
-    @transfers = Transfer.where(user_id: current_user.id)
+    @q = Transfer.where(user_id: current_user.id).ransack(params[:q])
+    @transfers = @q.result.page(params[:page]).per(10)
+
   end
 
   def create

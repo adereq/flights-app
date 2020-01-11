@@ -1,23 +1,28 @@
-<h2>Moje bilety</h2>
-  <table class="table">
-    <thead>
+<div class="col-md-2 col-md-offset-4"></div>
+  <div class="text-center border bg-light border-light p-5 col-8">
+        <p class="h3 mb-4 col-2">Bilety</p>
+          <%= render 'filter_tickets_form', transfer: @transfer %>
+    <table class="table table-hover ">
+      <thead class="thead-dark">
       <tr>
-        <th scope="col">Nr Lotu</th>
-        <th scope="col">Wylot</th>
-        <th scope="col">Przylot</th>
-        <th scope="col">Data</th>
-        <th scope="col">Godz.wylotu</th>
-        <th scope="col">Godz.przylotu</th>
-        <th scope="col">Miejsce</th>
-        <th scope="col">Cena</th>
-        <th scope="col">Imię</th>
-        <th scope="col">Nazwisko</th>
+        <th>Nr Rezerwacji</th>       
+        <th>Nr Lotu</th>
+        <th>Wylot</th>
+        <th>Przylot</th>
+        <th>Data</th>
+        <th>Godz.wylotu</th>
+        <th>Godz.przylotu</th>
+        <th>Miejsce</th>
+        <th>Cena</th>
+        <th>Imię</th>
+        <th>Nazwisko</th>
       </tr>
     </thead>
   <% @tickets.each do |ticket| %>
     <tbody>
       <tr>
-        <th scope="row"><%= ticket.flight_number %></th>
+        <td><%= ticket.pnr %></td>
+        <td><%= ticket.flight_number %></td>
         <td><%= ticket.departure_airport_name %></td>
         <td><%= ticket.arrival_airport_name %></td>
         <td><%= ticket.departure_date %></td>
@@ -31,3 +36,5 @@
     </tbody>
     <% end %>
   </table>
+  <%= paginate @tickets %>
+</div>

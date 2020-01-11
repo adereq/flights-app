@@ -34,6 +34,9 @@
           <%= link_to edit_airport_path(airport.id), class:"text-dark" do %>  
             <%= fa_icon "edit" %>
           <% end %>
+          <%= link_to airport_path(airport.id), class:"text-dark" do %>  
+            <%= fa_icon "sticky-note" %>
+          <% end %>
           <%= link_to airport_path(airport.id), method: :delete, data: { confirm: 'Czy jesteś pewien?' }, class:"text-danger" do %> 
             <%= fa_icon "trash" %>
           <% end %>

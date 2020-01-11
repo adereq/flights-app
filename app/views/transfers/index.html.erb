@@ -1,11 +1,18 @@
-<div>
-  <%= link_to 'Doładuj konto', new_transfer_path, class: 'btn btn-secondary' %>
-</div>
-<div class="container">
-<h2>Moje transakcje</h2>
-  <table class="table">
-    <thead>
-      <tr>
+<div class="col-md-2 col-md-offset-4"></div>
+  <div class="text-center border bg-light border-light p-5 col-8">
+    <div class="form-row mb-2">
+        <div class="col h3 text-right">
+          Moje transakcje
+        </div>
+        <div class="col text-right">
+          <%= link_to 'Dodaj środki', new_transfer_path, class: 'btn btn-dark' %>
+        </div>
+    </div>
+
+  <%= render 'filter_transfers_form', transfer: @transfer %>
+
+  <table class="table table-hover ">
+    <thead class="thead-dark">
         <th scope="col">Data</th>
         <th scope="col">Id</th>
         <th scope="col">Kwota</th>
@@ -15,29 +22,30 @@
       </tr>
     </thead>
   <% @transfers.each do |transfer| %>
-  <% if transfer.confirmed %>
-    <tbody>
-      <tr>
-        <td class="green"><%= transfer.created_at %></td>
-        <td class="green"><%= transfer.id %></td>
-        <td class="green"><%= transfer.amount %></td>
-        <td class="green"><%= transfer.kind %></td>
-        <td class="green"><%= transfer.title %></td>
-        <td class="green"><%= "Potwierdzona" %></td>
-      </tr>
-    </tbody>
+    <% if transfer.confirmed %>
+      <tbody>
+        <tr>
+          <td class="green"><%= date_formatter(transfer.created_at) %></td>
+          <td class="green"><%= transfer.id %></td>
+          <td class="green"><%= transfer.amount %></td>
+          <td class="green"><%= transfer.kind %></td>
+          <td class="green"><%= transfer.title %></td>
+          <td class="green"><%= "Potwierdzona" %></td>
+        </tr>
+      </tbody>
     <% else %>
-    <tbody>
-      <tr>
-        <td class="red"><%= transfer.created_at %></td>
-        <td class="red"><%= transfer.id %></td>
-        <td class="red"><%= transfer.amount %></td>
-        <td class="red"><%= transfer.kind %></td>
-        <td class="red"><%= transfer.title %></td>
-        <td class="red"><%= "Niepotwierdzona" %></td>
-      </tr>
-    </tbody>
-    <% end %>    
-    <% end %>
+      <tbody>
+        <tr>
+          <td class="red"><%= date_formatter(transfer.created_at) %></td>
+          <td class="red"><%= transfer.id %></td>
+          <td class="red"><%= transfer.amount %></td>
+          <td class="red"><%= transfer.kind %></td>
+          <td class="red"><%= transfer.title %></td>
+          <td class="red"><%= "Niepotwierdzona" %></td>
+        </tr>
+      </tbody>
+    <% end %>   
+  <% end %>
   </table>
+  <%= paginate @transfers %>
 </div>

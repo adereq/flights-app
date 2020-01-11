@@ -1,17 +1,35 @@
 <header>
-  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-  <a class="navbar-brand" id="navbar" href="/">FlightApp</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-ic  on"></span>
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+  <a class="navbar-brand" href="/">FlightsApp</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
   </button>
-  <div class="collapse navbar-collapse" id="navbar">
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <% if current_user.present? %>
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <%= link_to 'Strona główna', root_path, class: 'nav-link' %>
-      </li>
-      <%= login_helper %>
+      <% if current_user.client_role %>
+        <li>
+          <a class="nav-item nav-link <%= "active" if current_page?(tickets_path) %>" href="/tickets">Bilety</a>
+        </li>
+        <% end %>
+        <% if current_user.client_role %>
+          <li>
+            <a class="nav-item nav-link <%= "active" if current_page?(transfers_path) %>" href="transfers">Transakcje</a>
+          </li>
+        <% end %>
     </ul>
+          <li class="nav-item dropdown navbar-nav">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Stan Konta <%= currency_formatter(current_user.balance) %>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="transfers/new">Doładuj Konto</a>
+          <a class="dropdown-item" href="#">Moje Dane</a>
+        </div>
+      </li>
+      <% end %>
+      <div class="navbar-nav my-2 my-lg-0"><%= login_helper %></div>
   </div>
-  <div class="right nav-item navbar-nav mr-auto collapse navbar-collapse">
 </nav>
 </header>

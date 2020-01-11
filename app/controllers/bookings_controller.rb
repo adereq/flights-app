@@ -11,6 +11,9 @@ class BookingsController < ApplicationController
       authorization_error
     end
   end
+
+  def booking_confirmation
+  end
   
   def index
     @q = Booking.ransack(params[:q])
@@ -43,20 +46,16 @@ class BookingsController < ApplicationController
           Flight.seat_economy_decrease(@booking.flight_id, @booking.passengers)
           for i in 1..@booking.passengers 
             if i == 1
-              @ticket = Ticket.new(booking_id: @booking.id, flight_id: @booking.flight_id, user_id: @booking.user_id, first_name: @booking.first_name_1,
-                last_name: @booking.last_name_1, pnr: @booking.pnr, price: @booking.price_1, seat_class: "economy")
+              @ticket = Ticket.new(booking_id: @booking.id, flight_id: @booking.flight_id, user_id: @booking.user_id, first_name: @booking.first_name_1, last_name: @booking.last_name_1, seat: @booking.seat_1, pnr: @booking.pnr, price: @booking.price_1, seat_class: "economy", flight_number: @booking.flight_number, departure_airport_name: @booking.departure_airport, arrival_airport_name: @booking.arrival_airport, departure_date: @booking.departure_date, departure_time: @booking.departure_time, arrival_time: @booking.arrival_time)
               @ticket.save
               elsif i == 2
-              @ticket = Ticket.new(booking_id: @booking.id, flight_id: @booking.flight_id, user_id: @booking.user_id, first_name: @booking.first_name_2,
-                last_name: @booking.last_name_2, pnr: @booking.pnr, price: @booking.price_2, seat_class: "economy")
+              @ticket = Ticket.new(booking_id: @booking.id, flight_id: @booking.flight_id, user_id: @booking.user_id, first_name: @booking.first_name_2, last_name: @booking.last_name_2, seat: @booking.seat_2, pnr: @booking.pnr, price: @booking.price_2, seat_class: "economy", flight_number: @booking.flight_number, departure_airport_name: @booking.departure_airport, arrival_airport_name: @booking.arrival_airport, departure_date: @booking.departure_date, departure_time: @booking.departure_time, arrival_time: @booking.arrival_time)
               @ticket.save
               elsif i == 3
-              @ticket = Ticket.new(booking_id: @booking.id, flight_id: @booking.flight_id, user_id: @booking.user_id, first_name: @booking.first_name_3,
-                last_name: @booking.last_name_3, pnr: @booking.pnr, price: @booking.price_3, seat_class: "economy")
+              @ticket = Ticket.new(booking_id: @booking.id, flight_id: @booking.flight_id, user_id: @booking.user_id, first_name: @booking.first_name_3, last_name: @booking.last_name_3, seat: @booking.seat_3, pnr: @booking.pnr, price: @booking.price_3, seat_class: "economy", flight_number: @booking.flight_number, departure_airport_name: @booking.departure_airport, arrival_airport_name: @booking.arrival_airport, departure_date: @booking.departure_date, departure_time: @booking.departure_time, arrival_time: @booking.arrival_time)
               @ticket.save    
               elsif i == 4
-              @ticket = Ticket.new(booking_id: @booking.id, flight_id: @booking.flight_id, user_id: @booking.user_id, first_name: @booking.first_name_4,
-                last_name: @booking.last_name_4, pnr: @booking.pnr, price: @booking.price_4, seat_class: "economy")
+              @ticket = Ticket.new(booking_id: @booking.id, flight_id: @booking.flight_id, user_id: @booking.user_id, first_name: @booking.first_name_4, last_name: @booking.last_name_4, seat: @booking.seat_4, pnr: @booking.pnr, price: @booking.price_4, seat_class: "economy", flight_number: @booking.flight_number, departure_airport_name: @booking.departure_airport, arrival_airport_name: @booking.arrival_airport, departure_date: @booking.departure_date, departure_time: @booking.departure_time, arrival_time: @booking.arrival_time)
               @ticket.save  
             end           
           end
@@ -65,24 +64,20 @@ class BookingsController < ApplicationController
           Flight.seat_business_decrease(@booking.flight_id, @booking.passengers)
           for i in 1..@booking.passengers 
             if i == 1
-              @ticket = Ticket.new(booking_id: @booking.id, flight_id: @booking.flight_id, user_id: @booking.user_id, first_name: @booking.first_name_1,
-                last_name: @booking.last_name_1, pnr: @booking.pnr, price: @booking.price_1, seat_class: "business")
+              @ticket = Ticket.new(booking_id: @booking.id, flight_id: @booking.flight_id, user_id: @booking.user_id, first_name: @booking.first_name_1, last_name: @booking.last_name_1, seat: @booking.seat_1, pnr: @booking.pnr, price: @booking.price_1, seat_class: "business", flight_number: @booking.flight_number, departure_airport_name: @booking.departure_airport, arrival_airport_name: @booking.arrival_airport, departure_date: @booking.departure_date, departure_time: @booking.departure_time, arrival_time: @booking.arrival_time)
               @ticket.save
               elsif i == 2
-              @ticket = Ticket.new(booking_id: @booking.id, flight_id: @booking.flight_id, user_id: @booking.user_id, first_name: @booking.first_name_2,
-                last_name: @booking.last_name_2, pnr: @booking.pnr, price: @booking.price_2, seat_class: "business")
+              @ticket = Ticket.new(booking_id: @booking.id, flight_id: @booking.flight_id, user_id: @booking.user_id, first_name: @booking.first_name_2, last_name: @booking.last_name_2, seat: @booking.seat_2, pnr: @booking.pnr, price: @booking.price_2, seat_class: "business", flight_number: @booking.flight_number, departure_airport_name: @booking.departure_airport, arrival_airport_name: @booking.arrival_airport, departure_date: @booking.departure_date, departure_time: @booking.departure_time, arrival_time: @booking.arrival_time)
               @ticket.save
               elsif i == 3
-              @ticket = Ticket.new(booking_id: @booking.id, flight_id: @booking.flight_id, user_id: @booking.user_id, first_name: @booking.first_name_3,
-                last_name: @booking.last_name_3, pnr: @booking.pnr, price: @booking.price_3, seat_class: "business")
+              @ticket = Ticket.new(booking_id: @booking.id, flight_id: @booking.flight_id, user_id: @booking.user_id, first_name: @booking.first_name_3, last_name: @booking.last_name_3, seat: @booking.seat_3, pnr: @booking.pnr, price: @booking.price_3, seat_class: "business", flight_number: @booking.flight_number, departure_airport_name: @booking.departure_airport, arrival_airport_name: @booking.arrival_airport, departure_date: @booking.departure_date, departure_time: @booking.departure_time, arrival_time: @booking.arrival_time)
               @ticket.save    
               elsif i == 4
-              @ticket = Ticket.new(booking_id: @booking.id, flight_id: @booking.flight_id, user_id: @booking.user_id, first_name: @booking.first_name_4,
-                last_name: @booking.last_name_4, pnr: @booking.pnr, price: @booking.price_4, seat_class: "economy")
+              @ticket = Ticket.new(booking_id: @booking.id, flight_id: @booking.flight_id, user_id: @booking.user_id, first_name: @booking.first_name_4, last_name: @booking.last_name_4, seat: @booking.seat_4, pnr: @booking.pnr, price: @booking.price_4, seat_class: "business", flight_number: @booking.flight_number, departure_airport_name: @booking.departure_airport, arrival_airport_name: @booking.arrival_airport, departure_date: @booking.departure_date, departure_time: @booking.departure_time, arrival_time: @booking.arrival_time)
               @ticket.save  
             end           
           end
-          format.html {redirect_to @booking, notice: 'Flight was succesfully created'}
+          format.html {redirect_to :booking_confirmation, notice: 'Flight was succesfully created'}
         else
           format.html {redirect_to :root}
         end

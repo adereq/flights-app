@@ -12,4 +12,6 @@ class Transfer < ApplicationRecord
     chk = Digest::SHA256.hexdigest "#{pin}#{client_id}#{amount}PLN#{title}"
     return "https://ssl.dotpay.pl/test_payment/?id=#{client_id}&amount=#{amount}&currency=PLN&description=#{title}&chk=#{chk}"
   end
+
+
 end

@@ -7,10 +7,10 @@
       <%= f.search_field :arrival_airport_name_cont, class:"form-control", placeholder:"Przylot" %> 
     </div>
     <div class="col">
-      <%= f.search_field :price_gt, class:"form-control", placeholder:"Cena do" %>
+      <%= f.search_field :economy_price_gteq, class:"form-control", placeholder:"Cena od" %>
     </div>
     <div class="col">
-      <%= f.search_field :price_lt, class:"form-control", placeholder:"Cena do" %> 
+      <%= f.search_field :economy_price_lteq, class:"form-control", placeholder:"Cena do" %> 
     </div>
     <div class="col text-right">
       <%= f.submit 'Filtruj', class:"btn btn-dark" %>

@@ -1,9 +1,11 @@
 class TicketsController < ApplicationController
   before_action :set_ticket, only: [:show]
   layout "admin", only: [:tickets_list]
+  layout "booking", only: [:index]
 
   def index
-    @tickets = Ticket.where(user_id: current_user.id)
+    @q = Ticket.where(user_id: current_user.id).ransack(params[:q])
+    @tickets = @q.result.page(params[:page]).per(10)
   end
 
   def tickets_list
