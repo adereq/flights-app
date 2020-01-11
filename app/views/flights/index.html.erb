@@ -35,8 +35,8 @@
         <td><%= flight.departure_date %></td>
         <td><%= time_formatter(flight.departure_time) %></td>
         <td><%= time_formatter(flight.arrival_time) %></td>
-        <td><%= flight.economy_price %></td>
-        <td><%= flight.business_price %></td>
+        <td><%= currency_formatter(flight.economy_price) %></td>
+        <td><%= currency_formatter(flight.business_price) %></td>
         <td><%= link_to 'Bilety', tickets_list_path(flight.id), class: 'btn btn-dark' %></td>
         <td><%= link_to edit_flight_path(flight.id), class:"text-dark" do %>  
               <%= fa_icon "edit" %>
