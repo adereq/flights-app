@@ -9,13 +9,13 @@
     <%= csrf_meta_tag %>
     <title>FlightApp</title>
 
-    <%= stylesheet_link_tag    'booking_app', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'admin', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
    </head>
 
 <body>
  <div id="page-container">
-  <%= render 'shared/booking_nav' %>
+  <%= render 'shared/admin_nav' %>
    <div id="content-wrap">
       <div class="row margin-top-bottom">
         <%= yield %>

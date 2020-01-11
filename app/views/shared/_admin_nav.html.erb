@@ -1,42 +1,82 @@
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-    <a class="navbar-brand" id="navbar" href="/admin/home">FlightApp Admin</a>
+    <a class="navbar-brand" id="navbar" href="/admin/home">Admin</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbar">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-        <li>
-          <a class="nav-item nav-link <%= "active" if current_page?(admin_home_path) %>" href="/admin/home">Strona główna</a>
-        </li>
         <% if current_user.airline_manager_role || current_user.superadmin_role %>
           <li>
-            <a class="nav-item nav-link <%= "active" if current_page?(airports_path) %>" href="/admin/airports">Lotniska</a>
+            <li class="nav-item dropdown navbar-nav">
+            <a class="nav-link dropdown-toggle <%= "active" if current_page?(airports_path) %>" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Lotniska
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="/admin/airports">Lista lotnisk</a>
+              <a class="dropdown-item" href="/admin/airports/new">Dodaj lotnisko</a>
+            </div>
           </li>
         <% end %>
         <% if current_user.airline_manager_role || current_user.superadmin_role %>
           <li>
-            <a class="nav-item nav-link <%= "active" if current_page?(flights_path) %>" href="/admin/flights">Loty</a>
+            <li class="nav-item dropdown navbar-nav">
+            <a class="nav-link dropdown-toggle <%= "active" if current_page?(airplanes_path) %>" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Samoloty
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="/admin/airplanes">Lista samolotów</a>
+              <a class="dropdown-item" href="/admin/airplanes/new">Dodaj samolot</a>
+            </div>
           </li>
         <% end %>
         <% if current_user.airline_manager_role || current_user.superadmin_role %>
           <li>
-            <a class="nav-item nav-link <%= "active" if current_page?(airplanes_path) %>" href="/admin/airplanes">Samoloty</a>
+            <li class="nav-item dropdown navbar-nav">
+            <a class="nav-link dropdown-toggle <%= "active" if current_page?(flights_path) %>" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Loty
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="/admin/flights">Lista lotów</a>
+              <a class="dropdown-item" href="/admin/flights/new">Dodaj lot</a>
+            </div>
           </li>
         <% end %>
         <% if current_user.airline_manager_role || current_user.superadmin_role %>
           <li>
-            <a class="nav-item nav-link <%= "active" if current_page?(bookings_path) %>" href="/admin/bookings">Rezerwacje</a>
+            <li class="nav-item dropdown navbar-nav">
+            <a class="nav-link dropdown-toggle <%= "active" if current_page?(bookings_path) %>" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Rezerwacje
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="/admin/bookings">Lista rezerwacji</a>
+            </div>
           </li>
         <% end %>
-        <% if current_user.superadmin_role %>
+        <% if current_user.airline_manager_role || current_user.superadmin_role %>
           <li>
-            <a class="nav-item nav-link <%= "active" if current_page?(users_path) %>" href="/admin/users">Użytkownicy</a>
+            <li class="nav-item dropdown navbar-nav">
+            <a class="nav-link dropdown-toggle <%= "active" if current_page?(transfers_path) %>" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Transakcje
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="/admin/transfers">Lista transakcji</a>
+            </div>
+          </li>
+        <% end %>
+        <% if current_user.airline_manager_role || current_user.superadmin_role %>
+          <li>
+            <li class="nav-item dropdown navbar-nav">
+            <a class="nav-link dropdown-toggle <%= "active" if current_page?(users_path) %>" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Użytkownicy
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="/admin/users">Lista użytkowników</a>
+            </div>
           </li>
         <% end %>
         <%= admin_login_helper %>
       </ul>
-
      </div>
      <% if (current_user.present?) %>
      <ul class="navbar-nav ml-auto text-right">
@@ -51,7 +91,4 @@
       </li>
      </ul>
     <% end %>
-
-  <div class="right nav-item navbar-nav mr-auto collapse navbar-collapse">
 </nav>
-

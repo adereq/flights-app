@@ -27,6 +27,7 @@ class AirplanesController < ApplicationController
     @airplane = Airplane.new(airplane_params)
     respond_to do |format|
       if @airplane.save
+        flash[:notice] = "Lotnisko dodane poprawnie"
         format.html { redirect_to @airplane, notice: 'Airplane was successfully created.' }
         format.json { render :show, status: :ok, location: @airplane }        
       else
