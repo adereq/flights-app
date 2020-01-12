@@ -26,6 +26,6 @@ class PaymentProviderOperationsController < ApplicationController
   private
 
   def payment_provider_operation_params
-  	params.permit(:operation_number, :operation_amount, :description)
+  	params.permit(:operation_number, :operation_amount, :description, :operation_status, :email, :signature)
   end
 end
