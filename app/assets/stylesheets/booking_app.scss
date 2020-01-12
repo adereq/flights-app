@@ -1,5 +1,6 @@
 @import "bootstrap";
 @import "gritter";
+@import "font_awesome5_webfont";
 
 body {
 	font-family: 'Montserrat', sans-serif;
@@ -17,6 +18,8 @@ body {
 
 #content-wrap {
   padding-bottom: 2.5rem;  
+  
+	font-family: 'Montserrat', sans-serif;
 }
 
 #footer {

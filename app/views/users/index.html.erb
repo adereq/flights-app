@@ -54,6 +54,9 @@
           <%= link_to edit_user_path(user.id), class:"text-dark" do %>  
             <%= fa_icon "edit" %>
           <% end %>
+          <%= link_to user_path(user.id), class:"text-dark" do %>  
+            <%= fa_icon "sticky-note" %>
+          <% end %>
           <%= link_to user_path(user.id), method: :delete, data: { confirm: 'Czy jesteś pewien?' }, class:"text-danger" do %> 
             <%= fa_icon "trash" %>
           <% end %>

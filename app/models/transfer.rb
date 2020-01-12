@@ -13,5 +13,4 @@ class Transfer < ApplicationRecord
     return "https://ssl.dotpay.pl/test_payment/?id=#{client_id}&amount=#{amount}&currency=PLN&description=#{title}&chk=#{chk}"
   end
 
-
 end

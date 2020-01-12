@@ -17,6 +17,7 @@ body {
 
 #content-wrap {
   padding-bottom: 2.5rem;  
+    font-family: 'Montserrat', sans-serif;
 }
 
 #footer {
@@ -29,4 +30,8 @@ body {
 .margin-top-bottom {
 	margin-top: 100px;
 	margin-bottom: 100px;
+}
+
+.field_with_errors input {
+  border: 2px solid #c4444;
 }

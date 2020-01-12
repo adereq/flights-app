@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, only: [:index, :show, :new, :create, :edit, :update, :destroy]
-  before_action :set_user, only: [:destroy]
+  before_action :set_user, only: [:destroy, :show]
   before_action :user_authorization
   layout 'admin'
 
@@ -13,6 +13,27 @@ class UsersController < ApplicationController
     if current_user.superadmin_role
     else
       authorization_error
+    end
+  end
+
+  def show
+  end
+
+  def new
+    @user = User.new
+  end
+
+  def create
+    @user = User.new(user_params)
+    respond_to do |format|
+      if @user.save
+        flash[:notice] = "Użytkownik został dodany"
+        format.html { redirect_to @user, notice: 'Użytkownik został dodany' }
+        format.json { render :show, status: :ok, location: @user }        
+      else
+        format.html { render :new }
+        format.json { render json: @user.errors, status: :unprocessable_entity }        
+      end
     end
   end
 
@@ -31,7 +52,7 @@ class UsersController < ApplicationController
     end
 
     def user_params
-      params.require(:airplane).permit(:model, :economy_seats, :business_seats)
+      params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :client_role, :superadmin_role, :airline_manager_role, :airport_manager_role, :airport_id)
 
     end 
 end

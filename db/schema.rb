@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_06_160520) do
+ActiveRecord::Schema.define(version: 2020_01_12_012417) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -78,8 +78,6 @@ ActiveRecord::Schema.define(version: 2020_01_06_160520) do
     t.time "departure_time"
     t.time "arrival_time"
     t.string "flight_number"
-    t.integer "seats"
-    t.decimal "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "airplane_id"
@@ -134,6 +132,7 @@ ActiveRecord::Schema.define(version: 2020_01_06_160520) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "confirmed"
+    t.integer "payment_provider_operation_id"
   end
 
   create_table "users", force: :cascade do |t|
