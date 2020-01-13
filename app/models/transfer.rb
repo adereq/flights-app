@@ -1,5 +1,6 @@
 class Transfer < ApplicationRecord
   belongs_to :user
+  belongs_to :payment_provider_operation, optional: true
 
   def self.add_balance(amount)
   	puts "#{current_user.present?}"
