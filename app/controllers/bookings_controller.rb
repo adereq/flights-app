@@ -6,7 +6,7 @@ class BookingsController < ApplicationController
   before_action :bookings_authorization, only: [:index, :destroy]
 
   def bookings_authorization
-    if current_user.superadmin_role || current_user.airline_manager_role
+    if current_user.superadmin_role || current_user.airline_manager_role || current_user.airport_manager_role
     else
       authorization_error
     end
@@ -14,10 +14,14 @@ class BookingsController < ApplicationController
 
   def booking_confirmation
   end
-  
+
   def index
-    @q = Booking.ransack(params[:q])
-    @bookings = @q.result.page(params[:page]).per(10)
+    if current_user.airport_manager_role
+      @bookings = Booking.where(flight.departure_airport.id: current_user.airport_id )
+    else
+      @q = Booking.ransack(params[:q])
+      @bookings = @q.result.page(params[:page]).per(10)
+    end
   end
 
   def user_bookings

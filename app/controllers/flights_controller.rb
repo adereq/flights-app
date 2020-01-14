@@ -2,6 +2,15 @@ class FlightsController < ApplicationController
   before_action :authenticate_user!, only: [:selected_flight, :selected_economy_flight, :selected_business_flight, :index, :show, :new, :create, :edit, :update, :destroy]
   before_action :set_flight, only: [:show, :edit, :update, :destroy, :selected_flight]
   layout "booking", only: [:selected_business_flight, :selected_economy_flight, :availability, :search]
+  before_action :flights_authorization, only: [:index, :destroy]
+
+  def flights_authorization
+    if current_user.superadmin_role || current_user.airline_manager_role
+    else
+      authorization_error
+    end
+  end
+
 
   def availability
        @results = Flight.search_flights(params)

@@ -30,7 +30,7 @@
             </div>
           </li>
         <% end %>
-        <% if current_user.airline_manager_role || current_user.superadmin_role %>
+        <% if current_user.airline_manager_role || current_user.superadmin_role || current_user.airport_manager_role %>
           <li>
             <li class="nav-item dropdown navbar-nav">
             <a class="nav-link dropdown-toggle <%= "active" if current_page?(flights_path) %>" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -42,7 +42,7 @@
             </div>
           </li>
         <% end %>
-        <% if current_user.airline_manager_role || current_user.superadmin_role %>
+        <% if current_user.airline_manager_role || current_user.superadmin_role || current_user.airport_manager_role %>
           <li>
             <li class="nav-item dropdown navbar-nav">
             <a class="nav-link dropdown-toggle <%= "active" if current_page?(bookings_path) %>" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
