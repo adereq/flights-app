@@ -7,29 +7,46 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <% if current_user.present? %>
-    <ul class="navbar-nav mr-auto">
-      <% if current_user.client_role %>
+      <ul class="navbar-nav mr-auto">
         <li>
-          <a class="nav-item nav-link <%= "active" if current_page?(tickets_path) %>" href="/tickets">Bilety</a>
+          <a class="nav-item nav-link <%= "active" if current_page?(bookings_path) %>" href="/user_bookings">Rezerwacje</a>
         </li>
-        <% end %>
-        <% if current_user.client_role %>
-          <li>
-            <a class="nav-item nav-link <%= "active" if current_page?(transfers_path) %>" href="transfers">Transakcje</a>
-          </li>
-        <% end %>
-    </ul>
-          <li class="nav-item dropdown navbar-nav">
+        <li>
+          <a class="nav-item nav-link <%= "active" if current_page?(transfers_path) %>" href="/user_transfers">Transakcje</a>
+        </li>
+      </ul>
+            <ul class="navbar-nav ml-auto text-right">
+      <li class="nav-item dropdown navbar-nav dropdown-menu-right">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Stan Konta <%= currency_formatter(current_user.balance) %>
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="transfers/new">Doładuj Konto</a>
-          <a class="dropdown-item" href="users/edit">Moje Dane</a>
+          <a class="dropdown-item" href="user_charge">Doładuj Konto</a>
         </div>
       </li>
+      <% else %>
+            <ul class="navbar-nav mr-auto text-right">
+              <%= login_helper %>
+            </ul>
       <% end %>
-      <div class="navbar-nav my-2 my-lg-0"><%= login_helper %></div>
+    </ul>
+     <% if (current_user.present?) %>
+      <ul class="navbar-nav text-right">
+        <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          <i class="fas fa-user"></i>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right dropdown-default">
+          <% if current_user.superadmin_role || current_user.airport_manager_role || current_user.airline_manager_role %>
+          <a class="dropdown-item text-left" href="/admin">Aplikacja admina</a>
+          <% end %>
+          <a class="dropdown-item" href="users/edit">Moje Dane</a>
+          <a class="" href="#"><%= login_helper %></a>
+        </div>
+      </li>
+     </ul>
+    <% end %>
   </div>
 </nav>
 </header>

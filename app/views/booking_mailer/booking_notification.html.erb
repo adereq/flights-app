@@ -1,12 +1,11 @@
 <h1>Potwierdzenie rezerwacji <%= @booking.pnr %></h1>
-
 Dziękujemy za rezerwację lotu z naszą aplikacją. Życzymy przyjemnej podróży
 <h3>Szczegóły Twojego lotu</h3>
 <p><strong>Numer lotu </strong><%= @booking.flight.flight_number %></p>
-<p><strong>Wylot </strong><%= @booking.flight.departure_airport %></p>
-<p><strong>Przylot </strong><%= @booking.flight.arrival_airport %></p>
+<p><strong>Wylot </strong><%= @booking.flight.departure_airport.name %></p>
+<p><strong>Przylot </strong><%= @booking.flight.arrival_airport.name %></p>
 <p><strong>Data wylotu </strong><%= @booking.flight.departure_date %></p>
-<p><strong>Godzina wylotu </strong><%= @booking.flight.departure_time %></p>
-<p><strong>Godzina przylotu </strong><%= @booking.flight.arrival_time %></p>
+<p><strong>Godzina wylotu </strong><%= @departure_time %></p>
+<p><strong>Godzina przylotu </strong><%= @arrival_time %></p>
 <p><strong>Liczba pasażerów </strong><%= @booking.passengers %></p>
 <p><strong>Cena </strong><%= @booking.total_price %></p>

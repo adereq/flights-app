@@ -35,3 +35,33 @@ body {
 .field_with_errors input {
   border: 2px solid #c4444;
 }
+
+.booking-cta {
+  margin-top: 80px;
+  margin-bottom: 30px;
+}
+
+.booking-cta h1 {
+  font-size: 52px;
+  text-transform: uppercase;
+  color: #fff;
+  font-weight: 700;
+}
+
+.booking-cta p {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.red {
+    color: #f99;
+    font-weight: bold;
+}
+.yellow {
+    color: #ff9;
+    font-weight: bold;
+}
+.green {
+    color: OliveDrab;
+    font-weight: bold;
+}

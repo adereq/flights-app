@@ -1,8 +1,8 @@
 <div class="col-md-2 col-md-offset-4"></div>
   <div class="text-center border bg-light border-light p-5 col-8">
     <div class="form-row mb-2">
-        <div class="col-2 h3">
-          Rezerwacje
+        <div class="col-4 h3">
+          Moje Rezerwacje
         </div>
     </div>
 
@@ -32,9 +32,6 @@
         <td>
           <%= link_to booking_path(booking.id), class:"text-dark" do %>  
               <%= fa_icon "sticky-note" %>
-          <% end %>
-          <%= link_to booking_path(booking.id), method: :delete, data: { confirm: 'Czy jesteś pewien?' }, class:"text-danger" do %> 
-            <%= fa_icon "trash" %>
           <% end %>
         </td>
       </tr>

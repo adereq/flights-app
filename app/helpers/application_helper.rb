@@ -4,7 +4,7 @@ module ApplicationHelper
       (link_to "Zarejestruj", new_user_registration_path, class: 'nav-item nav-link') +
       (link_to "Zaloguj", new_user_session_path, class: 'nav-item nav-link')
     else
-      (link_to "Wyloguj się (#{current_user.email})", destroy_user_session_path, class: 'nav-item nav-link', method: :delete)
+      (link_to "Wyloguj się (#{current_user.email})", destroy_user_session_path, class: 'text-dark dropdown-item', method: :delete)
     end
   end
 
@@ -13,7 +13,7 @@ module ApplicationHelper
       (link_to "Zarejestruj", new_user_registration_path, class: 'nav-item nav-link') +
       (link_to "Zaloguj", new_user_session_path, class: 'nav-item nav-link')
     else
-      (link_to "Wyloguj się (#{current_user.email})", destroy_user_session_path, class: 'text-dark', method: :delete)
+      (link_to "Wyloguj się (#{current_user.email})", destroy_user_session_path, class: 'text-dark dropdown-item', method: :delete)
     end
   end
 

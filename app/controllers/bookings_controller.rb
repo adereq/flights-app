@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  layout 'admin'
+  layout "booking", only: [:user_bookings]
   before_action :set_booking, only: [:show, :destroy]
 
   before_action :authenticate_user!, only: [:index, :show, :edit, :destroy]
@@ -21,7 +21,8 @@ class BookingsController < ApplicationController
   end
 
   def user_bookings
-    @bookings = Booking.where(user_id: current_user.id)
+    @q = Booking.where(user_id: current_user.id).ransack(params[:q])
+    @bookings = @q.result.page(params[:page]).per(10)
   end
 
 

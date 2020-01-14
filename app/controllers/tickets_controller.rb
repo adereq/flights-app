@@ -1,7 +1,6 @@
 class TicketsController < ApplicationController
   before_action :set_ticket, only: [:show]
-  layout "admin", only: [:tickets_list]
-  layout "booking", only: [:index]
+  layout "admin"
 
   def index
     @q = Ticket.where(user_id: current_user.id).ransack(params[:q])
@@ -9,7 +8,6 @@ class TicketsController < ApplicationController
   end
 
   def tickets_list
-    render layout: 'admin'
     @ticket = Ticket.search_tickets(params[:id]).page(params[:page]).per(10)
     puts @ticket
     if @ticket == []

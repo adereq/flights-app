@@ -3,10 +3,10 @@
     <p class="h3 mb-4 font-weight-bold"><%= @booking.pnr %></p>
     <div class="form-row mb-4">
         <div class="col text-left">
-   			<p>Wylot: <%= @booking.departure_airport %></p>
-  			<p>Przylot: <%= @booking.arrival_airport %></p>
+   			<p>Wylot: <%= @booking.flight.departure_airport.name %></p>
+  			<p>Przylot: <%= @booking.flight.arrival_airport.name %></p>
   			<p>Cena: <%= @booking.total_price %></p>
-  			<p>Data: <%= @booking.departure_date %></p>
+  			<p>Data: <%= @booking.flight.departure_date %></p>
         </div>
         <div class="col text-left">
       	</div>
