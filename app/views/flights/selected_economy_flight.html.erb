@@ -7,34 +7,29 @@
         <div clas="text-left"><h6><b><%= fa_icon "user" %> Pasażer <%= i%></b></h6></div>
         <div class="form-row">
           <div class="form-group col-md6">
-            <%= form.text_field "first_name_#{i}".to_sym, class: 'form-control', placeholder: "Imię" %>
+            <%= form.text_field "first_name_#{i}".to_sym, required: true, class: 'form-control', placeholder: "Imię" %>
           </div>
           <div class="form-group col-md6">
-            <%= form.text_field "last_name_#{i}".to_sym, class: 'form-control', placeholder: "Nazwisko" %>
+            <%= form.text_field "last_name_#{i}".to_sym, required: true, class: 'form-control', placeholder: "Nazwisko" %>
           </div>
             <%= form.hidden_field "price_#{i}".to_sym, value: @selected_flight.economy_price %>
         </div>
         <div class="form-row">
           <div class="form-group col-md6">
-            <%= form.text_field "document_#{i}".to_sym, class: 'form-control', placeholder: "Nr dokumentu" %>
+            <%= form.text_field "document_#{i}".to_sym, required: true, class: 'form-control', placeholder: "Nr dokumentu" %>
           </div>
           <div class="form-group col-md6">
-            <%= form.text_field "seat_#{i}".to_sym, class: 'form-control', placeholder: "Miejsce" %>
+            <%= form.text_field "country_#{i}".to_sym, required: true, class: 'form-control', placeholder: "Kraj" %>
           </div>
         </div>
       <% end %>
-        <%= form.hidden_field :departure_airport, value: @selected_flight.departure_airport.name %>
-        <%= form.hidden_field :arrival_airport, value: @selected_flight.arrival_airport.name %>
         <%= form.hidden_field :flight_id, value: @selected_flight.id %>
-        <%= form.hidden_field :user_id, value: current_user.id %>  
-        <%= form.hidden_field :departure_date, value: @selected_flight.departure_date %>
-        <%= form.hidden_field :departure_time, value: @selected_flight.departure_time %>
-        <%= form.hidden_field :arrival_time, value: @selected_flight.arrival_time %>
-        <%= form.hidden_field :flight_number, value: @selected_flight.flight_number %>
+        <%= form.hidden_field :user_id, value: current_user.id %>
         <%= form.hidden_field :total_price, value: (@selected_flight.economy_price.to_i*params[:passengers].to_i) %>
         <%= form.hidden_field :mail, value: current_user.email %>
         <%= form.hidden_field :passengers, value: params[:passengers].to_i %>
         <%= form.hidden_field :booking_class, value: "economy" %>
+        <%= form.hidden_field :status, value: "Potwierdzona" %>      
         <%= form.submit "Zarezerwuj", class: 'btn btn-dark' %>
 <% end %>
 

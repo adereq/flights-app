@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_12_012417) do
+ActiveRecord::Schema.define(version: 2020_01_13_222152) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,7 +29,6 @@ ActiveRecord::Schema.define(version: 2020_01_12_012417) do
     t.string "name"
     t.string "iata"
     t.string "timezone"
-    t.text "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -37,14 +36,7 @@ ActiveRecord::Schema.define(version: 2020_01_12_012417) do
   create_table "bookings", force: :cascade do |t|
     t.string "pnr"
     t.float "total_price"
-    t.string "departure_airport"
-    t.string "arrival_airport"
     t.string "flight_id"
-    t.string "passenger_id"
-    t.date "departure_date"
-    t.time "departure_time"
-    t.time "arrival_time"
-    t.string "flight_number"
     t.string "booking_class"
     t.integer "passengers"
     t.string "mail"
@@ -52,23 +44,28 @@ ActiveRecord::Schema.define(version: 2020_01_12_012417) do
     t.string "first_name_1"
     t.string "last_name_1"
     t.string "document_1"
-    t.integer "seat_1"
+    t.string "seat_1"
     t.decimal "price_1"
     t.string "first_name_2"
     t.string "last_name_2"
     t.string "document_2"
-    t.integer "seat_2"
+    t.string "seat_2"
     t.decimal "price_2"
     t.string "first_name_3"
     t.string "last_name_3"
     t.string "document_3"
-    t.integer "seat_3"
+    t.string "seat_3"
     t.decimal "price_3"
     t.string "first_name_4"
     t.string "last_name_4"
     t.string "document_4"
-    t.integer "seat_4"
+    t.string "seat_4"
     t.decimal "price_4"
+    t.string "status"
+    t.string "country_1"
+    t.string "country_2"
+    t.string "country_3"
+    t.string "country_4"
   end
 
   create_table "flights", force: :cascade do |t|
@@ -102,7 +99,6 @@ ActiveRecord::Schema.define(version: 2020_01_12_012417) do
   end
 
   create_table "tickets", force: :cascade do |t|
-    t.string "pnr"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "flight_id"
@@ -111,15 +107,8 @@ ActiveRecord::Schema.define(version: 2020_01_12_012417) do
     t.string "last_name"
     t.string "document_id"
     t.string "country"
-    t.string "departure_airport_name"
-    t.string "arrival_airport_name"
-    t.date "departure_date"
-    t.time "departure_time"
-    t.time "arrival_time"
-    t.string "flight_number"
     t.string "seat"
     t.decimal "price"
-    t.string "mail"
     t.string "seat_class"
     t.integer "booking_id"
   end
@@ -133,6 +122,7 @@ ActiveRecord::Schema.define(version: 2020_01_12_012417) do
     t.datetime "updated_at", null: false
     t.boolean "confirmed"
     t.integer "payment_provider_operation_id"
+    t.integer "booking_id"
   end
 
   create_table "users", force: :cascade do |t|
