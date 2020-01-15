@@ -11,6 +11,15 @@ class FlightsController < ApplicationController
     end
   end
 
+  def find_departure_flights_for_airport_manager
+    @airport_id = current_user.airport_id
+    @departure_flights = Flight.joins(:departure_airport).where(airports: {id: @airport_id})
+  end
+
+  def find_arrival_flights_for_airport_manager
+    @airport_id = current_user.airport_id
+    @arrival_flights = Flight.joins(:arrival_airport).where(airports: {id: @airport_id})
+  end
 
   def availability
        @results = Flight.search_flights(params)
@@ -68,7 +77,7 @@ class FlightsController < ApplicationController
 
   def update
   	respond_to do |format|
-  	  if @flight.save
+  	  if @flight.update(flight_params)
   	  	format.html {redirect_to @flight, notice: 'Flight was succesfully created'}
   	  else
   	  	format.html {render :new}

@@ -16,12 +16,8 @@ class BookingsController < ApplicationController
   end
 
   def index
-    if current_user.airport_manager_role
-      @bookings = Booking.where(flight.departure_airport.id: current_user.airport_id )
-    else
-      @q = Booking.ransack(params[:q])
-      @bookings = @q.result.page(params[:page]).per(10)
-    end
+    @q = Booking.ransack(params[:q])
+    @bookings = @q.result.page(params[:page]).per(10)
   end
 
   def user_bookings

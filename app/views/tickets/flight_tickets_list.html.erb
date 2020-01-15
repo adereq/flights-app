@@ -1,0 +1,37 @@
+  <div class="col-md-3 col-md-offset-4"></div>
+  <div class="text-center border bg-light border-light p-5 col-6">
+        <p class="h3 mb-4 col-2">Bilety</p>
+    <div class="form-row">
+        <p>Sprzedane bilety: <%= @tickets.count %></p>
+      </div>
+    <div class="form-row">
+        <p>Przychód z biletów: <%= @total_income %></p>
+      </div>
+<table class="table table-hover ">
+    <thead class="thead-dark">
+      <tr>
+        <th>Imię</th>
+        <th>Nazwisko</th>
+        <th>Miejsce</th>
+        <th>Klasa</th>
+        <th>Cena</th>
+        <th>Rezerwacja</th>
+        <th>Nr dokumentu</th>
+      </tr>
+    </thead>
+  <% @tickets.each do |ticket| %>
+    <tbody>
+      <tr>
+        <td><%= ticket.first_name %></td>
+        <td><%= ticket.last_name %></td>
+        <td><%= ticket.seat %></td>
+        <td><%= ticket.seat_class %></td>    
+        <td><%= ticket.price %></td>
+        <td><%= ticket.booking.pnr %></td>
+        <td><%= ticket.document_id %></td>        
+      </tr>
+    </tbody>
+    <% end %>
+  </table>
+  <%= paginate @tickets %>
+</div>

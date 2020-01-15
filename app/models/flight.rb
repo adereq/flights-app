@@ -5,7 +5,7 @@ class Flight < ApplicationRecord
   has_many :bookings
   has_many :tickets
 
-  validates :departure_airport_id, :arrival_airport_id, :departure_date, :departure_time, :arrival_time, presence: true 
+  #validates :departure_airport_id, :arrival_airport_id, :departure_date, :departure_time, :arrival_time, presence: true 
 
 
   def self.search_flights(params)

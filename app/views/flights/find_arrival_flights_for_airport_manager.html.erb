@@ -4,12 +4,7 @@
         <div class="col-1 h3">
           Loty
         </div>
-        <div class="col-11 text-right">
-          <%= link_to 'Dodaj lot', new_flight_path, class: 'btn btn-dark' %>
-        </div>
     </div>
-
-  <%= render 'filter_flights_form', flight: @flight %>
 
   <table class="table table-hover ">
     <thead class="thead-dark">
@@ -26,7 +21,7 @@
         <th></th>
       </tr>
     </thead>
-  <% @flights.each do |flight| %>
+  <% @arrival_flights.each do |flight| %>
     <tbody>
       <tr>
         <th scope="row"><%= flight.flight_number %></th>
@@ -38,19 +33,12 @@
         <td><%= currency_formatter(flight.economy_price) %></td>
         <td><%= currency_formatter(flight.business_price) %></td>
         <td><%= link_to 'Bilety', flight_tickets_list_path(flight.id), class: 'btn btn-dark' %></td>
-        <td><%= link_to edit_flight_path(flight.id), class:"text-dark" do %>  
-              <%= fa_icon "edit" %>
-            <% end %>
-            <%= link_to flight_path(flight.id), class:"text-dark" do %>  
+        <td><%= link_to flight_path(flight.id), class:"text-dark" do %>  
               <%= fa_icon "sticky-note" %>
-            <% end %>
-            <%= link_to flight_path(flight.id), method: :delete, data: { confirm: 'Czy jesteś pewien?' }, class:"text-danger" do %> 
-              <%= fa_icon "trash" %>
             <% end %>
         </td>
       </tr>
     </tbody>
     <% end %>
   </table>
-  <%= paginate @flights %>
 </div>

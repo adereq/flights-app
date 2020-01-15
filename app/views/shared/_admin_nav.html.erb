@@ -30,7 +30,7 @@
             </div>
           </li>
         <% end %>
-        <% if current_user.airline_manager_role || current_user.superadmin_role || current_user.airport_manager_role %>
+        <% if current_user.airline_manager_role || current_user.superadmin_role %>
           <li>
             <li class="nav-item dropdown navbar-nav">
             <a class="nav-link dropdown-toggle <%= "active" if current_page?(flights_path) %>" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -42,7 +42,7 @@
             </div>
           </li>
         <% end %>
-        <% if current_user.airline_manager_role || current_user.superadmin_role || current_user.airport_manager_role %>
+        <% if current_user.airline_manager_role || current_user.superadmin_role %>
           <li>
             <li class="nav-item dropdown navbar-nav">
             <a class="nav-link dropdown-toggle <%= "active" if current_page?(bookings_path) %>" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -64,7 +64,7 @@
             </div>
           </li>
         <% end %>
-        <% if current_user.airline_manager_role || current_user.superadmin_role %>
+        <% if current_user.superadmin_role %>
           <li>
             <li class="nav-item dropdown navbar-nav">
             <a class="nav-link dropdown-toggle <%= "active" if current_page?(users_path) %>" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -76,6 +76,17 @@
             </div>
           </li>
         <% end %>
+        <% if current_user.airport_manager_role %>
+      <ul class="navbar-nav mr-auto">
+        <li>
+          <a class="nav-item nav-link <%= "active" if current_page?(bookings_path) %>" href="/admin/flights/departure_flights">Wyloty</a>
+        </li>
+        <li>
+          <a class="nav-item nav-link <%= "active" if current_page?(transfers_path) %>" href="/admin/flights/arrival_flights">Przyloty</a>
+        </li>
+
+      </ul>
+      <% end %>
       </ul>
      </div>
      <% if (current_user.present?) %>

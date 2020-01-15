@@ -7,14 +7,14 @@ class TicketsController < ApplicationController
     @tickets = @q.result.page(params[:page]).per(10)
   end
 
-  def tickets_list
-    @ticket = Ticket.search_tickets(params[:id]).page(params[:page]).per(10)
-    puts @ticket
-    if @ticket == []
+  def flight_tickets_list
+    @q = Flight.find(params[:id]).tickets.ransack(params[:q])
+    @tickets = @q.result.page(params[:page]).per(10)
+    if @tickets == []
       render :notickets
     else
       @total_income = 0
-      @ticket.each do |ticket|
+      @tickets.each do |ticket|
         @total_income+= ticket.price
       end
     end
