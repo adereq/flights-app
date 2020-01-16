@@ -30,8 +30,8 @@
     <tbody>
       <tr>
         <th scope="row"><%= flight.flight_number %></th>
-        <td><%= flight.departure_airport.name %></td>
-        <td><%= flight.arrival_airport.name %></td>
+        <td><%= flight.departure_airport.try(:name) %></td>
+        <td><%= flight.arrival_airport.try(:name) %></td>
         <td><%= flight.departure_date %></td>
         <td><%= time_formatter(flight.departure_time) %></td>
         <td><%= time_formatter(flight.arrival_time) %></td>
