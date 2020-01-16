@@ -6,6 +6,9 @@ class Airport < ApplicationRecord
   validates :city, :country, :name, presence: true
   validates :iata, length: {is: 3}, presence: true, uniqueness: true
 
-  scope :poland, -> {where(country: "Polska")}
-
+  before_create :titelize_airport_name
+  
+  def titelize_airport_name
+  	self.name = self.name.to_s.titleize
+  end
 end

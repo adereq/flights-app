@@ -1,21 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  city: MyString
-  country: MyString
-  name: MyString
-  iata: MyString
-  latitude: MyString
-  longitude: MyString
-  timezone: MyString
-  image: MyText
+airport_one:
+  city: Wrocław
+  country: Polska
+  name: wrocław-starachowice
+  iata: WRO
+  timezone: UTC+1
 
-two:
-  city: MyString
-  country: MyString
-  name: MyString
-  iata: MyString
-  latitude: MyString
-  longitude: MyString
-  timezone: MyString
-  image: MyText
+airport_two:
+  city: Londyn
+  country: Anglia
+  name: Heathrow
+  iata: LHR
+  timezone: UTC

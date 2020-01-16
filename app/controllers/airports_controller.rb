@@ -25,7 +25,6 @@ class AirportsController < ApplicationController
 
   def create
     @airport = Airport.new(airport_params)
-
     respond_to do |format|
       if @airport.save
         format.html { redirect_to @airport, notice: 'Airport was successfully created.' }
