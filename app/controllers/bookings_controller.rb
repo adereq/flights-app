@@ -1,8 +1,8 @@
 class BookingsController < ApplicationController
-  layout "booking", only: [:user_bookings]
-  before_action :set_booking, only: [:show, :destroy]
+  layout "booking", only: [:user_bookings, :booking_confirmation]
+  before_action :set_booking, only: [:show, :destroy, :booking_confirmation]
 
-  before_action :authenticate_user!, only: [:index, :show, :edit, :destroy]
+  before_action :authenticate_user!, only: [:index, :show, :edit, :destroy, :booking_confirmation]
   before_action :bookings_authorization, only: [:index, :destroy]
 
   def bookings_authorization
@@ -61,7 +61,7 @@ class BookingsController < ApplicationController
               @ticket.save  
             end           
           end
-          format.html {redirect_to @booking, notice: 'Flight was succesfully created'}
+          format.html {redirect_to booking_confirmation_path, notice: 'Lot został zarezerwowany'}
         elsif @booking.booking_class == "business"
           Flight.seat_business_decrease(@booking.flight_id, @booking.passengers)
           for i in 1..@booking.passengers 
@@ -79,7 +79,7 @@ class BookingsController < ApplicationController
               @ticket.save  
             end           
           end
-          format.html {redirect_to :booking_confirmation, notice: 'Flight was succesfully created'}
+          format.html {redirect_to booking_confirmation_path, notice: 'Lot został zarezerwowany'}
         else
           format.html {redirect_to :root}
         end

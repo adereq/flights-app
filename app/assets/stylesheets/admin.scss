@@ -65,3 +65,7 @@ body {
     color: OliveDrab;
     font-weight: bold;
 }
+
+.field_with_errors input {
+  border: 2px solid #cc4444;
+}

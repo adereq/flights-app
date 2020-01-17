@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  get 'bookings/booking_confirmation', to: 'bookings#booking_confirmation', as: 'booking_confirmation'
+  get 'booking_confirmation/:id', to: 'bookings#booking_confirmation', as: 'booking_confirmation'
   devise_for :users
   root to: 'flights#search'
   get 'search', to: 'flights#search'
