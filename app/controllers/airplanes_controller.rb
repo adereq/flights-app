@@ -27,12 +27,9 @@ class AirplanesController < ApplicationController
     @airplane = Airplane.new(airplane_params)
     respond_to do |format|
       if @airplane.save
-        flash[:notice] = "Lotnisko dodane poprawnie"
-        format.html { redirect_to @airplane, notice: 'Airplane was successfully created.' }
-        format.json { render :show, status: :ok, location: @airplane }        
+        format.html { redirect_to @airplane, notice: 'Samolot dodane poprawnie.' }\
       else
-        format.html { render :new }
-        format.json { render json: @airplane.errors, status: :unprocessable_entity }        
+        format.html { redirect_to new_airport_path, notice: "Błąd podczas dodawania samolotu" }       
       end
     end
   end
@@ -43,7 +40,7 @@ class AirplanesController < ApplicationController
   def update
     respond_to do |format|
       if @airplane.update(airplane_params)
-        format.html { redirect_to @airplane, notice: 'Airplane was successfully updated.' }
+        format.html { redirect_to @airplane, notice: 'Samolot zmodywikowany poprawnie.' }
         format.json { render :show, status: :ok, location: @airpane }
       else
         format.html { render :edit }
@@ -55,7 +52,7 @@ class AirplanesController < ApplicationController
   def destroy
     @airplane.destroy
     respond_to do |format|
-      format.html { redirect_to airplanes_path, notice: 'Airplane was successfully destroyed.' }
+      format.html { redirect_to airplanes_path, notice: 'Lotnisko usunięte.' }
       format.json { head :no_content }
     end
   end

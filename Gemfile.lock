@@ -97,6 +97,7 @@ GEM
     childprocess (1.0.1)
       rake (< 13.0)
     cocoon (1.2.14)
+    coderay (1.1.2)
     coffee-rails (4.2.2)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0)
@@ -178,6 +179,9 @@ GEM
       activerecord (> 4.0.0)
     pg (1.1.4)
     popper_js (1.14.5)
+    pry (0.12.2)
+      coderay (~> 1.1.0)
+      method_source (~> 0.9.0)
     public_suffix (3.1.0)
     puma (3.12.1)
     rack (2.0.7)
@@ -305,6 +309,7 @@ DEPENDENCIES
   newrelic_rpm
   petergate (~> 2.0, >= 2.0.1)
   pg (>= 0.18, < 2.0)
+  pry (~> 0.12.2)
   puma (~> 3.11)
   rack-attack
   rails (~> 5.2.3)

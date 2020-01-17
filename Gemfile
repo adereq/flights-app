@@ -79,4 +79,5 @@ gem 'cocoon', '~> 1.2', '>= 1.2.11'
 gem 'bundler', '~> 2.0.1'
 gem 'newrelic_rpm'
 gem 'font_awesome5_rails'
+gem 'pry', '~> 0.12.2'
 
