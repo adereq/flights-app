@@ -7,27 +7,24 @@
     <meta name="author" content="">
     <link rel="icon" href="../../../../favicon.ico">
     <%= csrf_meta_tag %>
-    <title>FlightApp</title>
-
+    <title>FlightsApp</title>
     <%= stylesheet_link_tag    'admin', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-   </head>
-
-<body>
- <div id="page-container">
-  <%= render 'shared/admin_nav' %>
-   <div id="content-wrap">
-      <div class="row margin-top-bottom">
-        <%= yield %>
+  </head>
+  <body>
+    <div id="page-container">
+      <%= render 'shared/admin_nav' %>
+      <div id="content-wrap">
+        <div class="row margin-top-bottom">
+          <%= yield %>
+        </div>
+        <%= render 'shared/alerts' %>
       </div>
-               <%= render 'shared/alerts' %>
-                     <%= binding.pry %>
-   </div>
-   <footer id="footer">
-     <%= render 'shared/footer' %>
-   </footer>
- </div>
-</body>
+      <footer id="footer">
+        <%= render 'shared/footer' %>
+      </footer>
+    </div>
+  </body>
 </html>
 
 

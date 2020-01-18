@@ -27,9 +27,9 @@ class AirplanesController < ApplicationController
     @airplane = Airplane.new(airplane_params)
     respond_to do |format|
       if @airplane.save
-        format.html { redirect_to @airplane, notice: 'Samolot dodane poprawnie.' }\
+        format.html { redirect_to @airplane, notice: 'Samolot dodany poprawnie.' }\
       else
-        format.html { redirect_to new_airport_path, notice: "Błąd podczas dodawania samolotu" }       
+        format.html { redirect_to new_airplane_path, notice: "Błąd podczas dodawania samolotu" }       
       end
     end
   end
