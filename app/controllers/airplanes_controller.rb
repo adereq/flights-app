@@ -41,10 +41,8 @@ class AirplanesController < ApplicationController
     respond_to do |format|
       if @airplane.update(airplane_params)
         format.html { redirect_to @airplane, notice: 'Samolot zmodywikowany poprawnie.' }
-        format.json { render :show, status: :ok, location: @airpane }
       else
-        format.html { render :edit }
-        format.json { render json: @airplane.errors, status: :unprocessable_entity }
+        format.html { render :edit, notice: "Błąd podczas edytowania samolotu" }
       end
     end
   end 
@@ -65,7 +63,5 @@ class AirplanesController < ApplicationController
 
   	def airplane_params
       params.require(:airplane).permit(:model, :economy_seats, :business_seats)
-
     end  	
-
 end

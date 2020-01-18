@@ -61,7 +61,7 @@ class BookingsController < ApplicationController
               @ticket.save  
             end           
           end
-          format.html {redirect_to booking_confirmation_path, notice: 'Lot został zarezerwowany'}
+          format.html {redirect_to booking_confirmation_path(@booking), notice: 'Lot został zarezerwowany'}
         elsif @booking.booking_class == "business"
           Flight.seat_business_decrease(@booking.flight_id, @booking.passengers)
           for i in 1..@booking.passengers 
@@ -79,7 +79,7 @@ class BookingsController < ApplicationController
               @ticket.save  
             end           
           end
-          format.html {redirect_to booking_confirmation_path, notice: 'Lot został zarezerwowany'}
+          format.html {redirect_to booking_confirmation_path(@booking), notice: 'Lot został zarezerwowany'}
         else
           format.html {redirect_to :root}
         end

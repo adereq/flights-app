@@ -28,7 +28,7 @@ class TicketsController < ApplicationController
   	@ticket = Ticket.new(ticket_params)
   	respond_to do |format| 
   	  if @ticket.save
-        format.html {redirect_to @ticket, notice: 'Flight was succesfully created'}
+        format.html {redirect_to @ticket}
   	  else
   	  	format.html {redirect_to :root}
   	  end

@@ -61,13 +61,11 @@ class FlightsController < ApplicationController
     @business_seats = Airplane.find(@flight.airplane_id).business_seats
     @flight.business_seats = @business_seats
     @flight.business_free_seats = @business_seats
-
-  	#airport_validator
   	respond_to do |format|
   	  if @flight.save
-  	  	format.html {redirect_to @flight, notice: 'Flight was succesfully created'}
+  	  	format.html {redirect_to @flight, notice: 'Lot został dodany pomyślnie'}
   	  else
-  	  	format.html {render :new}
+  	  	format.html {render :new, notice: "Błąd podczas dodawania lotu"}
   	  end
   	end
   end
@@ -78,20 +76,20 @@ class FlightsController < ApplicationController
   def update
   	respond_to do |format|
   	  if @flight.update(flight_params)
-  	  	format.html {redirect_to @flight, notice: 'Flight was succesfully created'}
+  	  	format.html {redirect_to @flight, notice: 'Lot został zaktualizowany'}
   	  else
-  	  	format.html {render :new}
+  	  	format.html {render :new, notice: "Błąd podczas aktualizowania lotu" }
   	  end
   	end
   end
 
-  	def destroy
-  	  @flight.destroy
-  	  respond_to do |format|
-      format.html { redirect_to flights_path, notice: 'Flight was successfully destroyed.' }
+  def destroy
+  	@flight.destroy
+  	respond_to do |format|
+      format.html { redirect_to flights_path, notice: 'Lot został został usuniety' }
       format.json {head :no_content}
-  	  end
   	end
+  end
 
 private
   	def set_flight

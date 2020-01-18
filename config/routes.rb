@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   match 'bookings', to: 'bookings#create', via: [:post]
 
   resources :payment_provider_operations, defaults: { format: 'plain' }
+  get 'admin/payment_provider_operations', to: 'payment_provider_operations#index', as: "payment_provider_operation_list"
   get 'admin', to: 'pages#home', as: 'admin'
   get 'airports/get_airport/:id', to: 'airports#get_airport'
   scope '/admin' do

@@ -64,6 +64,17 @@
             </div>
           </li>
         <% end %>
+        <% if current_user.airline_manager_role || current_user.superadmin_role %>
+          <li>
+            <li class="nav-item dropdown navbar-nav">
+            <a class="nav-link dropdown-toggle <%= "active" if current_page?(bookings_path) %>" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Płatności
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="/admin/payment_provider_operations">Lista płatności</a>
+            </div>
+          </li>
+        <% end %>
         <% if current_user.superadmin_role %>
           <li>
             <li class="nav-item dropdown navbar-nav">

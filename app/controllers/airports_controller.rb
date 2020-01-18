@@ -27,11 +27,9 @@ class AirportsController < ApplicationController
     @airport = Airport.new(airport_params)
     respond_to do |format|
       if @airport.save
-        format.html { redirect_to @airport, notice: 'Airport was successfully created.' }
-        format.json { render :show, status: :ok, location: @airport }        
+         format.html { redirect_to @airport, notice: 'Lotnisko dodane poprawnie.' }
       else
-        format.html { render :new }
-        format.json { render json: @airport.errors, status: :unprocessable_entity }        
+        format.html { redirect_to new_airplane_path, notice: "Błąd podczas dodawania lotniska" }       
       end
     end
   end
@@ -42,11 +40,9 @@ class AirportsController < ApplicationController
   def update
     respond_to do |format|
       if @airport.update(airport_params)
-        format.html { redirect_to @airport, notice: 'Airport was successfully updated.' }
-        format.json { render :show, status: :ok, location: @airport }
+        format.html { redirect_to @airport, notice: 'Lotnisko zaktualizowane pomyślnie.' }
       else
-        format.html { render :edit }
-        format.json { render json: @airport.errors, status: :unprocessable_entity }
+        format.html { render :edit, notice: "Błąd podczas edytowania lotniska"  }
       end
     end
   end
@@ -54,7 +50,7 @@ class AirportsController < ApplicationController
   def destroy
     @airport.destroy
     respond_to do |format|
-      format.html { redirect_to airports_path, notice: 'Airpot was successfully destroyed.' }
+      format.html { redirect_to airports_path, notice: 'Lotnisko usunięte.' }
       format.json { head :no_content }
     end
   end
