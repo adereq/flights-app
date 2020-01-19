@@ -1,53 +1,59 @@
 <div class="col-md-4 col-md-offset-4"></div>
   <div class="text-center border bg-light border-light p-5 col-4">
-    <p class="h3 mb-4 font-weight-bold">Potwierdzenie rezerwacji <%= @booking.pnr %></span></p>
+    <p class="h3 mb-4 font-weight-bold">Rezerwacja <%= @booking.pnr %></span></p>
     <div class="row text-left">
         <div class="col-sm-5">
-          <span class="form-label"><b>Wylot</b></span>
+          <span class="form-label"><%= fa_icon "plane-departure" %> Wylot</span>
         </div>
         <div class="col-sm-6">
           <span class="form-label"><%= @booking.flight.departure_airport.name %></span>
         </div>
         <div class="col-sm-5">
-          <span class="form-label"><b>Przylot</b></span>
+          <span class="form-label"><%= fa_icon "plane-arrival" %> Przylot</span>
         </div>
         <div class="col-sm-6">
           <span class="form-label"><%= @booking.flight.arrival_airport.name %></span>
-        </div>        
+        </div>     
+        <div class="col-sm-5">
+          <span class="form-label"><%= fa_icon "info-circle" %> Nr lotu</span>
+        </div>
+        <div class="col-sm-6">
+          <span class="form-label"><%= @booking.flight.flight_number %></span>
+        </div>       
 
         <div class="col-sm-5">
-          <span class="form-label"><b>Data wylotu</b></span>
+          <span class="form-label"><%= fa_icon "calendar" %> Data wylotu</span>
         </div>
         <div class="col-sm-6">
           <span class="form-label"><%= @booking.flight.departure_date %></span>
         </div>
 
         <div class="col-sm-5">
-          <span class="form-label"><b>Godzina wylotu</b></span>
+          <span class="form-label"><%= fa_icon "clock" %> Godzina wylotu</span>
         </div>
         <div class="col-sm-6">
-          <span class="form-label"><%= @departure_time %></span>
+          <span class="form-label"><%= time_formatter(@booking.flight.departure_time) %></span>
         </div>
 
         <div class="col-sm-5">
-          <span class="form-label"><b>Godzina przylotu</b></span>
+          <span class="form-label"><%= fa_icon "clock" %> Godzina przylotu</span>
         </div>
         <div class="col-sm-6">
-          <span class="form-label"><%= @arrival_time %></span>
+          <span class="form-label"><%= time_formatter(@booking.flight.arrival_time) %></span>
         </div>
 
         <div class="col-sm-5">
-          <span class="form-label"><b>Liczba pasażerów</b></span>
+          <span class="form-label"><%= fa_icon "user" %> Liczba pasażerów</span>
         </div>
         <div class="col-sm-6">
           <span class="form-label"><%= @booking.passengers %></span>
         </div>
 
         <div class="col-sm-5">
-          <span class="form-label"><b>Cena całkowita</b></span>
+          <span class="form-label"><%= fa_icon "coins" %> Cena całkowita</span>
         </div>
         <div class="col-sm-6 mb-4">
-          <span class="form-label"><%= @booking.total_price %></span>
+          <span class="form-label"><%= currency_formatter(@booking.total_price) %></span>
         </div>
 
       </div>
@@ -105,3 +111,5 @@
             </tr>
           </tbody>
         </table>
+          <%= link_to "Powrót do listy", user_bookings_path, class:"btn btn-info" %> 
+

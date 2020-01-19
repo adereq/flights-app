@@ -16,6 +16,9 @@
         <th>Przylot</th>
         <th>Data</th>
         <th>Nr Lotu</th>
+        <th>Klasa</th>
+        <th>Status</th>
+        <th></th>
         <th></th>
       </tr>
     </thead>
@@ -25,15 +28,21 @@
         <td><%= booking.pnr %></td>
         <td><%= booking.passengers %></td>
         <td><%= booking.total_price %></td>
-        <td><%= booking.flight.departure_airport.name %></td>
-        <td><%= booking.flight.arrival_airport.name %></td>
-        <td><%= booking.flight.departure_date %></td>
-        <td><%= booking.flight.flight_number %></td>
+        <td><%= booking.flight.try(:departure_airport).try(:name) %></td>
+        <td><%= booking.flight.try(:arrival_airport).try(:name) %></td>
+        <td><%= booking.flight.try(:departure_date) %></td>
+        <td><%= booking.flight.try(:flight_number) %></td>
+        <td><%= booking.try(:booking_class) %></td>        
+        <td><%= booking.status %></td>
         <td>
-          <%= link_to booking_path(booking.id), class:"text-dark" do %>  
+          <%= link_to get_user_booking_details_path(booking.id), class:"text-dark" do %>  
               <%= fa_icon "sticky-note" %>
           <% end %>
         </td>
+        <% if booking.status == "Potwierdzona" %>
+        <td><%= link_to "Anuluj rezerwację", cancel_booking_path(booking.id),data: { confirm: 'Czy jesteś pewien?' }, class:"btn btn-danger" %>  
+        </td>
+        <% end %>
       </tr>
     </tbody>
     <% end %>

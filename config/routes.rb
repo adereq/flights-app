@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
   get 'booking_confirmation/:id', to: 'bookings#booking_confirmation', as: 'booking_confirmation'
+  get 'get_user_booking_details/:id', to: 'bookings#get_user_booking_details', as: 'get_user_booking_details'
+  get 'cancel_booking/:id', to: 'bookings#cancel_booking', as: 'cancel_booking'
+  
   devise_for :users
   root to: 'flights#search'
   get 'search', to: 'flights#search'

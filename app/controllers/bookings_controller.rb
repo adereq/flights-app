@@ -1,8 +1,8 @@
 class BookingsController < ApplicationController
-  layout "booking", only: [:user_bookings, :booking_confirmation]
-  before_action :set_booking, only: [:show, :destroy, :booking_confirmation]
+  layout "booking", only: [:user_bookings, :booking_confirmation, :get_user_booking_details]
+  before_action :set_booking, only: [:cancel_booking, :show, :destroy, :booking_confirmation, :get_user_booking_details]
 
-  before_action :authenticate_user!, only: [:index, :show, :edit, :destroy, :booking_confirmation]
+  before_action :authenticate_user!, only: [:camcel_booking, :index, :show, :edit, :destroy, :booking_confirmation, :user_bookings,:get_user_booking_details_path]
   before_action :bookings_authorization, only: [:index, :destroy]
 
   def bookings_authorization
@@ -25,12 +25,35 @@ class BookingsController < ApplicationController
     @bookings = @q.result.page(params[:page]).per(10)
   end
 
+  def get_user_booking_details
+  end
+
 
   def new
   	@booking = Booking.new
   end
 
   def booking_failed
+  end
+
+  def cancel_booking
+    respond_to do |format|
+      if @booking.update(status:"Anulowana")
+        @new_balance = current_user.balance + @booking.total_price
+        User.find(current_user.id).update(balance: @new_balance)
+        if @booking.booking_class == "economy"
+          @new_economy_free_seats = @booking.flight.economy_free_seats + @booking.passengers
+          Flight.find(@booking.flight.id).update(economy_free_seats: @new_economy_free_seats)
+        elsif @booking.booking_class == "business"
+          @new_business_free_seats = @booking.flight.business_free_seats + @booking.passengers
+          Flight.find(@booking.flight.id).update(business_free_seats: @new_business_free_seats)
+        end
+            
+        format.html {redirect_to user_bookings_path, notice: 'Rezerwacja została anulowana'}
+      else
+        format.html {redirect_to user_bookings_path, notice: "Błąd podczas anulacji" }
+      end
+    end
   end
 
   def create
@@ -102,6 +125,6 @@ class BookingsController < ApplicationController
   end
 
   def booking_params
-  	params.require(:booking).permit(:pnr, :user_id, :flight_id, :total_price, :first_name_1, :last_name_1, :first_name_2, :last_name_2, :first_name_3, :last_name_3, :first_name_4,:last_name_4, :price_1, :price_2, :price_3, :price_4, :seat_1, :seat_2, :seat_3, :seat_4, :document_1, :document_2, :document_4, :country_1, :country_2, :country_3, :country_4, :status, :booking_class, :mail, :passengers)
+  	params.require(:booking).permit(:pnr, :user_id, :flight_id, :total_price, :first_name_1, :last_name_1, :first_name_2, :last_name_2, :first_name_3, :last_name_3, :first_name_4,:last_name_4, :price_1, :price_2, :price_3, :price_4, :seat_1, :seat_2, :seat_3, :seat_4, :document_1, :document_2, :document_3, :document_4, :country_1, :country_2, :country_3, :country_4, :status, :booking_class, :mail, :passengers)
   end
 end

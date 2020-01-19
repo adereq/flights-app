@@ -3,11 +3,11 @@
     <p class="h3 mb-4 font-weight-bold"><%= @airport.name %></p>
     <div class="form-row mb-4">
         <div class="col text-left">
-   			<p>Miasto: <%= @airport.city %></p>
-  			<p>Kraj: <%= @airport.country %></p>
-  			<p>Nazwa: <%= @airport.name %></p>
-  			<p>Iata: <%= @airport.iata %></p>
-  			<p>Strefa czasowa: <%= @airport.timezone %></p>
+   			<p><b>Miasto:</b> <%= @airport.city %></p>
+  			<p><b>Kraj:</b> <%= @airport.country %></p>
+  			<p><b>Nazwa:</b> <%= @airport.name %></p>
+  			<p><b>Iata:</b> <%= @airport.iata %></p>
+  			<p><b>Strefa czasowa:</b> <%= @airport.timezone %></p>
         </div>
         <div class="col">
    			<iframe src="<%= maps_generator %> width="400" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>

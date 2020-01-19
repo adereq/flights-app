@@ -33,9 +33,6 @@
           <%= link_to booking_path(booking.id), class:"text-dark" do %>  
               <%= fa_icon "sticky-note" %>
           <% end %>
-          <%= link_to booking_path(booking.id), method: :delete, data: { confirm: 'Czy jesteś pewien?' }, class:"text-danger" do %> 
-            <%= fa_icon "trash" %>
-          <% end %>
         </td>
       </tr>
     </tbody>

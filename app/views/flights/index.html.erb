@@ -21,7 +21,9 @@
         <th>Godz.wylotu</th>
         <th>Godz.przylotu</th>
         <th>Cena ekonomiczna</th>
-        <th>Cena biznes</th>
+        <th>Cena biznesowa</th>
+        <th>Miejsca ekonomiczne</th>
+        <th>Miejsca biznesowe </th>
         <th></th>
         <th></th>
       </tr>
@@ -37,6 +39,8 @@
         <td><%= time_formatter(flight.arrival_time) %></td>
         <td><%= currency_formatter(flight.economy_price) %></td>
         <td><%= currency_formatter(flight.business_price) %></td>
+        <td><%= flight.economy_free_seats %>/<%= flight.economy_seats %></td>
+        <td><%= flight.business_free_seats %>/<%= flight.business_seats %></td>
         <td><%= link_to 'Bilety', flight_tickets_list_path(flight.id), class: 'btn btn-dark' %></td>
         <td><%= link_to edit_flight_path(flight.id), class:"text-dark" do %>  
               <%= fa_icon "edit" %>

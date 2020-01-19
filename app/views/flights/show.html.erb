@@ -1,26 +1,93 @@
 <div class="col-md-4 col-md-offset-4"></div>
   <div class="text-center border bg-light border-light p-5 col-4">
+    <span style="font-size: 20px;"><%= fa_icon "plane", class:"fa-2x"%></span>
     <p class="h3 font-weight-bold"><%= @flight.departure_airport.iata %> - <%= @flight.arrival_airport.iata %></p>
     <p class="h4 mb-4 font-weight-bold"><%= @flight.departure_date %></p>
-    <div class="form-row mb-4">
-        <div class="col text-left">
-            <p>Wylot: <%= @flight.departure_airport.name %></p>
-            <p>Przylot: <%= @flight.arrival_airport.name %></p>
-            <p>Nr Lotu: <%= @flight.flight_number %>
-            <p>Godz.wylotu: <%= time_formatter(@flight.departure_time) %></p>
-            <p>Godz.przylotu: <%= time_formatter(@flight.arrival_time) %></p>
-            <p>Numer lotu: <%= @flight.flight_number %></p>
-            <p>Samolot: <%= @flight.airplane.model %></p>
+        <div class="row text-left">
+        <div class="col-sm-5">
+          <span class="form-label"><%= fa_icon "plane-departure" %> Wylot</span>
         </div>
-        <div class="col text-left">    
-            <p>Liczba miejsc ekonomicznych: <%= @flight.economy_seats %></p>
-            <p>Liczba miejsc biznesowych: <%= @flight.business_seats %></p>
-            <p>Cena klasa ekonomiczna: <%= currency_formatter(@flight.economy_price) %></p>
-            <p>Cena klasa biznesowa: <%= currency_formatter(@flight.business_price) %></p>
-            <p>Wolne miejsca klasa ekonomiczna: <%= @flight.economy_free_seats %></p>
-            <p>Wolne miejsca klasa biznesowa: <%= @flight.business_free_seats %></p>
+        <div class="col-sm-6">
+          <span class="form-label"><%= @flight.departure_airport.name %></span>
+        </div>
+        <div class="col-sm-5">
+          <span class="form-label"><%= fa_icon "plane-arrival" %> Przylot</span>
+        </div>
+        <div class="col-sm-6">
+          <span class="form-label"><%= @flight.arrival_airport.name %></span>
+        </div>   
+        <div class="col-sm-5">
+          <span class="form-label"><%= fa_icon "info-circle" %> Nr lotu</span>
+        </div>
+        <div class="col-sm-6">
+          <span class="form-label"><%= @flight.flight_number %></span>
+        </div>      
+        <div class="col-sm-5">
+          <span class="form-label"><%= fa_icon "plane" %> Samolot</span>
+        </div>
+        <div class="col-sm-6">
+          <span class="form-label"><%= @flight.airplane.model %></span>
+        </div>      
+
+        <div class="col-sm-5">
+          <span class="form-label"><%= fa_icon "calendar" %> Data wylotu</span>
+        </div>
+        <div class="col-sm-6">
+          <span class="form-label"><%= @flight.departure_date %></span>
+        </div>
+
+        <div class="col-sm-5">
+          <span class="form-label"><%= fa_icon "clock" %> Godzina wylotu</span>
+        </div>
+        <div class="col-sm-6">
+          <span class="form-label"><%= time_formatter(@flight.departure_time) %></span>
+        </div>
+
+        <div class="col-sm-5">
+          <span class="form-label"><%= fa_icon "clock" %> Godzina przylotu</span>
+        </div>
+        <div class="col-sm-6">
+          <span class="form-label"><%= time_formatter(@flight.arrival_time) %></span>
+        </div>
+
+         <div class="col-sm-5">
+          <span class="form-label"><%= fa_icon "coins" %> Cena klasa ekonomiczna</span>
+        </div>
+        <div class="col-sm-6">
+          <span class="form-label"><%= currency_formatter(@flight.economy_price) %></span>
+        </div>
+         <div class="col-sm-5">
+          <span class="form-label"><%= fa_icon "coins" %> Cena klasa biznesowa</span>
+        </div>
+        <div class="col-sm-6">
+          <span class="form-label"><%= currency_formatter(@flight.business_price) %></span>
+        </div>
+
+        <div class="col-sm-5">
+          <span class="form-label"><%= fa_icon "chair" %> Miejsca ekonomiczne</span>
+        </div>
+        <div class="col-sm-6">
+          <span class="form-label"><%= @flight.economy_seats %></span>
+        </div>
+        <div class="col-sm-5">
+          <span class="form-label"><%= fa_icon "chair" %> Wolne miejsca ekonomiczne</span>
+        </div>
+        <div class="col-sm-6">
+          <span class="form-label"><%= @flight.economy_free_seats %></span>
+        </div>
+
+        <div class="col-sm-5">
+          <span class="form-label"><%= fa_icon "chair" %> Miejsca biznesowe</span>
+        </div>
+        <div class="col-sm-6">
+          <span class="form-label"><%= @flight.business_seats %></span>
+        </div>
+        <div class="col-sm-5 mb-4">
+          <span class="form-label"><%= fa_icon "chair" %> Wolne miejsca biznesowe</span>
+        </div>
+        <div class="col-sm-6">
+          <span class="form-label"><%= @flight.business_free_seats %></span>
         </div>
     </div>
         <%= link_to 'Powrót', flights_path, class: 'btn btn-info' %>
   </div>
-</div>

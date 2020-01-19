@@ -87,7 +87,6 @@ class FlightsController < ApplicationController
   	@flight.destroy
   	respond_to do |format|
       format.html { redirect_to flights_path, notice: 'Lot został został usuniety' }
-      format.json {head :no_content}
   	end
   end
 

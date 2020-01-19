@@ -13,6 +13,7 @@
             <%= form.text_field "last_name_#{i}".to_sym, required: true, class: 'form-control', placeholder: "Nazwisko" %>
           </div>
             <%= form.hidden_field "price_#{i}".to_sym, value: @selected_flight.business_price %>
+            <%= form.hidden_field "seat_#{i}".to_sym, value: "B-#{@selected_flight.business_seats- @selected_flight.business_free_seats + i}" %>
         </div>
         <div class="form-row">
           <div class="form-group col-md6">
