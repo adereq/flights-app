@@ -1,0 +1,10 @@
+<%= search_form_for @q do |f| %>
+  <div class="form-row mb-4">
+    <div class="col">
+      <%= f.search_field :pnr_cont, class:"form-control", placeholder:"Pnr" %>
+    </div>
+    <div class="col text-right">
+      <%= f.submit 'Filtruj', class:"btn btn-dark" %>
+    </div>
+  </div>
+<% end %>

@@ -44,9 +44,11 @@ class BookingsController < ApplicationController
         if @booking.booking_class == "economy"
           @new_economy_free_seats = @booking.flight.economy_free_seats + @booking.passengers
           Flight.find(@booking.flight.id).update(economy_free_seats: @new_economy_free_seats)
+          Transfer.create(booking_id: @booking.id, user_id: current_user.id, amount: @booking.total_price, kind: "Anulowanie rezerwacji", title: "Anulowanie rezerwacji_#{@booking.pnr}", confirmed: true)
         elsif @booking.booking_class == "business"
           @new_business_free_seats = @booking.flight.business_free_seats + @booking.passengers
           Flight.find(@booking.flight.id).update(business_free_seats: @new_business_free_seats)
+          Transfer.create(booking_id: @booking.id, user_id: current_user.id, amount: @booking.total_price, kind: "Anulowanie rezerwacji", title: "Anulowanie rezerwacji_#{@booking.pnr}", confirmed: true)
         end
             
         format.html {redirect_to user_bookings_path, notice: 'Rezerwacja została anulowana'}

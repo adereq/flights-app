@@ -1,11 +1,11 @@
 <div class="col-md-2 col-md-offset-4"></div>
   <div class="text-center border bg-light border-light p-5 col-8">
     <div class="form-row mb-2">
-        <div class="col-2 h3">
+        <div class="text-left h3">
           Rezerwacje
         </div>
     </div>
-
+  <%= render 'filter_bookings_form', booking: @booking %>
   <table class="table table-hover ">
     <thead class="thead-dark">
       <tr>
@@ -25,10 +25,10 @@
         <td><%= booking.pnr %></td>
         <td><%= booking.passengers %></td>
         <td><%= booking.total_price %></td>
-        <td><%= booking.flight.departure_airport.name %></td>
-        <td><%= booking.flight.arrival_airport.name %></td>
-        <td><%= booking.flight.departure_date %></td>
-        <td><%= booking.flight.flight_number %></td>
+        <td><%= booking.flight.try(:departure_airport).try(:name) %></td>
+        <td><%= booking.flight.try(:arrival_airport).try(:name) %></td>
+        <td><%= booking.flight.try(:departure_date) %></td>
+        <td><%= booking.flight.try(:flight_number) %></td>
         <td>
           <%= link_to booking_path(booking.id), class:"text-dark" do %>  
               <%= fa_icon "sticky-note" %>

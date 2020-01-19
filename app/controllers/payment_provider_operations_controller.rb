@@ -8,6 +8,7 @@ class PaymentProviderOperationsController < ApplicationController
   def index
     @q = PaymentProviderOperation.ransack(params[:q])
     @payment_provider_operations = @q.result.page(params[:page]).per(10)
+    @total_income = PaymentProviderOperation.all.sum(:operation_amount)
   end
 
   def new

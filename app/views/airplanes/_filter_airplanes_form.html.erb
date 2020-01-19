@@ -1,16 +1,22 @@
 <%= search_form_for @q do |f| %>
   <div class="form-row mb-4">
     <div class="col">
-      <%= f.search_field :economy_seats_gteq, class:"form-control", placeholder:"Klasa ekonomiczna od" %>
+      Klasa ekonomiczna
     </div>
     <div class="col">
-      <%= f.search_field :economy_seats_lteq, class:"form-control", placeholder:"Klasa ekonomiczna do" %> 
+      <%= f.search_field :economy_seats_gteq, class:"form-control", placeholder:"Od" %>
     </div>
     <div class="col">
-      <%= f.search_field :business_seats_gteq, class:"form-control", placeholder:"Klasa biznesowa od" %>
+      <%= f.search_field :economy_seats_lteq, class:"form-control", placeholder:"Do" %> 
     </div>
     <div class="col">
-      <%= f.search_field :business_seats_lteq, class:"form-control", placeholder:"Klasa biznesowa do" %> 
+      Klasa biznesowa
+    </div>
+    <div class="col">
+      <%= f.search_field :business_seats_gteq, class:"form-control", placeholder:"Od" %>
+    </div>
+    <div class="col">
+      <%= f.search_field :business_seats_lteq, class:"form-control", placeholder:"Do" %> 
     </div>
     <div class="col text-right">
       <%= f.submit 'Filtruj', class:"btn btn-dark" %>

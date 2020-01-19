@@ -10,14 +10,11 @@ class TicketsController < ApplicationController
   def flight_tickets_list
     @q = Flight.find(params[:id]).tickets.ransack(params[:q])
     @tickets = @q.result.page(params[:page]).per(10)
-    if @tickets == []
-      render :notickets
-    else
-      @total_income = 0
-      @tickets.each do |ticket|
-        @total_income+= ticket.price
-      end
-    end
+    @flight = Flight.find(params[:id])
+    @total_income = Flight.find(params[:id]).tickets.sum(:price)
+    @confimred_tickets = Flight.find(params[:id]).tickets
+    @sold_economy_tickets = Flight.find(params[:id]).tickets.where(seat_class:"economy").count
+    @sold_business_tickets = Flight.find(params[:id]).tickets.where(seat_class:"business").count
   end
 
   def new

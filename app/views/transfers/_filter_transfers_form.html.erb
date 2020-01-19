@@ -1,10 +1,10 @@
 <%= search_form_for @q do |f| %>
   <div class="form-row mb-4">
     <div class="col">
-      <%= f.select :kind_cont, options_for_select(["Doładowanie", "Zakup biletu"]), { include_blank:"Wybierz typ" }, {class: "form-control" } %>
+      <%= f.select :kind_cont, options_for_select(["Doładowanie", "Zakup biletu", "Anulowanie rezerwacji"]), { include_blank:"Wybierz typ" }, {class: "form-control" } %>
     </div>
     <div class="col">
-      <%= f.select :confirmed_eq, [['Potwierdzona', true], ['Niepotwierdzona', false]], { include_blank:"Wybierz typ" }, {class: "form-control" } %>
+      <%= f.select :confirmed_eq, [['Potwierdzona', true], ['Niepotwierdzona', false]], { include_blank:"Wybierz status" }, {class: "form-control" } %>
 
     </div>
     <div class="col text-right">

@@ -1,12 +1,27 @@
   <div class="col-md-3 col-md-offset-4"></div>
   <div class="text-center border bg-light border-light p-5 col-6">
-        <p class="h3 mb-4 col-2">Bilety</p>
-    <div class="form-row">
-        <p>Sprzedane bilety: <%= @tickets.count %></p>
-      </div>
-    <div class="form-row">
-        <p>Przychód z biletów: <%= @total_income %></p>
-      </div>
+        <p class="h3 mb-4 text-left">Bilety</p>
+        <p class="h4 mb-4 text-left">Lot nr <%= @flight.flight_number %> <%= @flight.departure_airport.name %> - <%= @flight.arrival_airport.name %> <%= @flight.departure_date %></p>
+        <div class="row text-left">
+          <div class="col-sm-5">
+            <span class="form-label"><%= fa_icon "ticket-alt" %> Sprzedane bilety klasa ekonomiczna</span>
+          </div>
+          <div class="col-sm-6">
+            <span class="form-label"><%= @sold_economy_tickets %></span>
+          </div>
+          <div class="col-sm-5">
+            <span class="form-label"><%= fa_icon "ticket-alt" %> Sprzedane bilety klasa biznesowa</span>
+          </div>
+          <div class="col-sm-6">
+            <span class="form-label"><%= @sold_business_tickets %></span>
+          </div>        
+          <div class="col-sm-5">
+            <span class="form-label"><%= fa_icon "coins" %> Przychód z biletów</span>
+          </div>
+          <div class="col-sm-6 mb-4">
+            <span class="form-label"><%=currency_formatter(@total_income) %></span>
+          </div>
+        </div>   
 <table class="table table-hover ">
     <thead class="thead-dark">
       <tr>
