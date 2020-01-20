@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, only: [:index, :show, :new, :create, :edit, :update, :destroy]
-  before_action :set_user, only: [:destroy, :show]
+  before_action :set_user, only: [:destroy, :show, :edit, :update]
   before_action :user_authorization
   layout 'admin'
 
@@ -36,6 +36,16 @@ class UsersController < ApplicationController
       end
     end
   end
+
+  def update
+    respond_to do |format|
+      if @user.update(user_params)
+        format.html { redirect_to @user, notice: 'Użytkownik zaktualizowany pomyślnie.' }
+      else
+        format.html { render :edit, notice: "Błąd podczas edytowania użytkownika"  }
+      end
+    end
+  end    
 
   def destroy
     @user.destroy

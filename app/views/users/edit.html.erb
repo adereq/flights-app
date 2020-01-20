@@ -1,0 +1,51 @@
+<div class="col-md-4 col-md-offset-4"></div>
+  <div class="text-center border bg-light border-light p-5 margin-top col-4">
+    <p class="h3 mb-4">Edycja użytkownika</p>
+    <%= form_with model: @user, local: true do |f| %>
+    <div class="form-row mb-4">
+        <div class="col">
+          <%= f.text_field :first_name, autofocus: true, required: true, class: "form-control", placeholder: "Imię" %>
+        </div>
+        <div class="col">
+          <%= f.text_field :last_name, autofocus: true, required: true, class: "form-control", placeholder: "Nazwisko" %>
+        </div>
+    </div>
+
+    <%= f.email_field :email, autofocus: true, required: true, autocomplete: "email", class: "form-control mb-4", placeholder: "E-mail" %>
+    <%= f.password_field :password, required: true, autocomplete: "new-password", class: "form-control", placeholder: "Hasło" %>
+    <small id="passwordLength" class="form-text text-muted mb-4">
+        Hasło musi zawierać 6 liter lub więcej
+    </small>
+
+    <%= f.password_field :password_confirmation, required: true, autocomplete: "new-password", class: "form-control mb-4", placeholder: "Potwierdź hasło" %>
+
+    <div class="row">
+        <div class="col text-left">
+        <%= f.label "Superadmin" %>
+        <%= f.check_box :superadmin_role %>
+        </div>
+        <div class="col text-left">
+        <%= f.label "Pracownik linii" %>
+        <%= f.check_box :airline_manager_role %>
+        </div>
+        <div class="col text-left">
+        <%= f.label "Klient" %>
+        <%= f.check_box :client_role %>
+        </div> 
+    </div>
+    <div class="form-row">
+        <div class="col text-left">
+            <%= f.label "Pracownik lotniska" %>
+            <%= f.check_box :airport_manager_role %>
+        </div>
+        <div class="col form-group select text-left">
+          <%= f.collection_select :airport_id, Airport.order(:name),:id, :name, {include_blank: "Wybierz lotnisko", required: true}, {class: 'btn btn-dark dropdown-toggle form-control'} %>
+        </div>
+        <div class="col">
+        </div>
+    </div>
+    <!-- Newsletter -->
+    <%= f.submit "Zapisz zmiany", class: 'btn btn-dark my-4 btn-block' %>
+<% end %>
+</div>
+
