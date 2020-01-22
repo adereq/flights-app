@@ -28,6 +28,11 @@ class FlightsController < ApplicationController
     end
   end
 
+  def flights_availability
+    @json_results = Flight.search_flights(params)
+    render :json => @json_results
+  end
+
   def search
     @airports_list = Airport.all.map{ |u| [u.name, u.id] }
     render layout: 'start_page'

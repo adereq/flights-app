@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   get 'selected_business_flight', to: 'flights#selected_business_flight', as: 'selected_business_flight'
   get 'admin/flights/departure_flights', to: "flights#find_departure_flights_for_airport_manager", as: "departure_flights"
   get 'admin/flights/arrival_flights', to: "flights#find_arrival_flights_for_airport_manager", as: "arrival_flights"
-    
+  get 'api/v1/flights_availability', to:"flights#flights_availability", as:"flights_availability"
 
   resources :payment_provider_operations, defaults: { format: 'plain' }
   get 'admin/payment_provider_operations', to: 'payment_provider_operations#index', as: "payment_provider_operation_list"
