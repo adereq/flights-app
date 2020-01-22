@@ -1,10 +1,7 @@
-<div class="col-12">
-<div class="inner cover">
-  <h1 class="cover-heading">Panel admina</h1>
-  <p class="lead">Zarządzaj lotami. </p>
-  <p class="lead">
-    <%= link_to "Nowe lotnisko", new_airport_path, class: "btn btn-lg btn-secondary" %>
-    <%= link_to "Nowy lot", new_flight_path, class: "btn btn-lg btn-secondary" %>
-  </p>
-</div>
+<div class="col-5 text-center">
+  <div class="booking-cta">
+    <h1>Witaj <%= current_user.first_name %></h1>
+    <p>Zarządzaj lotami w przyjemny sposób
+    </p>
+  </div>
 </div>

@@ -1,0 +1,47 @@
+<div class="col-md-1 col-md-offset-4"></div>
+  <div class="text-center border bg-light border-light p-5 col-10">
+
+
+        <p class="text-left h3">
+          Płatności
+        </p>
+        <div class="row text-left">
+            <div class="col-sm-2">
+            <span class="form-label"><%= fa_icon "coins" %> Przychód </span>
+          </div>
+          <div class="col-sm-2 mb-4">
+            <span class="form-label"><%=currency_formatter(@total_income) %></span>
+          </div>
+        </div> 
+    
+  <table class="table table-bordered table-hover ">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Data operacji</th>        
+        <th scope="col">Nr operacji</th>
+        <th scope="col">Email</th>
+        <th scope="col">Kwota</th>
+        <th scope="col">Status</th>
+        <th scope="col">Sygnatura</th>
+        <th scope="col">Opis</th>
+      </tr>
+    </thead>
+  <% @payment_provider_operations.each do |payment_provider_operation| %>
+    <tbody>
+      <tr>
+        <td><%= date_formatter(payment_provider_operation.created_at) %></td>
+        <td><%= payment_provider_operation.operation_number %></td>
+        <td><%= payment_provider_operation.email %></td>
+        <td><%= payment_provider_operation.operation_amount %></td>
+        <td><%= payment_provider_operation.operation_status %></td>
+        <td><%= payment_provider_operation.signature %></td>
+        <td><%= payment_provider_operation.description %></td>
+      </tr>
+    </tbody>
+    <% end %>
+  </table>
+    <%= paginate @payment_provider_operations %>
+</div>
+
+
+

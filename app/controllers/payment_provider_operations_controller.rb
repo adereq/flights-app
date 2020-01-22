@@ -1,8 +1,14 @@
 class PaymentProviderOperationsController < ApplicationController
  skip_before_action :verify_authenticity_token
+ layout 'admin'
 
   def build_request
+  end
 
+  def index
+    @q = PaymentProviderOperation.ransack(params[:q])
+    @payment_provider_operations = @q.result.page(params[:page]).per(10)
+    @total_income = PaymentProviderOperation.all.sum(:operation_amount)
   end
 
   def new
@@ -13,7 +19,7 @@ class PaymentProviderOperationsController < ApplicationController
   	@payment_provider_operation = PaymentProviderOperation.new(payment_provider_operation_params)
   	  if @payment_provider_operation.save
         related_transfer = Transfer.where(title: @payment_provider_operation.description).take
-        related_transfer.update(confirmed: true)
+        related_transfer.update(confirmed: true, payment_provider_operation_id: @payment_provider_operation.id)
         original_balance = User.find(related_transfer.user_id).balance
         new_balance = original_balance + @payment_provider_operation.operation_amount
         User.find(related_transfer.user_id).update(balance: new_balance)
@@ -26,6 +32,6 @@ class PaymentProviderOperationsController < ApplicationController
   private
 
   def payment_provider_operation_params
-  	params.permit(:operation_number, :operation_amount, :description)
+  	params.permit(:operation_number, :operation_amount, :description, :operation_status, :email, :signature)
   end
 end

@@ -1,24 +1,49 @@
-<h2>Samoloty <%= link_to 'Dodaj samolot', new_airplane_path, class: 'btn btn-light' %></h2>
-  <table class="table">
-    <thead>
+<div class="col-md-3 col-md-offset-4"></div>
+  <div class="text-center border bg-light border-light p-5 col-5">
+    <div class="form-row mb-2">
+        <div class="col-2 h3">
+          Samoloty
+        </div>
+        <div class="col-10 text-right">
+          <%= link_to 'Dodaj samolot', new_airplane_path, class: 'btn btn-dark' %>
+        </div>
+    </div>
+  <%= render 'filter_airplanes_form', airplane: @airplane %>
+
+  <table class="table table-bordered table-hover ">
+    <thead class="thead-dark">
       <tr>
         <th scope="col">Id</th>
         <th scope="col">Model</th>
         <th scope="col">Miejsca kl.ekonomicznej</th>
         <th scope="col">Miejsca kl.biznesowej</th>
+        <th scope="col"></th>
       </tr>
     </thead>
   <% @airplanes.each do |airplane| %>
     <tbody>
       <tr>
-        <a href="/aiplanes/<%= airplane.id %>">
         <th scope="row"><%= airplane.id %></th>
         <td><%= airplane.model %></td>
         <td><%= airplane.economy_seats %></td>
         <td><%= airplane.business_seats %></td>
-        <td><%= link_to 'Edytuj', edit_airplane_path(airplane.id) %>  <%= link_to 'Usuń', airplane_path(airplane.id), method: :delete, data: { confirm: 'Are you sure?' } %> </td>
-      </a>
+        <td>
+          <%= link_to edit_airplane_path(airplane.id), class:"text-dark" do %>  
+            <%= fa_icon "edit" %>
+          <% end %>
+          <%= link_to airplane_path(airplane.id), class:"text-dark" do %>  
+            <%= fa_icon "sticky-note" %>
+          <% end %>
+          <%= link_to airplane_path(airplane.id), method: :delete, data: { confirm: 'Are you sure?' }, class:"text-danger" do %> 
+            <%= fa_icon "trash" %>
+          <% end %>
+        </td>
       </tr>
     </tbody>
     <% end %>
   </table>
+    <%= paginate @airplanes %>
+</div>
+
+
+

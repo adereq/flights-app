@@ -1,55 +1,51 @@
-<div class="container">
-
-  <div class="row">
+<div class="col-md-1 col-md-offset-4"></div>
+  <div class="text-center border bg-light border-light p-5 col-4">
+    <p class="h3 mb-4 font-weight-bold"></p>
     <div class="col">
-   
-    <%= form_with url: '/bookings', scope: 'booking' do |form| %>
-    <% for i in 1..params[:passengers].to_i %>
-      <h6><b><%= fa_icon "user" %> Pasażer <%= i%></b></h6>
-      <div class="form-row">
-        <div class="form-group col-md6">
-          <%= form.label :imię %><br>
-          <%= form.text_field "first_name_#{i}".to_sym, class: 'form-control' %>
+      <%= form_with url: '/bookings', scope: 'booking' do |form| %>
+        <% for i in 1..params[:passengers].to_i %>
+        <div clas="text-left"><h6><b><%= fa_icon "user" %> Pasażer <%= i%></b></h6></div>
+        <div class="form-row">
+          <div class="form-group col-md6">
+            <%= form.text_field "first_name_#{i}".to_sym, required: true, class: 'form-control', placeholder: "Imię" %>
+          </div>
+          <div class="form-group col-md6">
+            <%= form.text_field "last_name_#{i}".to_sym, required: true, class: 'form-control', placeholder: "Nazwisko" %>
+          </div>
+            <%= form.hidden_field "price_#{i}".to_sym, value: @selected_flight.economy_price %>
+           <%= form.hidden_field "seat_#{i}".to_sym, value: "E-#{@selected_flight.economy_seats- @selected_flight.economy_free_seats + i}" %>            
         </div>
-        <div class="form-group col-md6">
-          <%= form.label :nazwisko %><br>
-          <%= form.text_field "last_name_#{i}".to_sym, class: 'form-control' %>
+        <div class="form-row">
+          <div class="form-group col-md6">
+            <%= form.text_field "document_#{i}".to_sym, required: true, class: 'form-control', placeholder: "Nr dokumentu" %>
+          </div>
+          <div class="form-group col-md6">
+            <%= form.text_field "country_#{i}".to_sym, required: true, class: 'form-control', placeholder: "Kraj" %>
+          </div>
         </div>
-        <%= form.hidden_field "price_#{i}".to_sym, value: @selected_flight.economy_price %>
-      </div>
-    <% end %>
-     <%= form.hidden_field :departure_airport, value: @selected_flight.departure_airport.name %>
-     <%= form.hidden_field :arrival_airport, value: @selected_flight.arrival_airport.name %>
-     <%= form.hidden_field :flight_id, value: @selected_flight.id %>
-     <%= form.hidden_field :user_id, value: current_user.id %>  
-     <%= form.hidden_field :departure_date, value: @selected_flight.departure_date %>
-     <%= form.hidden_field :departure_time, value: @selected_flight.departure_time %>
-     <%= form.hidden_field :arrival_time, value: @selected_flight.arrival_time %>
-     <%= form.hidden_field :flight_number, value: @selected_flight.flight_number %>
-     <%= form.hidden_field :total_price, value: (@selected_flight.economy_price.to_i*params[:passengers].to_i) %>
-     <%= form.hidden_field :mail, value: current_user.email %>
-     <%= form.hidden_field :passengers, value: params[:passengers].to_i %>
-     <%= form.hidden_field :booking_class, value: "economy" %>
-     <%= form.submit "Zarezerwuj", class: 'btn btn-light' %>
+      <% end %>
+        <%= form.hidden_field :flight_id, value: @selected_flight.id %>
+        <%= form.hidden_field :user_id, value: current_user.id %>
+        <%= form.hidden_field :total_price, value: (@selected_flight.economy_price.to_i*params[:passengers].to_i) %>
+        <%= form.hidden_field :mail, value: current_user.email %>
+        <%= form.hidden_field :passengers, value: params[:passengers].to_i %>
+        <%= form.hidden_field :booking_class, value: "economy" %>
+        <%= form.hidden_field :status, value: "Potwierdzona" %>      
+        <%= form.submit "Zarezerwuj", class: 'btn btn-dark' %>
 <% end %>
+
     </div>
-    <div class="col">
-      <div class="booking-form">
-      <div class="row">
-        <div class="col-sm-2">
-        </div>
-        <div class="col-sm-6">
-          <h3 class="form-label">Podsumowanie</h3>
-        </div>
-      </div>
-      <div class="row">
+  </div>
+<div class="col-md-1 col-md-offset-4"></div>
+  <div class="text-center border bg-light border-light p-5 col-4">
+    <p class="h3 mb-4 font-weight-bold">Podsumowanie rezerwacji</p>
+    <div class="row text-left">
         <div class="col-sm-5">
           <span class="form-label"><%= fa_icon "plane-departure" %> Wylot</span>
         </div>
         <div class="col-sm-6">
           <span class="form-label"><%= @selected_flight.departure_airport.name %></span>
         </div>
-         
         <div class="col-sm-5">
           <span class="form-label"><%= fa_icon "plane-arrival" %> Przylot</span>
         </div>
@@ -89,18 +85,14 @@
           <span class="form-label"><%= fa_icon "coins" %> Cena za bilet</span>
         </div>
         <div class="col-sm-6">
-          <span class="form-label"><%= @selected_flight.economy_price.to_f %> zł</span>
+          <span class="form-label"><%= currency_formatter(@selected_flight.economy_price.to_f) %></span>
         </div>
 
         <div class="col-sm-5">
           <span class="form-label"><%= fa_icon "coins" %> Cena całkowita</span>
         </div>
         <div class="col-sm-6">
-          <span class="form-label"><%=(@selected_flight.economy_price.to_f*params[:passengers].to_i) %> zł</span>
+          <span class="form-label"><%=currency_formatter((@selected_flight.economy_price.to_f*params[:passengers].to_i)) %></span>
         </div>
     </div>
-  </div>
-</div>
-<div class="spinner-border" role="status">
-  <span class="sr-only">Loading...</span>
 </div>

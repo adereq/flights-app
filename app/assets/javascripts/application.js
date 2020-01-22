@@ -21,6 +21,20 @@
 //= require gritter
 //= require font_awesome5
 
+ function isChecked(){
+ var user_superadmin_role = document.getElementById('user_superadmin_role').checked;
+ var user_airline_manager_role = document.getElementById('user_airline_manager_role').checked;
+ var user_airport_manager_role = document.getElementById('user_airport_manager_role').checked;
+ var user_client_role = document.getElementById('user_client_role').checked;
+ 
+ if(user_superadmin_role==false && user_airline_manager_role == false && user_airport_manager_role==false && user_client_role==false){
+ alert('Please select a role!');
+ return false;
+ }
+ else{
+ return true;
+ }
+ } 
 
 // Regular map
         function regular_map() {
@@ -50,3 +64,6 @@ $('.carousel').carousel({
             interval: 3000,
         })
 
+$("tr[data-link]").click(function() {
+  window.location = $(this).data("link")
+})

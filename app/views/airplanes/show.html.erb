@@ -1,8 +1,22 @@
-<div class="col-12">
-  <h2><%= @airplane.model %></h2>
-</div>
-<div class="row">
-<div class="col">
-  <p>Miejsca w klasie ekonomicznej: <%= @airplane.economy_seats %></p>
-  <p>Miejsca w klasie biznesowej: <%= @airplane.business_seats %></p>
-</div>
+<div class="col-md-5 col-md-offset-4"></div>
+  <div class="text-center border bg-light border-light p-5 col-2">
+    <p class="h3 mb-4 font-weight-bold"><%= @airplane.model %></p>
+   	<div class="row text-left">
+        <div class="col-sm-5">
+          <span class="form-label"><%= fa_icon "chair" %><b> Miejsca w klasie ekonomicznej</b></span>
+        </div>
+        <div class="col-sm-6">
+          <span class="form-label"><%= @airplane.economy_seats %></span>
+        </div>
+        <div class="col-sm-5">
+          <span class="form-label"><%= fa_icon "chair" %><b> Miejsca w klasie biznesowej</b></span>
+        </div>
+        <div class="col-sm-6">
+          <span class="form-label"><%= @airplane.business_seats %></span>
+        </div>  
+	</div>
+
+  <%= link_to 'Powrót do listy', airplanes_path, class: 'btn btn-info' %>
+  </div>
+
+

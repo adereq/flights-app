@@ -1,20 +1,20 @@
 class TicketsController < ApplicationController
   before_action :set_ticket, only: [:show]
-  layout "admin", only: [:tickets_list]
+  layout "admin"
 
   def index
-    @tickets = Ticket.where(user_id: current_user.id)
+    @q = Ticket.where(user_id: current_user.id).ransack(params[:q])
+    @tickets = @q.result.page(params[:page]).per(10)
   end
 
-  def tickets_list
-    @ticket = Ticket.search_tickets(params[:id])
-    @total_income = 0
-    @ticket.each do |ticket|
-      @total_income+= ticket.price
-    end
-    if @ticket == []
-      render :notickets
-    end
+  def flight_tickets_list
+    @q = Flight.find(params[:id]).tickets.ransack(params[:q])
+    @tickets = @q.result.page(params[:page]).per(10)
+    @flight = Flight.find(params[:id])
+    @total_income = Flight.find(params[:id]).tickets.sum(:price)
+    @confimred_tickets = Flight.find(params[:id]).tickets
+    @sold_economy_tickets = Flight.find(params[:id]).tickets.where(seat_class:"economy").count
+    @sold_business_tickets = Flight.find(params[:id]).tickets.where(seat_class:"business").count
   end
 
   def new
@@ -25,7 +25,7 @@ class TicketsController < ApplicationController
   	@ticket = Ticket.new(ticket_params)
   	respond_to do |format| 
   	  if @ticket.save
-        format.html {redirect_to @ticket, notice: 'Flight was succesfully created'}
+        format.html {redirect_to @ticket}
   	  else
   	  	format.html {redirect_to :root}
   	  end

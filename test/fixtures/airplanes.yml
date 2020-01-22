@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  model: MyString
-  economic_seats: 1
-  business_seats: 1
+airplane_one:
+  model: "Boeing737"
+  economy_seats: 10
+  business_seats: 10
 
 two:
-  model: MyString
-  economic_seats: 1
-  business_seats: 1
+  model: "Airbus A220"
+  economy_seats: 100
+  business_seats: 20

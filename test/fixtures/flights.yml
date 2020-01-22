@@ -1,21 +1,31 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+flight_one:
   departure_airport_id: 1
-  destination_airport_id: 1
-  departure_date: 2019-06-18
-  departure_time: 2019-06-18 17:17:10
-  arrival_time: 2019-06-18 17:17:10
-  flight_number: MyString
-  seats: 1
-  price: 1.5
-
-two:
-  departure_airport_id: 1
-  destination_airport_id: 1
-  departure_date: 2019-06-18
-  departure_time: 2019-06-18 17:17:10
-  arrival_time: 2019-06-18 17:17:10
-  flight_number: MyString
-  seats: 1
-  price: 1.5
+  arrival_airport_id: 2
+  departure_date: 2020-06-18
+  departure_time: 2020-06-18 17:00:00
+  arrival_time: 2020-06-18 19:00:00
+  flight_number: "A123"
+  airplane_id: 1
+  economy_seats: 100
+  business_seats: 20
+  economy_free_seats: 100
+  business_free_seats: 20
+  economy_price: 200
+  business_price: 499
+  
+flight_two:
+  departure_airport_id: 3
+  arrival_airport_id: 4
+  departure_date: 2020-06-18
+  departure_time: 2020-06-18 20:00:00
+  arrival_time: 2020-06-18 23:00:00
+  flight_number: "A140"
+  airplane_id: 2
+  economy_seats: 200
+  business_seats: 20
+  economy_free_seats: 200
+  business_free_seats: 20
+  economy_price: 219
+  business_price: 1499

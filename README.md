@@ -1,25 +1,22 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Flights App
 
 Things you may want to cover:
 
-* Ruby version
+* Ruby version - 2.6.3
 
-* System dependencies
+* Rails version - 5.2.3
 
-* Configuration
 
-* Database creation
+# Test users
 
-* Database initialization
+* SUPERADMIN: test_superadmin@example.com
 
-* How to run the test suite
+* AIRLINE MANAGER: test_airline_manager@example.com
 
-* Services (job queues, cache servers, search engines, etc.)
+* AIRPORT MANAGER: test_airport_manager@example.com
 
-* Deployment instructions
+* CLIENT: test_client@example.com
 
-* ...
-# flights-app
+Password: Flightsapp2020

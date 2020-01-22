@@ -1,4 +1,5 @@
 class Airplane < ApplicationRecord
-  validates :model, presence: true
-  has_many :flight
+  validates :economy_seats, :business_seats, presence: true
+  validates_presence_of :model, :message => 'Podaj model.'
+  has_many :flights
 end

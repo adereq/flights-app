@@ -1,29 +1,36 @@
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-<div class="top">
-  <h2>Rejestracja</h2>
-</div>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+<div class="col-md-2 col-md-offset-4"></div>
+  <div class="text-center border bg-light border-light p-5 margin-top">
+    <p class="h3 mb-4">Rejestracja</p>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+    <div class="form-row mb-4">
+        <div class="col">
+          <%= f.text_field :first_name, autofocus: true, required: true, class: "form-control", placeholder: "Imię" %>
+        </div>
+        <div class="col">
+          <%= f.text_field :last_name, autofocus: true, required: true, class: "form-control", placeholder: "Nazwisko" %>
+        </div>
+    </div>
 
-  <div class="field">
-    <%= f.label :hasło %>
+    <%= f.email_field :email, autofocus: true, required: true, autocomplete: "email", class: "form-control mb-4", placeholder: "E-mail" %>
+    <%= f.password_field :password, required: true, autocomplete: "new-password", class: "form-control", placeholder: "Hasło" %>
     <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> znaków lub więcej)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
+        <small id="passwordLength" class="form-text text-muted mb-4">
+        Hasło musi zawierać <%= @minimum_password_length %> liter lub więcej
+    </small>
+    <% end %>
 
-  <div class="field">
-    <%= f.label :potwierdź_hasło %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-  <%= f.hidden_field :client_role, value: true %>
-  <br></br>
-  <div class="actions">
-    <%= f.submit "Zarejestruj się" %>
-  </div>
+    <%= f.password_field :password_confirmation, required: true, autocomplete: "new-password", class: "form-control", placeholder: "Potwierdź hasło" %>
+ 
+    <%= f.hidden_field :client_role, value: true %>
+  
+    <!-- Newsletter -->
+    <%= f.submit "Zarejestruj się", class: 'btn btn-dark my-4 btn-block' %>
 
+    <div class="custom-control custom-checkbox">
+        <input type="checkbox" required class="custom-control-input" id="defaultRegisterFormNewsletter">
+        <label class="custom-control-label" for="defaultRegisterFormNewsletter">Akceptuję regulamin</label>
+    </div>
 <% end %>
+</div>
+

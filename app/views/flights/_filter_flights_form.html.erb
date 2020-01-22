@@ -1,12 +1,19 @@
 <%= search_form_for @q do |f| %>
-    <%= f.label :wylot %>
-    <%= f.search_field :departure_airport_name_cont %> 
-    <%= f.label :przylot %>
-    <%= f.search_field :arrival_airport_name_cont %> 
-    <p></p>
-    <%= f.label :cena_od %>
-    <%= f.search_field :price_gt %>
-    <%= f.label :cena_do %>
-    <%= f.search_field :price_lt %>
-    <%= f.submit 'Szukaj' %>
+  <div class="form-row mb-4">
+    <div class="col">
+      <%= f.search_field :departure_airport_name_cont, class:"form-control", placeholder:"Wylot" %>
+    </div>
+    <div class="col">
+      <%= f.search_field :arrival_airport_name_cont, class:"form-control", placeholder:"Przylot" %> 
+    </div>
+    <div class="col">
+      <%= f.search_field :economy_price_gteq, class:"form-control", placeholder:"Cena od" %>
+    </div>
+    <div class="col">
+      <%= f.search_field :economy_price_lteq, class:"form-control", placeholder:"Cena do" %> 
+    </div>
+    <div class="col text-right">
+      <%= f.submit 'Filtruj', class:"btn btn-dark" %>
+    </div>
+  </div>
 <% end %>

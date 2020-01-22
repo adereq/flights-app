@@ -10,9 +10,10 @@ class AirplanesController < ApplicationController
       authorization_error
     end
   end
- 
+
   def index
-  	@airplanes = Airplane.all
+    @q = Airplane.ransack(params[:q])
+    @airplanes = @q.result.page(params[:page]).per(10)
   end
 
   def show
@@ -26,11 +27,9 @@ class AirplanesController < ApplicationController
     @airplane = Airplane.new(airplane_params)
     respond_to do |format|
       if @airplane.save
-        format.html { redirect_to @airplane, notice: 'Airplane was successfully created.' }
-        format.json { render :show, status: :ok, location: @airplane }        
+        format.html { redirect_to @airplane, notice: 'Samolot dodany poprawnie.' }\
       else
-        format.html { render :new }
-        format.json { render json: @airplane.errors, status: :unprocessable_entity }        
+        format.html { redirect_to new_airplane_path, notice: "Błąd podczas dodawania samolotu" }       
       end
     end
   end
@@ -41,11 +40,9 @@ class AirplanesController < ApplicationController
   def update
     respond_to do |format|
       if @airplane.update(airplane_params)
-        format.html { redirect_to @airplane, notice: 'Airplane was successfully updated.' }
-        format.json { render :show, status: :ok, location: @airpane }
+        format.html { redirect_to @airplane, notice: 'Samolot zmodywikowany poprawnie.' }
       else
-        format.html { render :edit }
-        format.json { render json: @airplane.errors, status: :unprocessable_entity }
+        format.html { render :edit, notice: "Błąd podczas edytowania samolotu" }
       end
     end
   end 
@@ -53,7 +50,7 @@ class AirplanesController < ApplicationController
   def destroy
     @airplane.destroy
     respond_to do |format|
-      format.html { redirect_to airplane_path, notice: 'Airplane was successfully destroyed.' }
+      format.html { redirect_to airplanes_path, notice: 'Lotnisko usunięte.' }
       format.json { head :no_content }
     end
   end
@@ -66,7 +63,5 @@ class AirplanesController < ApplicationController
 
   	def airplane_params
       params.require(:airplane).permit(:model, :economy_seats, :business_seats)
-
     end  	
-
 end

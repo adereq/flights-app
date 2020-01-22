@@ -1,0 +1,52 @@
+  <div class="col-md-3 col-md-offset-4"></div>
+  <div class="text-center border bg-light border-light p-5 col-6">
+        <p class="h3 mb-4 text-left">Bilety</p>
+        <p class="h4 mb-4 text-left">Lot nr <%= @flight.flight_number %> <%= @flight.departure_airport.name %> - <%= @flight.arrival_airport.name %> <%= @flight.departure_date %></p>
+        <div class="row text-left">
+          <div class="col-sm-5">
+            <span class="form-label"><%= fa_icon "ticket-alt" %> Sprzedane bilety klasa ekonomiczna</span>
+          </div>
+          <div class="col-sm-6">
+            <span class="form-label"><%= @sold_economy_tickets %></span>
+          </div>
+          <div class="col-sm-5">
+            <span class="form-label"><%= fa_icon "ticket-alt" %> Sprzedane bilety klasa biznesowa</span>
+          </div>
+          <div class="col-sm-6">
+            <span class="form-label"><%= @sold_business_tickets %></span>
+          </div>        
+          <div class="col-sm-5">
+            <span class="form-label"><%= fa_icon "coins" %> Przychód z biletów</span>
+          </div>
+          <div class="col-sm-6 mb-4">
+            <span class="form-label"><%=currency_formatter(@total_income) %></span>
+          </div>
+        </div>   
+<table class="table table-hover ">
+    <thead class="thead-dark">
+      <tr>
+        <th>Imię</th>
+        <th>Nazwisko</th>
+        <th>Miejsce</th>
+        <th>Klasa</th>
+        <th>Cena</th>
+        <th>Rezerwacja</th>
+        <th>Nr dokumentu</th>
+      </tr>
+    </thead>
+  <% @tickets.each do |ticket| %>
+    <tbody>
+      <tr>
+        <td><%= ticket.first_name %></td>
+        <td><%= ticket.last_name %></td>
+        <td><%= ticket.seat %></td>
+        <td><%= ticket.seat_class %></td>    
+        <td><%= ticket.price %></td>
+        <td><%= ticket.booking.pnr %></td>
+        <td><%= ticket.document_id %></td>        
+      </tr>
+    </tbody>
+    <% end %>
+  </table>
+  <%= paginate @tickets %>
+</div>

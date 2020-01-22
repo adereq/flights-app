@@ -1,0 +1,9 @@
+<%= search_form_for @q do |f| %>
+  <div class="form-row mb-4">
+    <div class="col">
+      <%= f.date_field :departure_date_eq, class: 'form-control bg-dark text-white' %></div>
+    <div class="col text-right">
+      <%= f.submit 'Filtruj', class:"btn btn-dark" %>
+    </div>
+  </div>
+<% end %>

@@ -1,0 +1,44 @@
+<div class="col-md-1 col-md-offset-4"></div>
+  <div class="text-center border bg-light border-light p-5 col-10">
+    <div class="form-row mb-2">
+        <div class="col-1 h3">
+          Loty
+        </div>
+    </div>
+
+  <table class="table table-hover ">
+    <thead class="thead-dark">
+      <tr>
+        <th>Nr Lotu</th>
+        <th>Wylot</th>
+        <th>Przylot</th>
+        <th>Data wylotu</th>
+        <th>Godz.wylotu</th>
+        <th>Godz.przylotu</th>
+        <th>Cena ekonomiczna</th>
+        <th>Cena biznes</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+  <% @departure_flights.each do |flight| %>
+    <tbody>
+      <tr>
+        <th scope="row"><%= flight.flight_number %></th>
+        <td><%= flight.departure_airport.name %></td>
+        <td><%= flight.arrival_airport.name %></td>
+        <td><%= flight.departure_date %></td>
+        <td><%= time_formatter(flight.departure_time) %></td>
+        <td><%= time_formatter(flight.arrival_time) %></td>
+        <td><%= currency_formatter(flight.economy_price) %></td>
+        <td><%= currency_formatter(flight.business_price) %></td>
+        <td><%= link_to 'Bilety', flight_tickets_list_path(flight.id), class: 'btn btn-dark' %></td>
+        <td><%= link_to flight_path(flight.id), class:"text-dark" do %>  
+              <%= fa_icon "sticky-note" %>
+            <% end %>
+        </td>
+      </tr>
+    </tbody>
+    <% end %>
+  </table>
+</div>

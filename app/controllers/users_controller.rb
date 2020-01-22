@@ -1,10 +1,12 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, only: [:index, :show, :new, :create, :edit, :update, :destroy]
+  before_action :set_user, only: [:destroy, :show, :edit, :update]
   before_action :user_authorization
   layout 'admin'
 
   def index
-  	@users = User.all
+    @q = User.ransack(params[:q])
+  	@users = @q.result.page(params[:page]).per(10)
   end
 
   def user_authorization
@@ -14,4 +16,53 @@ class UsersController < ApplicationController
     end
   end
 
+  def show
+  end
+
+  def new
+    @user = User.new
+  end
+
+  def create
+    @user = User.new(user_params)
+    respond_to do |format|
+      if @user.save
+        flash[:notice] = "Użytkownik został dodany"
+        format.html { redirect_to @user, notice: 'Użytkownik został dodany' }
+        format.json { render :show, status: :ok, location: @user }        
+      else
+        format.html { render :new }
+        format.json { render json: @user.errors, status: :unprocessable_entity }        
+      end
+    end
+  end
+
+  def update
+    respond_to do |format|
+      if @user.update(user_params)
+        format.html { redirect_to @user, notice: 'Użytkownik zaktualizowany pomyślnie.' }
+      else
+        format.html { render :edit, notice: "Błąd podczas edytowania użytkownika"  }
+      end
+    end
+  end    
+
+  def destroy
+    @user.destroy
+    respond_to do |format|
+      format.html { redirect_to users_path, notice: 'Użytkownik został usunięty.' }
+      format.json { head :no_content }
+    end
+  end
+
+  private
+    def set_user
+      @user = User.find(params[:id])
+      rescue ActiveRecord::RecordNotFound => e
+    end
+
+    def user_params
+      params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :client_role, :superadmin_role, :airline_manager_role, :airport_manager_role, :airport_id)
+
+    end 
 end

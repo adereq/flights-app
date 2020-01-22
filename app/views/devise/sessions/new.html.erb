@@ -1,17 +1,11 @@
+<div class="col-md-4 col-md-offset-4"></div>
+  <div class="text-center border bg-light border-light p-5 margin-top margin-bottom">
+    <p class="h3 mb-4">Logowanie</p>
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="top">
-    <h2>Logowanie</h2>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :hasło %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
+  
+    <%= f.email_field :email, autofocus: true, required: true, autocomplete: "email", class:"form-control mb-4", placeholder:"E-mail" %>
+    <%= f.password_field :password, required: true, autocomplete: "current-password", class:"form-control", placeholder:"Hasło" %>
+ 
   <% if devise_mapping.rememberable? %>
     <div class="field">
       <%= f.check_box :remember_me %>
@@ -20,8 +14,9 @@
   <% end %>
 
   <div class="actions">
-    <%= f.submit "Zaloguj" %>
+    <%= f.submit "Zaloguj",  class: 'btn btn-dark my-4 btn-block' %>
     
 <%= render "devise/shared/links" %>
   </div>
 <% end %>
+</div>
