@@ -24,6 +24,9 @@ Rails.application.routes.draw do
   resources :payment_provider_operations, defaults: { format: 'plain' }
   get 'admin/payment_provider_operations', to: 'payment_provider_operations#index', as: "payment_provider_operation_list"
   get 'admin', to: 'pages#home', as: 'admin'
+  get 'contact', to: 'pages#contact', as: 'contact'
+  get 'about', to: 'pages#about', as: 'about'
+  get 'regulations', to: 'pages#regulations', as: 'regulations'
   get 'airports/get_airport/:id', to: 'airports#get_airport'
   
   scope '/admin' do
