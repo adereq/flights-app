@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
-  before_action :authenticate_user!
-  before_action :home_authorization
+  before_action :authenticate_user!, only: [:home]
+  before_action :home_authorization, only: [:home]
   layout "admin", only: [:home]
   
   def home
