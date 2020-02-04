@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  layout "booking", only: [:user_bookings, :booking_confirmation, :get_user_booking_details]
+  layout "booking", only: [:user_bookings, :booking_confirmation, :get_user_booking_details, :booking_failed]
   before_action :set_booking, only: [:cancel_booking, :show, :destroy, :booking_confirmation, :get_user_booking_details]
 
   before_action :authenticate_user!, only: [:camcel_booking, :index, :show, :edit, :destroy, :booking_confirmation, :user_bookings,:get_user_booking_details_path]
@@ -27,7 +27,6 @@ class BookingsController < ApplicationController
 
   def get_user_booking_details
   end
-
 
   def new
   	@booking = Booking.new
@@ -62,8 +61,8 @@ class BookingsController < ApplicationController
   	@booking = Booking.new(booking_params)
     @booking.pnr = Booking.pnr_generator
   	respond_to do |format| 
-      if @booking.total_price <= current_user.balance
-  	    if @booking.save
+      if @booking.total_price <= current_user.balance && Flight.check_free_seats(@booking.flight_id, @booking.passengers, @booking.booking_class)
+       if @booking.save
           @new_balance = current_user.balance - @booking.total_price
           puts current_user.balance
           puts @new_balance
@@ -111,8 +110,10 @@ class BookingsController < ApplicationController
   	    else
   	  	format.html {redirect_to :root}
   	    end
+      elsif @booking.total_price > current_user.balance
+        format.html {redirect_to request.referer, notice: 'Za mało środków na koncie.'}
       else
-        format.html {redirect_to :booking_failed, notice: 'Za mało środków na koncie.'}
+        format.html {redirect_to request.referer, notice: 'Lot niedostępny.'}
       end
   	end
   end

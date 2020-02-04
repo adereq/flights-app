@@ -6,8 +6,6 @@ class Flight < ApplicationRecord
   has_many :tickets
 
   #validates :departure_airport_id, :arrival_airport_id, :departure_date, :departure_time, :arrival_time, presence: true 
-
-
   def self.search_flights(params)
     Flight.where(departure_airport_id: params[:departure_airport_id],
                  arrival_airport_id: params[:arrival_airport_id],
@@ -46,5 +44,19 @@ class Flight < ApplicationRecord
     flight.update(business_free_seats: increased_free_seats)
   end
 
+  def self.check_free_seats(flight_id, passengers, booking_class)
+    puts "JEDZIESZ!"
+    flight = Flight.find(flight_id)
+    if booking_class == "economy" || flight.economy_free_seats >= passengers
+      return true
+      puts "economyu"
+    elsif booking_class == "business" || flight.business_free_seats >= passengers
+      return true   
+      puts "business"
+    else
+      puts "another"
+      return false
+    end
+  end
 
 end
